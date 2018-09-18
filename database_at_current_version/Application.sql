@@ -131,23 +131,23 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 
 CREATE TABLE IF NOT EXISTS `establishments` (
   `id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `type` nvarchar(255) NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `establishments` (type) values 
-(`Centre de réadaptation`),
-(`Centre hospitalier`),
-(`Centre hospitalier et d'hébergement pour vétérans`),
-(`Centre hospitalier psychiatrique`),
-(`CHSLD`),
-(`CHSLD et CLSC`),
-(`CHSLD pour religieuses`),
-(`Clinique privée`),
-(`Clinique publique`),
-(`CLSC`),
-(`UTRF`);
+INSERT INTO `establishments` (id, type) values 
+(1,'Centre de réadaptation'),
+(2,'Centre hospitalier'),
+(3,'Centre hospitalier et d''hébergement pour vétérans'),
+(4,'Centre hospitalier psychiatrique'),
+(5,'CHSLD'),
+(6,'CHSLD et CLSC'),
+(7,'CHSLD pour religieuses'),
+(8,'Clinique privée'),
+(9,'Clinique publique'),
+(10,'CLSC'),
+(11,'UTRF');
 
 -- --------------------------------------------------------
 
@@ -156,91 +156,91 @@ INSERT INTO `establishments` (type) values
 --
 
 CREATE TABLE IF NOT EXISTS `client_types` (
-  `id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL, 
+  `type` nvarchar(255) NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `client_type` (type) values 
-(`Neurologie, pédiatrie poss d'ortho/rhumato`),
-(`Ortho/rhumato`),
-(`Ortho/rhumato et perte d'autonomie`),
-(`orthopédie/rhumatologie`),
-(`orthopédie/rhumatologie principalement`),
-(`orthopédie/rhumatologie, Perte d'Autonomie`),
-(`Perte autonomie fonctionnelle`),
-(`Perte d'autonomie`),
-(`Perte d'autonomie et ortho/rhumato`),
-(`Perte d'autonomie un peu de neuro et d'ortho`),
-(`Perte d'autonomie, cardiorespiratoire, palliatif`),
-(`Perte d'autonomie, neuro et quelques cas ortho`),
-(`Perte d'autonomie, neurologie (cas séquélaires et évolutifs)`),
-(`Perte d'autonomie, ortho, cardio, neuro`),
-(`Perte d'autonomie, ortho/rhumato`),
-(`Perte d'autonomie, ortho/rhumato, cardiorespiratoire`),
-(`Perte d'autonomie, orthopédie/rhumato, neuro`),
-(`Perte d'autonomie, Orthopédie/rhumatologie`),
-(`Perte d'autonomie, orthopédie/rhumatologie, neuro`),
-(`Perte d'autonomie, orthopédie/rhumatologie, neuro, cardiorespiratoire`),
-(`Principalement ortho/rhumato, un peu de perte d'autonomie`);
+INSERT INTO `client_types` (id, type) values 
+(1,'Neurologie, pédiatrie poss d''ortho/rhumato'),
+(2,'Ortho/rhumato'),
+(3,'Ortho/rhumato et perte d''autonomie'),
+(4,'orthopédie/rhumatologie'),
+(5,'orthopédie/rhumatologie principalement'),
+(6,'orthopédie/rhumatologie, Perte d''Autonomie'),
+(7,'Perte autonomie fonctionnelle'),
+(8,'Perte d''autonomie'),
+(9,'Perte d''autonomie et ortho/rhumato'),
+(10,'Perte d''autonomie un peu de neuro et d''ortho'),
+(11,'Perte d''autonomie, cardiorespiratoire, palliatif'),
+(12,'Perte d''autonomie, neuro et quelques cas ortho'),
+(13,'Perte d''autonomie, neurologie (cas séquélaires et évolutifs)'),
+(14,'Perte d''autonomie, ortho, cardio, neuro'),
+(15,'Perte d''autonomie, ortho/rhumato'),
+(16,'Perte d''autonomie, ortho/rhumato, cardiorespiratoire'),
+(17,'Perte d''autonomie, orthopédie/rhumato, neuro'),
+(18,'Perte d''autonomie, Orthopédie/rhumatologie'),
+(19,'Perte d''autonomie, orthopédie/rhumatologie, neuro'),
+(20,'Perte d''autonomie, orthopédie/rhumatologie, neuro, cardiorespiratoire'),
+(21,'Principalement ortho/rhumato, un peu de perte d''autonomie');
 
 -- type de milieu
 CREATE TABLE IF NOT EXISTS `ownership_statuses` (
   `id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `type` nvarchar(255) NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `ownership_status` (type) values 
-(`Public`),
-(`Privé`),
-(`Conventionné`);
+INSERT INTO `ownership_statuses` (id,type) values 
+(1,'Public'),
+(2,'Privé'),
+(3,'Conventionné');
 
 CREATE TABLE IF NOT EXISTS `genders` (
   `id` int(11) NOT NULL,
-  `categorie` varchar(255) NOT NULL,
+  `categorie` nvarchar(255) NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `gender` (type) values 
-(`Madame`),
-(`Madame, Monsieur`),
-(`Mesdames`),
-(`Mesdames, Monsieur`),
-(`Monsieur`),
-(`Messieurs`),
-(`Madame, Messieurs`),
-(`Mesdames, Messieurs`);
+INSERT INTO `genders` (id,categorie) values 
+(1,'Madame'),
+(2,'Madame, Monsieur'),
+(3,'Mesdames'),
+(4,'Mesdames, Monsieur'),
+(5,'Monsieur'),
+(6,'Messieurs'),
+(7,'Madame, Messieurs'),
+(8,'Mesdames, Messieurs');
 
 
 CREATE TABLE IF NOT EXISTS `regions` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` nvarchar(255) NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `regions` (name) VALUES
-(`Bas Saint-Laurent`),
-(`Saguenay - Lac-Saint-Jean`),
-(`Capitale Nationale`),
-(`Mauricie`),
-(`Estrie`),
-(`Montréal`),
-(`Outaouais`),
-(`Abitibi-Témiscamingue`),
-(`Côte-Nord`),
-(`Nord-du-Québec`),
-(`Gaspésie-Iles-de-la-Madeleine`),
-(`Chaudières-Appalaches`),
-(`Laval`),
-(`Lanaudière`),
-(`Laurentides`),
-(`Montérégie`),
-(`Centre-du-Québec`);
+INSERT INTO `regions` (id,name) VALUES
+(1,'Bas Saint-Laurent'),
+(2,'Saguenay - Lac-Saint-Jean'),
+(3,'Capitale Nationale'),
+(4,'Mauricie'),
+(5,'Estrie'),
+(6,'Montréal'),
+(7,'Outaouais'),
+(8,'Abitibi-Témiscamingue'),
+(9,'Côte-Nord'),
+(10,'Nord-du-Québec'),
+(11,'Gaspésie-Iles-de-la-Madeleine'),
+(12,'Chaudières-Appalaches'),
+(13,'Laval'),
+(14,'Lanaudière'),
+(15,'Laurentides'),
+(16,'Montérégie'),
+(17,'Centre-du-Québec');
 
 --
 -- Declaration primary key
@@ -263,17 +263,17 @@ ALTER TABLE `sessions`
 ALTER TABLE `establishments`
 	ADD PRIMARY KEY (`id`);	
   --
-ALTER TABLE `client_type`
+ALTER TABLE `client_types`
   ADD PRIMARY KEY (`id`); 
   --
-ALTER TABLE `ownership_status`
+ALTER TABLE `ownership_statuses`
   ADD PRIMARY KEY (`id`); 
   --
-ALTER TABLE `gender`
+ALTER TABLE `genders`
   ADD PRIMARY KEY (`id`); 
   --
 ALTER TABLE `regions`
-  ADD PRIMARY KEY (`id`); 
+  ADD PRIMARY KEY (`id`);
   
 --
 -- MODIF table `administrators`

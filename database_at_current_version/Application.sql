@@ -281,7 +281,15 @@ ALTER TABLE `regions`
 --
 ALTER TABLE `administrators`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  
+
+-- MODIF table `students`
+-- AUTO_INCREMENT pour la table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `students` AUTO_INCREMENT = 10000000;
+
 --
 -- MODIF table `companies`
 -- AUTO_INCREMENT pour la table `companies`

@@ -190,3 +190,69 @@ Stack Trace:
 #20 {main}
 
 
+2018-09-19 04:15:56 Error: Fatal Error (4): syntax error, unexpected 'if' (T_IF) in [C:\Program Files (x86)\Ampps\www\GestionDesStages\src\Controller\StudentsController.php, line 55]
+Request URL: /inscription
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-19 04:15:56 Warning: Warning (512): Unable to emit headers. Headers sent in file=C:\Program Files (x86)\Ampps\www\GestionDesStages\src\Controller\StudentsController.php line=55 in [C:\Program Files (x86)\Ampps\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 48]
+Request URL: /inscription
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 48
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-19 04:15:56 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\Program Files (x86)\Ampps\www\GestionDesStages\src\Controller\StudentsController.php:55) in [C:\Program Files (x86)\Ampps\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 149]
+Request URL: /inscription
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE\src\Http\ResponseEmitter.php, line 149
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 54
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-19 04:15:56 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\Program Files (x86)\Ampps\www\GestionDesStages\src\Controller\StudentsController.php:55) in [C:\Program Files (x86)\Ampps\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 181]
+Request URL: /inscription
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE\src\Http\ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 55
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-19 04:15:56 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'if' (T_IF) in C:\Program Files (x86)\Ampps\www\GestionDesStages\src\Controller\StudentsController.php on line 55
+Request URL: /inscription
+Stack Trace:
+#0 C:\Program Files (x86)\Ampps\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\Program File...', 55)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

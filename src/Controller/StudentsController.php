@@ -51,6 +51,12 @@ class StudentsController extends AppController
         $student = $this->Students->newEntity();
         if ($this->request->is('post')) {
             $student = $this->Students->patchEntity($student, $this->request->getData());
+			
+			//Change la premiere lettre du prenom, nom, et plus information en majuscule
+			$student->set('first_name', ucfirst($student->first_name));
+			$student->set('last_name', ucfirst($student->last_name));
+			$student->set('more_info', ucfirst($student->more_info));
+			
             if ($this->Students->save($student)) {
                 $this->Flash->success(__('The student has been saved.'));
 

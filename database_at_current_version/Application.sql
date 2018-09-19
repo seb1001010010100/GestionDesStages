@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 12 Septembre 2018 à 18:32
+-- Généré le :  Mer 19 Septembre 2018 à 20:04
 -- Version du serveur :  5.6.37
 -- Version de PHP :  5.6.31
 
@@ -46,8 +46,45 @@ CREATE TABLE IF NOT EXISTS `administrators` (
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `client_types`
+--
 
+CREATE TABLE IF NOT EXISTS `client_types` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `client_types`
+--
+
+INSERT INTO `client_types` (`id`, `type`, `created`, `modified`) VALUES
+(1, 'Neurologie, pédiatrie poss d''ortho/rhumato', '0000-00-00', '0000-00-00'),
+(2, 'Ortho/rhumato', '0000-00-00', '0000-00-00'),
+(3, 'Ortho/rhumato et perte d''autonomie', '0000-00-00', '0000-00-00'),
+(4, 'orthopédie/rhumatologie', '0000-00-00', '0000-00-00'),
+(5, 'orthopédie/rhumatologie principalement', '0000-00-00', '0000-00-00'),
+(6, 'orthopédie/rhumatologie, Perte d''Autonomie', '0000-00-00', '0000-00-00'),
+(7, 'Perte autonomie fonctionnelle', '0000-00-00', '0000-00-00'),
+(8, 'Perte d''autonomie', '0000-00-00', '0000-00-00'),
+(9, 'Perte d''autonomie et ortho/rhumato', '0000-00-00', '0000-00-00'),
+(10, 'Perte d''autonomie un peu de neuro et d''ortho', '0000-00-00', '0000-00-00'),
+(11, 'Perte d''autonomie, cardiorespiratoire, palliatif', '0000-00-00', '0000-00-00'),
+(12, 'Perte d''autonomie, neuro et quelques cas ortho', '0000-00-00', '0000-00-00'),
+(13, 'Perte d''autonomie, neurologie (cas séquélaires et évolutifs)', '0000-00-00', '0000-00-00'),
+(14, 'Perte d''autonomie, ortho, cardio, neuro', '0000-00-00', '0000-00-00'),
+(15, 'Perte d''autonomie, ortho/rhumato', '0000-00-00', '0000-00-00'),
+(16, 'Perte d''autonomie, ortho/rhumato, cardiorespiratoire', '0000-00-00', '0000-00-00'),
+(17, 'Perte d''autonomie, orthopédie/rhumato, neuro', '0000-00-00', '0000-00-00'),
+(18, 'Perte d''autonomie, Orthopédie/rhumatologie', '0000-00-00', '0000-00-00'),
+(19, 'Perte d''autonomie, orthopédie/rhumatologie, neuro', '0000-00-00', '0000-00-00'),
+(20, 'Perte d''autonomie, orthopédie/rhumatologie, neuro, cardiorespiratoire', '0000-00-00', '0000-00-00'),
+(21, 'Principalement ortho/rhumato, un peu de perte d''autonomie', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -63,62 +100,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `province` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `establishment_id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` int(9) DEFAULT NULL,
-  `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `internships`
---
-
-CREATE TABLE IF NOT EXISTS `internships` (
-  `id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `session_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `province` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `postal_code` char(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `administrative_region` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `students`
---
-
-CREATE TABLE IF NOT EXISTS `students` (
-  `id` int(9) NOT NULL,
-  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `phone_sms` char(13) DEFAULT NULL,
-  `more_info` text COLLATE utf8_unicode_ci,
-  `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `sessions`
---
-
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `id` int(11) NOT NULL,
-  `year` char(4) NOT NULL,
-  `season` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `phone` int(10) DEFAULT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -131,199 +113,299 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 
 CREATE TABLE IF NOT EXISTS `establishments` (
   `id` int(11) NOT NULL,
-  `type` nvarchar(255) NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `establishments` (id, type) values 
-(1,'Centre de réadaptation'),
-(2,'Centre hospitalier'),
-(3,'Centre hospitalier et d''hébergement pour vétérans'),
-(4,'Centre hospitalier psychiatrique'),
-(5,'CHSLD'),
-(6,'CHSLD et CLSC'),
-(7,'CHSLD pour religieuses'),
-(8,'Clinique privée'),
-(9,'Clinique publique'),
-(10,'CLSC'),
-(11,'UTRF');
+--
+-- Contenu de la table `establishments`
+--
+
+INSERT INTO `establishments` (`id`, `type`, `created`, `modified`) VALUES
+(1, 'Centre de réadaptation', '0000-00-00', '0000-00-00'),
+(2, 'Centre hospitalier', '0000-00-00', '0000-00-00'),
+(3, 'Centre hospitalier et d''hébergement pour vétérans', '0000-00-00', '0000-00-00'),
+(4, 'Centre hospitalier psychiatrique', '0000-00-00', '0000-00-00'),
+(5, 'CHSLD', '0000-00-00', '0000-00-00'),
+(6, 'CHSLD et CLSC', '0000-00-00', '0000-00-00'),
+(7, 'CHSLD pour religieuses', '0000-00-00', '0000-00-00'),
+(8, 'Clinique privée', '0000-00-00', '0000-00-00'),
+(9, 'Clinique publique', '0000-00-00', '0000-00-00'),
+(10, 'CLSC', '0000-00-00', '0000-00-00'),
+(11, 'UTRF', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client_type`
+-- Structure de la table `genders`
 --
-
-CREATE TABLE IF NOT EXISTS `client_types` (
-  `id` int(11) NOT NULL, 
-  `type` nvarchar(255) NOT NULL,
-  `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-INSERT INTO `client_types` (id, type) values 
-(1,'Neurologie, pédiatrie poss d''ortho/rhumato'),
-(2,'Ortho/rhumato'),
-(3,'Ortho/rhumato et perte d''autonomie'),
-(4,'orthopédie/rhumatologie'),
-(5,'orthopédie/rhumatologie principalement'),
-(6,'orthopédie/rhumatologie, Perte d''Autonomie'),
-(7,'Perte autonomie fonctionnelle'),
-(8,'Perte d''autonomie'),
-(9,'Perte d''autonomie et ortho/rhumato'),
-(10,'Perte d''autonomie un peu de neuro et d''ortho'),
-(11,'Perte d''autonomie, cardiorespiratoire, palliatif'),
-(12,'Perte d''autonomie, neuro et quelques cas ortho'),
-(13,'Perte d''autonomie, neurologie (cas séquélaires et évolutifs)'),
-(14,'Perte d''autonomie, ortho, cardio, neuro'),
-(15,'Perte d''autonomie, ortho/rhumato'),
-(16,'Perte d''autonomie, ortho/rhumato, cardiorespiratoire'),
-(17,'Perte d''autonomie, orthopédie/rhumato, neuro'),
-(18,'Perte d''autonomie, Orthopédie/rhumatologie'),
-(19,'Perte d''autonomie, orthopédie/rhumatologie, neuro'),
-(20,'Perte d''autonomie, orthopédie/rhumatologie, neuro, cardiorespiratoire'),
-(21,'Principalement ortho/rhumato, un peu de perte d''autonomie');
-
--- type de milieu
-CREATE TABLE IF NOT EXISTS `ownership_statuses` (
-  `id` int(11) NOT NULL,
-  `type` nvarchar(255) NOT NULL,
-  `created` date NOT NULL,
-  `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-INSERT INTO `ownership_statuses` (id,type) values 
-(1,'Public'),
-(2,'Privé'),
-(3,'Conventionné');
 
 CREATE TABLE IF NOT EXISTS `genders` (
   `id` int(11) NOT NULL,
-  `categorie` nvarchar(255) NOT NULL,
+  `categorie` varchar(255) CHARACTER SET utf8 NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `genders` (id,categorie) values 
-(1,'Madame'),
-(2,'Madame, Monsieur'),
-(3,'Mesdames'),
-(4,'Mesdames, Monsieur'),
-(5,'Monsieur'),
-(6,'Messieurs'),
-(7,'Madame, Messieurs'),
-(8,'Mesdames, Messieurs');
+--
+-- Contenu de la table `genders`
+--
 
+INSERT INTO `genders` (`id`, `categorie`, `created`, `modified`) VALUES
+(1, 'Madame', '0000-00-00', '0000-00-00'),
+(2, 'Madame, Monsieur', '0000-00-00', '0000-00-00'),
+(3, 'Mesdames', '0000-00-00', '0000-00-00'),
+(4, 'Mesdames, Monsieur', '0000-00-00', '0000-00-00'),
+(5, 'Monsieur', '0000-00-00', '0000-00-00'),
+(6, 'Messieurs', '0000-00-00', '0000-00-00'),
+(7, 'Madame, Messieurs', '0000-00-00', '0000-00-00'),
+(8, 'Mesdames, Messieurs', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `internships`
+--
+
+CREATE TABLE IF NOT EXISTS `internships` (
+  `id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `session_id` int(11) NOT NULL,
+  `ownerStatus_id` int(11) NOT NULL,
+  `region_id` int(11) NOT NULL,
+  `clientType_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `task` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `precision_facility` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `precision_task` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `province` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postal_code` char(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` int(10) NOT NULL,
+  `fax` int(10) DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ownership_statuses`
+--
+
+CREATE TABLE IF NOT EXISTS `ownership_statuses` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `ownership_statuses`
+--
+
+INSERT INTO `ownership_statuses` (`id`, `type`, `created`, `modified`) VALUES
+(0, 'Partenariat public/privé', '0000-00-00', '0000-00-00'),
+(1, 'Public', '0000-00-00', '0000-00-00'),
+(2, 'Privé', '0000-00-00', '0000-00-00'),
+(3, 'Conventionné', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `regions`
+--
 
 CREATE TABLE IF NOT EXISTS `regions` (
   `id` int(11) NOT NULL,
-  `name` nvarchar(255) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `regions` (id,name) VALUES
-(1,'Bas Saint-Laurent'),
-(2,'Saguenay - Lac-Saint-Jean'),
-(3,'Capitale Nationale'),
-(4,'Mauricie'),
-(5,'Estrie'),
-(6,'Montréal'),
-(7,'Outaouais'),
-(8,'Abitibi-Témiscamingue'),
-(9,'Côte-Nord'),
-(10,'Nord-du-Québec'),
-(11,'Gaspésie-Iles-de-la-Madeleine'),
-(12,'Chaudières-Appalaches'),
-(13,'Laval'),
-(14,'Lanaudière'),
-(15,'Laurentides'),
-(16,'Montérégie'),
-(17,'Centre-du-Québec');
+--
+-- Contenu de la table `regions`
+--
+
+INSERT INTO `regions` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'Bas Saint-Laurent', '0000-00-00', '0000-00-00'),
+(2, 'Saguenay - Lac-Saint-Jean', '0000-00-00', '0000-00-00'),
+(3, 'Capitale Nationale', '0000-00-00', '0000-00-00'),
+(4, 'Mauricie', '0000-00-00', '0000-00-00'),
+(5, 'Estrie', '0000-00-00', '0000-00-00'),
+(6, 'Montréal', '0000-00-00', '0000-00-00'),
+(7, 'Outaouais', '0000-00-00', '0000-00-00'),
+(8, 'Abitibi-Témiscamingue', '0000-00-00', '0000-00-00'),
+(9, 'Côte-Nord', '0000-00-00', '0000-00-00'),
+(10, 'Nord-du-Québec', '0000-00-00', '0000-00-00'),
+(11, 'Gaspésie-Iles-de-la-Madeleine', '0000-00-00', '0000-00-00'),
+(12, 'Chaudières-Appalaches', '0000-00-00', '0000-00-00'),
+(13, 'Laval', '0000-00-00', '0000-00-00'),
+(14, 'Lanaudière', '0000-00-00', '0000-00-00'),
+(15, 'Laurentides', '0000-00-00', '0000-00-00'),
+(16, 'Montérégie', '0000-00-00', '0000-00-00'),
+(17, 'Centre-du-Québec', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
 
 --
--- Declaration primary key
+-- Structure de la table `sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `id` int(11) NOT NULL,
+  `year` char(4) COLLATE utf8_unicode_ci NOT NULL,
+  `season` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `students`
+--
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `phone_sms` char(13) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `more_info` text COLLATE utf8_unicode_ci,
+  `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `administrators`
 --
 ALTER TABLE `administrators`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `client_types`
+--
+ALTER TABLE `client_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `companies`
 --
 ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `companies_establishments_fk` (`establishment_id`);
+
+--
+-- Index pour la table `establishments`
+--
+ALTER TABLE `establishments`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `genders`
+--
+ALTER TABLE `genders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `internships`
 --
 ALTER TABLE `internships`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `internships_companies_fk` (`company_id`),
+  ADD KEY `session_id` (`session_id`),
+  ADD KEY `session_id_2` (`session_id`),
+  ADD KEY `region_id` (`region_id`),
+  ADD KEY `ownerStatus_id` (`ownerStatus_id`),
+  ADD KEY `clientType_id` (`clientType_id`);
+
+--
+-- Index pour la table `ownership_statuses`
+--
+ALTER TABLE `ownership_statuses`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `regions`
+--
+ALTER TABLE `regions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
+-- Index pour la table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
+
 --
-ALTER TABLE `sessions`
-	ADD PRIMARY KEY (`id`);
+-- AUTO_INCREMENT pour les tables exportées
 --
-ALTER TABLE `establishments`
-	ADD PRIMARY KEY (`id`);	
-  --
-ALTER TABLE `client_types`
-  ADD PRIMARY KEY (`id`); 
-  --
-ALTER TABLE `ownership_statuses`
-  ADD PRIMARY KEY (`id`); 
-  --
-ALTER TABLE `genders`
-  ADD PRIMARY KEY (`id`); 
-  --
-ALTER TABLE `regions`
-  ADD PRIMARY KEY (`id`);
-  
+
 --
--- MODIF table `administrators`
 -- AUTO_INCREMENT pour la table `administrators`
 --
 ALTER TABLE `administrators`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
--- MODIF table `students`
--- AUTO_INCREMENT pour la table `students`
 --
-ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `students` AUTO_INCREMENT = 10000000;
-
---
--- MODIF table `companies`
 -- AUTO_INCREMENT pour la table `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
--- Contraintes pour la table `companies`
-ALTER TABLE `companies`
-	ADD CONSTRAINT `companies_establishments_fk` FOREIGN KEY (`establishment_id`) REFERENCES `establishments` (`id`);
-  
 --
--- MODIF table `sessions`
+-- AUTO_INCREMENT pour la table `internships`
+--
+ALTER TABLE `internships`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `sessions`
 --
 ALTER TABLE `sessions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
 
 --
--- MODIF table `Interships`
--- Contrainte pour la table `Interships`
+-- Contraintes pour la table `companies`
 --
-ALTER TABLE `internships`
-	ADD CONSTRAINT `internships_companies_fk` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`);
+ALTER TABLE `companies`
+  ADD CONSTRAINT `companies_establishments_fk` FOREIGN KEY (`establishment_id`) REFERENCES `establishments` (`id`);
 
 --
--- MODIF table `sessions`
--- Contraintes pour la table `sessions`
+-- Contraintes pour la table `internships`
 --
 ALTER TABLE `internships`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
--- Déclaration des contraintes pour la table `sessions`
-ALTER TABLE `internships`
-	ADD CONSTRAINT `internships_sessions_fk` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`);
-  
+  ADD CONSTRAINT `internships_companies_fk` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
+  ADD CONSTRAINT `internships_ibfk_1` FOREIGN KEY (`region_id`) REFERENCES `regions` (`id`),
+  ADD CONSTRAINT `internships_ibfk_2` FOREIGN KEY (`ownerStatus_id`) REFERENCES `ownership_statuses` (`id`),
+  ADD CONSTRAINT `internships_ibfk_3` FOREIGN KEY (`clientType_id`) REFERENCES `client_types` (`id`),
+  ADD CONSTRAINT `internships_sessions_fk` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

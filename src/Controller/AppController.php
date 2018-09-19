@@ -51,5 +51,36 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' =>[
+                'controller' => 'Users',
+                'action' => 'login'
+             ],
+            'loginRedirect' => [
+                'controller' => 'Users',
+                'action' => 'dashboard'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'pages',
+                'action' => 'display',
+                'home'
+            ],
+            'authorize' => ['Controller'],
+             // Si pas autorisé, on renvoit sur la page précédente
+            'unauthorizedRedirect' => $this->referer()
+        ]);
+
+        // Permet à l'action "display" de notre PagesController de continuer
+        // à fonctionner. Autorise également les actions "read-only".
+        $this->Auth->allow(['display', 'view', 'index']);
     }
 }

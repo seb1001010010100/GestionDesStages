@@ -114,4 +114,31 @@ class StudentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login()
+    {
+        /*
+        if ($this->request->is('post')) {
+            $student = $this->Auth->identify();
+            if ($student) {
+                $this->Auth->setStudent($student);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+        }
+        */
+    }
+
+    public function validStudent($value='')
+    {
+        if ($this->request->is('post')) {
+            $student = $this->Auth->identify();
+            if ($student) {
+                $this->Auth->setStudent($student);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+        }
+    }
+    
 }

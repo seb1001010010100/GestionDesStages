@@ -77,6 +77,8 @@ class StudentsTable extends Table
 
         $validator
             ->integer('phone_sms')
+			->minLength('phone_sms',10)
+			->maxLength('phone_sms',10)
             ->allowEmpty('phone_sms');
 
         $validator

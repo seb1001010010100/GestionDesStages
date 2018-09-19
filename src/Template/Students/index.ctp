@@ -36,7 +36,7 @@
                 <td><?= h($student->last_name) ?></td>
                 <td><?= h($student->email) ?></td>
                 <td><?= h($student->password) ?></td>
-                <td><?= $this->Number->format($student->phone_sms) ?></td>
+                <td><?= h($student->phone_sms) ?></td>
                 <td><?= h($student->notes) ?></td>
                 <td><?= h($student->active) ?></td>
                 <td><?= h($student->created) ?></td>

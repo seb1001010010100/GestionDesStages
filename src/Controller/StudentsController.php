@@ -57,6 +57,10 @@ class StudentsController extends AppController
 			$student->set('last_name', ucfirst($student->last_name));
 			$student->set('more_info', ucfirst($student->more_info));
 			
+			//Change le numero de tel pour la separation par des points
+			$formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$student->phone_sms); 
+			$student->set('phone_sms', $formatPhone);
+			
             if ($this->Students->save($student)) {
                 $this->Flash->success(__('The student has been saved.'));
 

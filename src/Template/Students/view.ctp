@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Phone Sms') ?></th>
-            <td><?= $this->Number->format($student->phone_sms) ?></td>
+            <td><?= h($student->phone_sms) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

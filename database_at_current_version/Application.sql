@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `phone_sms` int(10) DEFAULT NULL,
+  `phone_sms` char(13) DEFAULT NULL,
   `more_info` text COLLATE utf8_unicode_ci,
   `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',

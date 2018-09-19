@@ -52,6 +52,7 @@ class Student extends Entity
         'password'
     ];
 	
+	//Hash password
 	protected function _setPassword($value)
     {
         if (strlen($value)) {

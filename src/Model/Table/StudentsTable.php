@@ -82,7 +82,7 @@ class StudentsTable extends Table
         $validator
             ->scalar('more_info')
             ->allowEmpty('more_info');
-
+/*
         $validator
             ->scalar('notes')
             ->maxLength('notes', 255)
@@ -92,7 +92,7 @@ class StudentsTable extends Table
             ->boolean('active')
             ->requirePresence('active', 'create')
             ->notEmpty('active');
-
+*/
         return $validator;
     }
 

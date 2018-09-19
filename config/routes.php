@@ -77,3 +77,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+//Change l'url de l'ajout des etudiants pour 'inscription'
+$routes->connect(
+    '/inscription',
+    ['controller' => 'Students', 'action' => 'add'],
+    ['_name' => 'inscription']
+);

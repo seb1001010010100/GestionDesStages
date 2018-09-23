@@ -8,6 +8,11 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
 
+    public function initialize() {
+        parent::initialize();
+        $this->Auth->allow(['logout', 'add', 'edit']);
+    }
+
     public function index()
     {
         $users = $this->paginate($this->Users);
@@ -59,6 +64,23 @@ class UsersController extends AppController
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+
+    // after successful login this method is called
+    public function redirectAccordingToRole()
+    {
+        $user = $this->Auth->user();
+        switch ($user['role']) {
+            case 'student':
+                return $this->redirect(['controller' => 'students', 'action' => 'index']);
+                break;
+            case 'company':
+                return $this->redirect(['controller' => 'companies', 'action' => 'index']);
+                break;
+            default:
+                return $this->redirect(['controller' => '', 'action' => '']);
+                break;
+        }
     }
 
 }

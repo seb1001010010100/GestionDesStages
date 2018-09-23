@@ -56,7 +56,7 @@ class AppController extends Controller
             'authenticate' => [
                 'Form' => [
                     'fields' => [
-                        'username' => 'email',
+                        'username' => 'username',
                         'password' => 'password'
                     ]
                 ]
@@ -67,7 +67,7 @@ class AppController extends Controller
              ],
             'loginRedirect' => [
                 'controller' => 'Users',
-                'action' => 'dashboard'
+                'action' => 'redirectAccordingToRole'
             ],
             'logoutRedirect' => [
                 'controller' => 'pages',
@@ -82,5 +82,10 @@ class AppController extends Controller
         // Permet à l'action "display" de notre PagesController de continuer
         // à fonctionner. Autorise également les actions "read-only".
         $this->Auth->allow(['display', 'view', 'index']);
+    }
+
+    public function isAuthorized($user) {
+        // By default deny access.
+        return true;
     }
 }

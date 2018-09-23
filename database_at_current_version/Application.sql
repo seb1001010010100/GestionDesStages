@@ -31,9 +31,13 @@ CREATE TABLE users (
     username VARCHAR(50),
     password VARCHAR(255),
     role VARCHAR(20),
-    created DATETIME DEFAULT NULL,
-    modified DATETIME DEFAULT NULL
+    created DATETIME NOT NULL,
+    modified DATETIME NOT NULL
 );
+
+INSERT INTO users (username, password, role) VALUES 
+  ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student')
+-- password : 123
 
 -- --------------------------------------------------------
 

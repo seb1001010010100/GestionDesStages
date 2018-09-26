@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $adress
  * @property string $city
  * @property string $province
+ * @property int $establishment_id
  * @property string $email
  * @property int $phone
  * @property \Cake\I18n\FrozenDate $created
@@ -35,6 +36,7 @@ class Company extends Entity
         'adress' => true,
         'city' => true,
         'province' => true,
+        'establishment_id' => true,
         'email' => true,
         'phone' => true,
         'created' => true,

@@ -11,6 +11,9 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\CompaniesTable|\Cake\ORM\Association\BelongsTo $Companies
  * @property \App\Model\Table\SessionsTable|\Cake\ORM\Association\BelongsTo $Sessions
+ * @property |\Cake\ORM\Association\BelongsTo $OwnershipStatuses
+ * @property |\Cake\ORM\Association\BelongsTo $Regions
+ * @property |\Cake\ORM\Association\BelongsTo $ClientTypes
  *
  * @method \App\Model\Entity\Internship get($primaryKey, $options = [])
  * @method \App\Model\Entity\Internship newEntity($data = null, array $options = [])
@@ -50,6 +53,18 @@ class InternshipsTable extends Table
             'foreignKey' => 'session_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('OwnershipStatuses', [
+            'foreignKey' => 'ownerStatus_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Regions', [
+            'foreignKey' => 'region_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('ClientTypes', [
+            'foreignKey' => 'clientType_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**
@@ -69,6 +84,24 @@ class InternshipsTable extends Table
             ->maxLength('name', 255)
             ->requirePresence('name', 'create')
             ->notEmpty('name');
+
+        $validator
+            ->scalar('task')
+            ->maxLength('task', 255)
+            ->requirePresence('task', 'create')
+            ->notEmpty('task');
+
+        $validator
+            ->scalar('precision_facility')
+            ->maxLength('precision_facility', 255)
+            ->requirePresence('precision_facility', 'create')
+            ->notEmpty('precision_facility');
+
+        $validator
+            ->scalar('precision_task')
+            ->maxLength('precision_task', 255)
+            ->requirePresence('precision_task', 'create')
+            ->notEmpty('precision_task');
 
         $validator
             ->scalar('adress')
@@ -91,9 +124,18 @@ class InternshipsTable extends Table
             ->allowEmpty('postal_code');
 
         $validator
-            ->scalar('administrative_region')
-            ->maxLength('administrative_region', 255)
-            ->allowEmpty('administrative_region');
+            ->integer('phone')
+            ->requirePresence('phone', 'create')
+            ->notEmpty('phone');
+
+        $validator
+            ->integer('fax')
+            ->allowEmpty('fax');
+
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
 
         return $validator;
     }
@@ -107,8 +149,12 @@ class InternshipsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
         $rules->add($rules->existsIn(['session_id'], 'Sessions'));
+        $rules->add($rules->existsIn(['ownerStatus_id'], 'OwnershipStatuses'));
+        $rules->add($rules->existsIn(['region_id'], 'Regions'));
+        $rules->add($rules->existsIn(['clientType_id'], 'ClientTypes'));
 
         return $rules;
     }

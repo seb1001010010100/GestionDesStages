@@ -22,6 +22,7 @@
                 <th scope="col"><?= $this->Paginator->sort('adress') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('city') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('province') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('establishment_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -37,6 +38,7 @@
                 <td><?= h($company->adress) ?></td>
                 <td><?= h($company->city) ?></td>
                 <td><?= h($company->province) ?></td>
+                <td><?= $this->Number->format($company->establishment_id) ?></td>
                 <td><?= h($company->email) ?></td>
                 <td><?= $this->Number->format($company->phone) ?></td>
                 <td><?= h($company->created) ?></td>

@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Companies Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Establishments
  * @property \App\Model\Table\InternshipsTable|\Cake\ORM\Association\HasMany $Internships
  *
  * @method \App\Model\Entity\Company get($primaryKey, $options = [])
@@ -41,6 +42,10 @@ class CompaniesTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Establishments', [
+            'foreignKey' => 'establishment_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('Internships', [
             'foreignKey' => 'company_id'
         ]);
@@ -102,6 +107,7 @@ class CompaniesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->existsIn(['establishment_id'], 'Establishments'));
 
         return $rules;
     }

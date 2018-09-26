@@ -22,12 +22,20 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('company_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('session_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ownerStatus_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('region_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('clientType_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('task') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('precision_facility') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('precision_task') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('adress') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('city') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('province') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('postal_code') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('administrative_region') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('fax') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -39,12 +47,20 @@
                 <td><?= $this->Number->format($internship->id) ?></td>
                 <td><?= $internship->has('company') ? $this->Html->link($internship->company->name, ['controller' => 'Companies', 'action' => 'view', $internship->company->id]) : '' ?></td>
                 <td><?= $internship->has('session') ? $this->Html->link($internship->session->id, ['controller' => 'Sessions', 'action' => 'view', $internship->session->id]) : '' ?></td>
+                <td><?= $this->Number->format($internship->ownerStatus_id) ?></td>
+                <td><?= $this->Number->format($internship->region_id) ?></td>
+                <td><?= $this->Number->format($internship->clientType_id) ?></td>
                 <td><?= h($internship->name) ?></td>
+                <td><?= h($internship->task) ?></td>
+                <td><?= h($internship->precision_facility) ?></td>
+                <td><?= h($internship->precision_task) ?></td>
                 <td><?= h($internship->adress) ?></td>
                 <td><?= h($internship->city) ?></td>
                 <td><?= h($internship->province) ?></td>
                 <td><?= h($internship->postal_code) ?></td>
-                <td><?= h($internship->administrative_region) ?></td>
+                <td><?= $this->Number->format($internship->phone) ?></td>
+                <td><?= $this->Number->format($internship->fax) ?></td>
+                <td><?= h($internship->email) ?></td>
                 <td><?= h($internship->created) ?></td>
                 <td><?= h($internship->modified) ?></td>
                 <td class="actions">

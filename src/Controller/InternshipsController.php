@@ -24,8 +24,8 @@ class InternshipsController extends AppController
             'contain' => ['Companies', 'Sessions']
         ];
         $internships = $this->paginate($this->Internships);
-
-        $this->set(compact('internships'));
+        $user = $this->Auth->user();
+        $this->set(compact('internships'/*, 'user'*/));
     }
 
     /**

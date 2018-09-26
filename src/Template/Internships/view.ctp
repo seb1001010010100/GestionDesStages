@@ -20,6 +20,18 @@
             <td><?= h($internship->name) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Task') ?></th>
+            <td><?= h($internship->task) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Precision Facility') ?></th>
+            <td><?= h($internship->precision_facility) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Precision Task') ?></th>
+            <td><?= h($internship->precision_task) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Adress') ?></th>
             <td><?= h($internship->adress) ?></td>
         </tr>
@@ -36,12 +48,32 @@
             <td><?= h($internship->postal_code) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Administrative Region') ?></th>
-            <td><?= h($internship->administrative_region) ?></td>
+            <th scope="row"><?= __('Email') ?></th>
+            <td><?= h($internship->email) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($internship->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('OwnerStatus Id') ?></th>
+            <td><?= $this->Number->format($internship->ownerStatus_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Region Id') ?></th>
+            <td><?= $this->Number->format($internship->region_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('ClientType Id') ?></th>
+            <td><?= $this->Number->format($internship->clientType_id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Phone') ?></th>
+            <td><?= $this->Number->format($internship->phone) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Fax') ?></th>
+            <td><?= $this->Number->format($internship->fax) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

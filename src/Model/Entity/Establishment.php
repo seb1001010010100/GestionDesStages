@@ -4,22 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Company Entity
+ * Establishment Entity
  *
  * @property int $id
- * @property string $name
- * @property string $adress
- * @property string $city
- * @property string $province
- * @property int $establishment_id
- * @property string $email
- * @property int $phone
+ * @property string $type
  * @property \Cake\I18n\FrozenDate $created
  * @property \Cake\I18n\FrozenDate $modified
  *
- * @property \App\Model\Entity\Internship[] $internships
+ * @property \App\Model\Entity\Company[] $companies
  */
-class Company extends Entity
+class Establishment extends Entity
 {
 
     /**
@@ -32,15 +26,9 @@ class Company extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'adress' => true,
-        'city' => true,
-        'province' => true,
-        'establishment_id' => true,
-        'email' => true,
-        'phone' => true,
+        'type' => true,
         'created' => true,
         'modified' => true,
-        'internships' => true
+        'companies' => true
     ];
 }

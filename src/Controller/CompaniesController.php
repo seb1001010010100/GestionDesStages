@@ -58,7 +58,10 @@ class CompaniesController extends AppController
             }
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
-        $this->set(compact('company'));
+		$establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
+        $this->set(compact('company', 'establishments'));
+		
+		
     }
 
     /**

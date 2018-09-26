@@ -13,6 +13,7 @@
             echo $this->Form->control('adress');
             echo $this->Form->control('city');
             echo $this->Form->control('province');
+            echo $this->Form->control('establishment_id');
             echo $this->Form->control('email');
             echo $this->Form->control('phone');
         ?>

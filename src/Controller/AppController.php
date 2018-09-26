@@ -66,13 +66,12 @@ class AppController extends Controller
                 'action' => 'login'
              ],
             'loginRedirect' => [
-                'controller' => 'Users',
-                'action' => 'redirectAccordingToRole'
+                'controller' => 'Redirections',
+                'action' => 'index'
             ],
             'logoutRedirect' => [
-                'controller' => 'pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'Redirections',
+                'action' => 'index'
             ],
             'authorize' => ['Controller'],
              // Si pas autorisé, on renvoit sur la page précédente
@@ -81,7 +80,7 @@ class AppController extends Controller
 
         // Permet à l'action "display" de notre PagesController de continuer
         // à fonctionner. Autorise également les actions "read-only".
-        $this->Auth->allow(['display', 'view', 'index']);
+        // $this->Auth->allow(['display', 'view', 'index']);
     }
 
     public function isAuthorized($user) {

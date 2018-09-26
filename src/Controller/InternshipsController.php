@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Internships Controller
@@ -26,6 +27,14 @@ class InternshipsController extends AppController
         $internships = $this->paginate($this->Internships);
         $user = $this->Auth->user();
         $this->set(compact('internships'/*, 'user'*/));
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        
+        $this->Auth->allow('index');
+        
     }
 
     /**

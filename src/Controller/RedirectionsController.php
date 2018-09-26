@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Event\Event;
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +15,15 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class RedirectionsController extends AppController
 {
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        
+        $this->Auth->allow('index');
+        
+    }
+
     public function index(/*...$path*/)
     {
         $user = $this->Auth->user();
@@ -23,7 +33,7 @@ class RedirectionsController extends AppController
         file_put_contents("filename1234.html", $page);*/
         
         if (!$user){
-            return $this->redirect(['controlleur' => 'Users', 'action' => 'login']);
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
         
         switch($user['role']){
@@ -36,10 +46,10 @@ class RedirectionsController extends AppController
                 break;
             case "administrator":
                 // To modify later the login must send to the administrator profile page
-                return $this->redirect(['controlleur' => 'Users', 'action' => 'login']);
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
                 break;
             default:
-                return $this->redirect(['controlleur' => 'Users', 'action' => 'login']);
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
                 break;
         }
     }

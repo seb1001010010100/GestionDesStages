@@ -2,6 +2,7 @@
 namespace App\Controller;
 use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 
 /**
@@ -24,6 +25,28 @@ class StudentsController extends AppController
         $students = $this->paginate($this->Students);
 
         $this->set(compact('students'));
+    }
+
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow('index', 'view', 'edit');
+                break;
+            
+            default:
+                # code...
+                break;
+            }
+        } else {
+            $this->Auth->allow('add');
+        }
+        
+        
     }
 
     /**
@@ -127,20 +150,6 @@ class StudentsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
-
-    public function login()
-    {
-        /*
-        if ($this->request->is('post')) {
-            $student = $this->Auth->identify();
-            if ($student) {
-                $this->Auth->setStudent($student);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
-        }
-        */
     }
 
     public function validStudent($value='')

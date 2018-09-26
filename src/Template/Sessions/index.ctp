@@ -4,14 +4,6 @@
  * @var \App\Model\Entity\Session[]|\Cake\Collection\CollectionInterface $sessions
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Session'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Internships'), ['controller' => 'Internships', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Internship'), ['controller' => 'Internships', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="sessions index large-9 medium-8 columns content">
     <h3><?= __('Sessions') ?></h3>
     <table cellpadding="0" cellspacing="0">

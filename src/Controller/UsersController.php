@@ -18,7 +18,13 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
     }
-
+    
+    public function viewCurrentUser()
+    {
+        $user = $this->Auth->user();
+        $this->redirect(['action' => 'view', $user['id']]);
+    }
+    
     public function view($id)
     {
         $user = $this->Users->get($id);

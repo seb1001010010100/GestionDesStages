@@ -36,7 +36,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (username, password, role) VALUES 
-  ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student')
+  ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student');
 -- password : 123
 
 -- --------------------------------------------------------

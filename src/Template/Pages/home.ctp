@@ -53,6 +53,12 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     </div>
 </header>
 
+<?php
+use Cake\Auth\DefaultPasswordHasher;
+$hasher = new DefaultPasswordHasher();
+echo $hasher->hash(123);
+?> 
+
 <div class="row">
     <div class="columns large-12">
         <div class="ctp-warning alert text-center">

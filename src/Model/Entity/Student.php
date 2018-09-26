@@ -52,7 +52,7 @@ class Student extends Entity
         'password'
     ];
 	
-	//Hash password
+	// Hash password
 	protected function _setPassword($value)
     {
         if (strlen($value)) {
@@ -61,4 +61,5 @@ class Student extends Entity
             return $hasher->hash($value);
         }
     }
+
 }

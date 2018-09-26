@@ -23,6 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `users`
+--
+
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(255),
+    role VARCHAR(20),
+    created DATETIME NOT NULL,
+    modified DATETIME NOT NULL
+);
+
+INSERT INTO users (username, password, role) VALUES 
+  ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student');
+-- password : 123
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `administrators`
 --
 

@@ -1,7 +1,8 @@
 <?php
 namespace App\Controller;
-
+use Cake\ORM\TableRegistry;
 use App\Controller\AppController;
+
 
 /**
  * Students Controller
@@ -49,6 +50,9 @@ class StudentsController extends AppController
     public function add()
     {
         $student = $this->Students->newEntity();
+		//use table registry to create a new user entity
+		$usersTable = TableRegistry::get('Users');
+		$user = $usersTable->newEntity();
         if ($this->request->is('post')) {
             $student = $this->Students->patchEntity($student, $this->request->getData());
 			
@@ -62,9 +66,19 @@ class StudentsController extends AppController
 			$student->set('phone_sms', $formatPhone);
 			
             if ($this->Students->save($student)) {
-                $this->Flash->success(__('The student has been saved.'));
+				
+				//if the student is successfully added to the database, create its user
+				$user->set('username',$student->email);
+				$user->set('password',$student->password);
+				$user->set('role', 'student');
+				if($usersTable->save($user)){
+					
+					$this->Flash->success(__('The student has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+					return $this->redirect(['action' => 'index']);
+					
+				}
+
             }
             $this->Flash->error(__('The student could not be saved. Please, try again.'));
         }
@@ -114,4 +128,31 @@ class StudentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login()
+    {
+        /*
+        if ($this->request->is('post')) {
+            $student = $this->Auth->identify();
+            if ($student) {
+                $this->Auth->setStudent($student);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+        }
+        */
+    }
+
+    public function validStudent($value='')
+    {
+        if ($this->request->is('post')) {
+            $student = $this->Auth->identify();
+            if ($student) {
+                $this->Auth->setStudent($student);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+        }
+    }
+    
 }

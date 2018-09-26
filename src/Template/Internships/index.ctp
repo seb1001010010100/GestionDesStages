@@ -14,6 +14,8 @@
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('address') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('city') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('task') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -26,6 +28,8 @@
                 <td><?= h($internship->name) ?></td>
                 <td><?= h($internship->adress) ?></td>
                 <td><?= h($internship->city) ?></td>
+                <td><?= h($internship->task) ?></td>
+                <td><?= h($internship->email) ?></td>
                 <td><?= h($internship->created) ?></td>
                 <td><?= h($internship->modified) ?></td>
                 <td class="actions">

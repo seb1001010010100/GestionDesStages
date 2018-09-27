@@ -10,9 +10,28 @@ class UsersController extends AppController
 
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['logout', 'login', 'add', 'edit']);
     }
 
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow('logout');
+                break;
+            case 'company':
+                $this->Auth->allow('logout');
+                break;
+            case 'admin':
+                $this->Auth->allow('logout', 'view', 'index');
+                break;
+            }
+        } else {
+            $this->Auth->allow('login');
+        }
+    }
 
     public function index()
     {
@@ -45,15 +64,6 @@ class UsersController extends AppController
             $this->Flash->error(__('Unable to add the user.'));
         }
         $this->set('user', $user);
-    }
-
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        // Allow users to register and logout.
-        // You should not add the "login" action to allow list. Doing so would
-        // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout']);
     }
 
     public function login()

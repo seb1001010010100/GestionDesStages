@@ -31,8 +31,8 @@ CREATE TABLE users (
     username VARCHAR(50),
     password VARCHAR(255),
     role VARCHAR(20),
-    created DATETIME NOT NULL,
-    modified DATETIME NOT NULL
+    created DATE NOT NULL,
+    modified DATE NOT NULL
 );
 
 INSERT INTO users (username, password, role) VALUES 
@@ -294,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone_sms` char(13) COLLATE utf8_unicode_ci DEFAULT NULL,
   `more_info` text COLLATE utf8_unicode_ci,
   `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

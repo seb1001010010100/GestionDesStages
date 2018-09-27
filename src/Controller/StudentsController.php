@@ -27,7 +27,6 @@ class StudentsController extends AppController
         $this->set(compact('students'));
     }
 
-
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -45,8 +44,6 @@ class StudentsController extends AppController
         } else {
             $this->Auth->allow('add');
         }
-        
-        
     }
 
     /**
@@ -58,11 +55,30 @@ class StudentsController extends AppController
      */
     public function view($id = null)
     {
-        $student = $this->Students->get($id, [
-            'contain' => []
-        ]);
+        if (canView($id)) {
 
-        $this->set('student', $student);
+            $student = $this->Students->get($id, [
+                'contain' => []
+            ]);
+
+            $this->set('student', $student);
+        } else {
+            $this->Flash->error(__('Vous ne pouvez pas voir cet utilisateur.'));
+            $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+        }
+    }
+
+    public function canView($id)
+    {
+        $user = $this->Auth->user();
+        if ($user->role() == "admin") {
+            return true;
+        } else if ($user->role() == "student") {
+            if ($user->id() == $id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -93,12 +109,15 @@ class StudentsController extends AppController
 				//if the student is successfully added to the database, create its user
 				$user->set('username',$student->email);
 				$user->set('password',$student->password);
+                $user->set('created', $student->created);
+                $user->set('modified', $student->modified);
 				$user->set('role', 'student');
 				if($usersTable->save($user)){
 					
 					$this->Flash->success(__('The student has been saved.'));
-
-					return $this->redirect(['action' => 'index']);
+                    unset($user['password']);
+                    $this->Auth->setUser($user);
+					return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
 					
 				}
 

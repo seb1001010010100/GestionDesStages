@@ -37,12 +37,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+                <h1><a href=""><?= $this->fetch('title'); ?></a></h1>
             </li>
         </ul>
         <div class="top-bar-section">
-            <ul class="right">		
-                <li><a href="/GestionDesStages/inscription">Inscription Étudiant</a></li>
+            <ul class="right">
+                <?php
+                if($this->Session->read('Auth')) {
+                   // user is logged in, show logout..user menu etc
+                   echo '<li>'.$this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')).'</li>';
+                   echo '<li>'.$this->Html->link('Inscription Étudiant', array('controller' => 'studeents', 'action' => 'add')).'</li>';
+                } else {
+                   // the user is not logged in
+                   echo '<li>'.$this->Html->link('Login', array('controller' => 'users', 'action' => 'login')).'</li>'; 
+                }
+                ?>
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
                 <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
             </ul>

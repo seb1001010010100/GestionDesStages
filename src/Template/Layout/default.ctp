@@ -41,6 +41,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
+            <?php
+            if($this->Session->read('Auth')) {
+                $user = $this->Session->read('Auth')['User'];
+                echo '<ul><li>Bonjour '.$user['role'].' '.$user['username'].'</li></ul>';
+            }
+            ?>
             <ul class="right">
                 <?php
                 if($this->Session->read('Auth')) {

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class UsersController extends AppController
 {
@@ -19,17 +20,17 @@ class UsersController extends AppController
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                $this->Auth->allow('logout');
+                $this->Auth->allow(['logout']);
                 break;
             case 'company':
-                $this->Auth->allow('logout');
+                $this->Auth->allow(['logout']);
                 break;
-            case 'admin':
-                $this->Auth->allow('logout', 'view', 'index');
+            case 'administrator':
+                $this->Auth->allow(['logout', 'view', 'index']);
                 break;
             }
         } else {
-            $this->Auth->allow('login');
+            $this->Auth->allow(['login']);
         }
     }
 
@@ -71,6 +72,10 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
+                $studentsTable = TableRegistry::get('Students');
+                $student = $studentsTable->find()
+                    ->where(['email' => $user['username']])->first();
+                $user['role_data'] = $student;
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }

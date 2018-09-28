@@ -34,15 +34,15 @@ class StudentsController extends AppController
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                $this->Auth->allow('index', 'view', 'edit');
+                $this->Auth->allow(['index', 'view', 'canView', 'edit']);
                 break;
-            
-            default:
-                # code...
+            case 'administrator':
+                $this->Auth->allow(['index', 'view', 'canView',  'edit']);
+                //$this->Auth->allow();
                 break;
             }
         } else {
-            $this->Auth->allow('add');
+            $this->Auth->allow(['add']);
         }
     }
 
@@ -55,26 +55,25 @@ class StudentsController extends AppController
      */
     public function view($id = null)
     {
-        if (canView($id)) {
+        if ($this->canView($id)) {
 
             $student = $this->Students->get($id, [
                 'contain' => []
             ]);
-
             $this->set('student', $student);
         } else {
             $this->Flash->error(__('Vous ne pouvez pas voir cet utilisateur.'));
-            $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+            return $this->redirect(['controller' => 'error', 'action' => 'index']);
         }
     }
 
     public function canView($id)
     {
         $user = $this->Auth->user();
-        if ($user->role() == "admin") {
+        if ($user['role'] == "administrator") {
             return true;
-        } else if ($user->role() == "student") {
-            if ($user->id() == $id) {
+        } else if ($user['role'] == "student") {
+            if ($user['role_data']['id'] == $id) {
                 return true;
             }
         }
@@ -115,6 +114,7 @@ class StudentsController extends AppController
 				if($usersTable->save($user)){
 					
 					$this->Flash->success(__('The student has been saved.'));
+                    $user['role_data'] = $student;
                     unset($user['password']);
                     $this->Auth->setUser($user);
 					return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
@@ -171,16 +171,4 @@ class StudentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function validStudent($value='')
-    {
-        if ($this->request->is('post')) {
-            $student = $this->Auth->identify();
-            if ($student) {
-                $this->Auth->setStudent($student);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
-        }
-    }
-    
 }

@@ -20,7 +20,7 @@ class RedirectionsController extends AppController
     {
         parent::beforeFilter($event);
         
-        $this->Auth->allow('index');
+        $this->Auth->allow(['index']);
         
     }
 
@@ -46,12 +46,11 @@ class RedirectionsController extends AppController
                 break;
             case "administrator":
                 // To modify later the login must send to the administrator profile page
-                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-                break;
-            default:
-                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+                return $this->redirect(['controller' => 'users', 'action' => 'index']);
                 break;
         }
+        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
     }
+
 }
 

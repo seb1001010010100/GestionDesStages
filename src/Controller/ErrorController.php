@@ -43,6 +43,7 @@ class ErrorController extends AppController
      */
     public function beforeFilter(Event $event)
     {
+        //$this->Auth->allow(['index']);
     }
 
     /**
@@ -66,5 +67,10 @@ class ErrorController extends AppController
      */
     public function afterFilter(Event $event)
     {
+    }
+
+    public function index()
+    {
+        
     }
 }

@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Companies Controller
@@ -37,7 +38,7 @@ class CompaniesController extends AppController
                 //$this->Auth->allow(['index', 'view']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view']);
+                $this->Auth->allow(['index', 'view', 'add']);
                 break;
             case 'comapny':
                 break;
@@ -69,19 +70,35 @@ class CompaniesController extends AppController
     public function add()
     {
         $company = $this->Companies->newEntity();
+        //use table registry to create a new user entity
+        $usersTable = TableRegistry::get('Users');
+        $user = $usersTable->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
+            
+            //Change le numero de tel pour la separation par des points
+            $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone); 
+            $company->set('phone', $formatPhone);
+            
             if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
+                
+                $user->set('username',$company->email);
+                $user->set('password', $this->request->getData('password'));
+                $user->set('created', $company->created);
+                $user->set('modified', $company->modified);
+                $user->set('role', 'company');
+                if($usersTable->save($user)){
+                    
+                    $this->Flash->success(__('The company has been saved.'));
+                    return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+                    
+                }
 
-                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
 		$establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
         $this->set(compact('company', 'establishments'));
-		
-		
     }
 
     /**

@@ -2,7 +2,6 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher;
 /**
  * Student Entity
  *
@@ -43,23 +42,6 @@ class Student extends Entity
         'modified' => true
     ];
 
-    /**
-     * Fields that are excluded from JSON versions of the entity.
-     *
-     * @var array
-     */
-    protected $_hidden = [
-        'password'
-    ];
-	
-	// Hash password
-	protected function _setPassword($value)
-    {
-        if (strlen($value)) {
-            $hasher = new DefaultPasswordHasher();
-
-            return $hasher->hash($value);
-        }
-    }
+    
 
 }

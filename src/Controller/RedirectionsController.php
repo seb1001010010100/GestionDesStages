@@ -42,7 +42,7 @@ class RedirectionsController extends AppController
                 break;
             case "company":
                 // To modify later the login must send to the intership propose by the company
-                return $this->redirect(['controller' => 'companies', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
                 break;
             case "administrator":
                 // To modify later the login must send to the administrator profile page

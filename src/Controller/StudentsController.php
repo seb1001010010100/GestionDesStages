@@ -1,8 +1,9 @@
 <?php
 namespace App\Controller;
-use Cake\ORM\TableRegistry;
+
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 
 /**
@@ -107,7 +108,7 @@ class StudentsController extends AppController
 				
 				//if the student is successfully added to the database, create its user
 				$user->set('username',$student->email);
-				$user->set('password',$student->password);
+				$user->set('password', $this->request->getData('password'));
                 $user->set('created', $student->created);
                 $user->set('modified', $student->modified);
 				$user->set('role', 'student');

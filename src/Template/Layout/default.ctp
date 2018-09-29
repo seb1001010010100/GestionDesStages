@@ -52,10 +52,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 if($this->Session->read('Auth')) {
                    // user is logged in, show logout..user menu etc
                    echo '<li>'.$this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')).'</li>';
-                   echo '<li>'.$this->Html->link('Inscription Étudiant', array('controller' => 'studeents', 'action' => 'add')).'</li>';
                 } else {
                    // the user is not logged in
-                   echo '<li>'.$this->Html->link('Login', array('controller' => 'users', 'action' => 'login')).'</li>'; 
+                   echo '<li>'.$this->Html->link('Login', array('controller' => 'users', 'action' => 'login')).'</li>';
+                   echo '<li>'.$this->Html->link('Inscription Étudiant', array('controller' => 'students', 'action' => 'add')).'</li>';
                 }
                 ?>
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>

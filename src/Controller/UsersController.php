@@ -82,34 +82,29 @@ class UsersController extends AppController
 
     public function findRoleData($user)
     {
-        $studentsTable = TableRegistry::get('students');
-        $student = $studentsTable->find()
-            ->where(['email' => $user['username']]);
-        if ($student) {
-            return $student->first();
-        } else {
-            $companiesTable = TableRegistry::get('companies');
-            $company = $companiesTable->find()
-                ->where(['email' => $user['username']]);
-            if ($company) {
-                return $company->first();
-            } else {
-                $administratorsTable = TableRegistry::get('administrators');
-                $administrator = $administratorsTable->find()
-                    ->where(['email' => $user['username']]);
 
-                ob_start();
-                var_dump($administrator);
-                $output = ob_get_contents();
-                ob_end_clean();
-                file_put_contents('filename_1234.html', $output);
-
-                if ($administrator) {
-                    return $administrator->first();
-                }
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $table = TableRegistry::get('students');
+                break;
+            case 'company':
+                $table = TableRegistry::get('companies');
+                break;
+            case 'administrator':
+                $table = TableRegistry::get('administrators');
+                break;
             }
         }
-        return false;
+
+        $role_info = $table->find()
+            ->where(['email' => $user['username']]);
+        
+        if ($role_info) {
+            return $role_info->first();
+        } else {
+            return false;
+        }
     }
 
     public function logout()

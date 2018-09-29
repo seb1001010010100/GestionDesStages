@@ -7395,3 +7395,154 @@ Stack Trace:
 #17 {main}
 
 
+2018-09-29 05:43:38 Error: Fatal Error (4): syntax error, unexpected ')', expecting ']' in [C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php, line 105]
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-29 05:43:39 Warning: Warning (512): Unable to emit headers. Headers sent in file=C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php line=105 in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 48]
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 48
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-29 05:43:39 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php:105) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 149]
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE\src\Http\ResponseEmitter.php, line 149
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 54
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-29 05:43:39 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php:105) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 181]
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE\src\Http\ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 55
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-09-29 05:43:39 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting ']' in C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php on line 105
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp64\\www\\G...', 105)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2018-09-29 05:44:00 Error: [InvalidArgumentException] Cannot convert value of type `array` to string
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(69): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(128): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, 'string')
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, 'string')
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\ValueBinder.php(147): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, 'string')
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(333): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(337): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Query.php(219): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1127): Cake\Database\Query->execute()
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(309): Cake\ORM\Query->_execute()
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1074): Cake\ORM\Query->_all()
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(471): Cake\ORM\Query->all()
+#13 C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php(90): Cake\ORM\Query->first()
+#14 C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php(75): App\Controller\UsersController->findRoleData(Array)
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\UsersController->login()
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#18 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#22 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#24 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#26 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#27 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#28 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#29 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#30 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#31 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#32 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#33 {main}
+
+
+2018-09-29 05:44:31 Error: [InvalidArgumentException] Cannot convert value of type `array` to string
+Request URL: /login
+Referer URL: http://localhost/GestionDesStages/login
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\TypeConverterTrait.php(37): Cake\Database\Type\StringType->toDatabase(Array, Object(Cake\Database\Driver\Mysql))
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\PDOStatement.php(69): Cake\Database\Statement\StatementDecorator->cast(Array, 'string')
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(128): Cake\Database\Statement\PDOStatement->bindValue('c0', Array, 'string')
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(98): Cake\Database\Statement\StatementDecorator->bindValue('c0', Array, 'string')
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\ValueBinder.php(147): Cake\Database\Log\LoggingStatement->bindValue('c0', Array, 'string')
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(333): Cake\Database\ValueBinder->attachTo(Object(Cake\Database\Log\LoggingStatement))
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(337): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Query.php(219): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1127): Cake\Database\Query->execute()
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(309): Cake\ORM\Query->_execute()
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1074): Cake\ORM\Query->_all()
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(471): Cake\ORM\Query->all()
+#13 C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php(90): Cake\ORM\Query->first()
+#14 C:\wamp64\www\GestionDesStages\src\Controller\UsersController.php(75): App\Controller\UsersController->findRoleData(Array)
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\UsersController->login()
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#18 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#22 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#24 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#26 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#27 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#28 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#29 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#30 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#31 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#32 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#33 {main}
+
+

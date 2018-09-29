@@ -15,6 +15,7 @@
             echo $this->Form->control('province');
             echo $this->Form->control('establishment_id', ['options' => $establishments]);
             echo $this->Form->control('email');
+            echo $this->Form->control('password');
             echo $this->Form->control('phone');
         ?>
     </fieldset>

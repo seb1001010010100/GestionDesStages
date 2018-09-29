@@ -42,4 +42,9 @@ Pour litération un on n'a pas besoin de pouvoir modifer les information de comp
 
 ---
 
+## user validations
+- `do we check if the email is availabe (not in user table)?`
+
+---
+
 text like `this` means that the function has yet to be implemented

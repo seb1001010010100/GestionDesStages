@@ -79,7 +79,7 @@ class CompaniesController extends AppController
             //Change le numero de tel pour la separation par des points
             $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone); 
             $company->set('phone', $formatPhone);
-            
+
             if ($this->Companies->save($company)) {
                 
                 $user->set('username',$company->email);

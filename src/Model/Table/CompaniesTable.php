@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
 
 /**
  * Companies Model
@@ -106,8 +107,27 @@ class CompaniesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        //$rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['establishment_id'], 'Establishments'));
+
+        // Add a rule that is applied for create and update operations
+        // check if email is available
+        $rules->add(
+            function ($entity, $options) {
+                $usersTable = TableRegistry::get('Users');
+                $user = $usersTable->find()->where(['email' => $entity['email']]);
+                if ($user) {
+                    return 'cette email n\'est pas disponible.';
+                } else {
+                    // le test a passé
+                    return true;
+                }
+            }, 'is_email_free',
+            [
+                'errorField' => 'email',
+                'message' => 'cette email n\'est pas disponible.'
+            ]
+        );
 
         return $rules;
     }

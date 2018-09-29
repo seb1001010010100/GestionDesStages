@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Companies Controller
@@ -23,6 +24,25 @@ class CompaniesController extends AppController
         $companies = $this->paginate($this->Companies);
 
         $this->set(compact('companies'));
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                // j'suis pas sure cest quoi qu'un étudianbt peut faire ici
+                //$this->Auth->allow(['index', 'view']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'view']);
+                break;
+            case 'comapny':
+                break;
+            }
+        }
     }
 
     /**

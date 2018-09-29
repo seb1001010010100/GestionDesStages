@@ -32,9 +32,18 @@ class InternshipsController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        
-        $this->Auth->allow('index');
-        
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow(['index', 'view']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'view',  'edit']);
+                //$this->Auth->allow();
+                break;
+            }
+        }
     }
 
     /**

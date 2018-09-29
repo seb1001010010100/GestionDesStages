@@ -72,15 +72,44 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
-                $studentsTable = TableRegistry::get('Students');
-                $student = $studentsTable->find()
-                    ->where(['email' => $user['username']])->first();
-                $user['role_data'] = $student;
+                $user['role_data'] = $this->findRoleData($user);
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
+    }
+
+    public function findRoleData($user)
+    {
+        $studentsTable = TableRegistry::get('students');
+        $student = $studentsTable->find()
+            ->where(['email' => $user['username']]);
+        if ($student) {
+            return $student->first();
+        } else {
+            $companiesTable = TableRegistry::get('companies');
+            $company = $companiesTable->find()
+                ->where(['email' => $user['username']]);
+            if ($company) {
+                return $company->first();
+            } else {
+                $administratorsTable = TableRegistry::get('administrators');
+                $administrator = $administratorsTable->find()
+                    ->where(['email' => $user['username']]);
+
+                ob_start();
+                var_dump($administrator);
+                $output = ob_get_contents();
+                ob_end_clean();
+                file_put_contents('filename_1234.html', $output);
+
+                if ($administrator) {
+                    return $administrator->first();
+                }
+            }
+        }
+        return false;
     }
 
     public function logout()

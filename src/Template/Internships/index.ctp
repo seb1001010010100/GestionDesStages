@@ -5,7 +5,6 @@
  */
 ?>
 <div class="internships index large-9 medium-8 columns content">
-    <?= $this->Html->link(__('View my account'), ['controller' => 'users' , 'action' => 'viewCurrentUser']) ?>
     <h3><?= __('Internships') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>

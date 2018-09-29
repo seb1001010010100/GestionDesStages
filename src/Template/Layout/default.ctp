@@ -41,12 +41,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
-            <?php
-            if($this->Session->read('Auth')) {
-                $user = $this->Session->read('Auth')['User'];
-                echo '<ul><li>Bonjour '.$user['role'].' '.$user['username'].'</li></ul>';
-            }
-            ?>
             <ul class="right">
                 <?php
                 if($this->Session->read('Auth')) {
@@ -65,6 +59,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
+        <?php
+        if($this->Session->read('Auth')) {
+            $role = $this->Session->read('Auth')['User']['role'];
+            switch ($role) {
+                case 'student':
+                    echo $this->element('sidebar/student');
+                    break;
+                case 'administrator':
+                    echo $this->element('sidebar/administrator');
+                    break;
+                case 'company':
+                    echo $this->element('sidebar/company');
+                    break;
+            }
+        }
+        ?>
+        
+
         <?= $this->fetch('content') ?>
     </div>
     <footer>

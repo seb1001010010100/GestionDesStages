@@ -34,4 +34,12 @@ Pour litération un on n'a pas besoin de pouvoir modifer les information de comp
 
 ---
 
+## Make the site accessible online
+
+---
+
+## Pourquoi est ce que l'étudiant a un mot de passe dans sa table
+
+---
+
 text like `this` means that the function has yet to be implemented

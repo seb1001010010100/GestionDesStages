@@ -38,9 +38,10 @@ class CompaniesController extends AppController
                 //$this->Auth->allow(['index', 'view']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'add']);
+                $this->Auth->allow(['index', 'view', 'canView', 'add']);
                 break;
-            case 'comapny':
+            case 'company':
+                $this->Auth->allow(['index', 'view', 'canView']);
                 break;
             }
         }
@@ -55,11 +56,26 @@ class CompaniesController extends AppController
      */
     public function view($id = null)
     {
-        $company = $this->Companies->get($id, [
-            'contain' => ['Internships']
-        ]);
+        if ($this->canView($id)) {
+            $company = $this->Companies->get($id, [
+                'contain' => ['Internships']
+            ]);
 
-        $this->set('company', $company);
+            $this->set('company', $company);
+        }
+    }
+
+    public function canView($id)
+    {
+        $user = $this->Auth->user();
+        if ($user['role'] == "administrator") {
+            return true;
+        } else if ($user['role'] == "company") {
+            if ($user['role_data']['id'] == $id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

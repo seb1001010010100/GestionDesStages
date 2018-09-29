@@ -37,7 +37,7 @@ class AdministratorsController extends AppController
             case 'administrator':
                 $this->Auth->allow(['index', 'view']);
                 break;
-            case 'comapny':
+            case 'company':
                 break;
             }
         }

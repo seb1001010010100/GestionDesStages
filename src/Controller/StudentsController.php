@@ -5,7 +5,6 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 
-
 /**
  * Students Controller
  *
@@ -39,7 +38,6 @@ class StudentsController extends AppController
                 break;
             case 'administrator':
                 $this->Auth->allow(['index', 'view', 'canView',  'edit']);
-                //$this->Auth->allow();
                 break;
             }
         } else {

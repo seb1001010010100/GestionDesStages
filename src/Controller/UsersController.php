@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 class UsersController extends AppController
 {
@@ -43,15 +44,7 @@ class UsersController extends AppController
     public function viewCurrentUser()
     {
         $user = $this->Auth->user();
-        switch ($user['role']) {
-            case 'student': $controller = 'students';
-                break;
-            case 'company': $controller = 'companies';
-                break;
-            case 'administrator': $controller = 'administrators';
-                break;
-            }
-        $this->redirect(['controller' => $controller, 'action' => 'view', $user['role_data']['id']]);
+        $this->redirect(['controller' => Inflector::pluralize($user['role']), 'action' => 'view', $user['role_data']['id']]);
     }
     
     public function view($id)

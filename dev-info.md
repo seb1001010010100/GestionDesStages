@@ -43,7 +43,8 @@ Pour litération un on n'a pas besoin de pouvoir modifer les information de comp
 ---
 
 ## user validations
-- `do we check if the email is availabe (not in user table)?`
+- email is unique
+- `password is required and of valid format`
 
 ---
 

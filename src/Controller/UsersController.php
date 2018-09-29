@@ -20,13 +20,13 @@ class UsersController extends AppController
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                $this->Auth->allow(['logout']);
+                $this->Auth->allow(['logout', 'viewCurrentUser']);
                 break;
             case 'company':
-                $this->Auth->allow(['logout']);
+                $this->Auth->allow(['logout', 'viewCurrentUser']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['logout', 'view', 'index']);
+                $this->Auth->allow(['logout', 'view', 'viewCurrentUser', 'index']);
                 break;
             }
         } else {
@@ -43,7 +43,15 @@ class UsersController extends AppController
     public function viewCurrentUser()
     {
         $user = $this->Auth->user();
-        $this->redirect(['action' => 'view', $user['id']]);
+        switch ($user['role']) {
+            case 'student': $controller = 'students';
+                break;
+            case 'company': $controller = 'companies';
+                break;
+            case 'administrator': $controller = 'administrators';
+                break;
+            }
+        $this->redirect(['controller' => $controller, 'action' => 'view', $user['role_data']['id']]);
     }
     
     public function view($id)

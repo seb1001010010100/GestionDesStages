@@ -113,7 +113,7 @@ class StudentsTable extends Table
         $rules->add(
             function ($entity, $options) {
                 $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['email' => $entity['email']])->first();
+                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
                 if ($user) {
                     return 'cette email n\'est pas disponible.';
                 } else {

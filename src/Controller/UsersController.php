@@ -99,13 +99,9 @@ class UsersController extends AppController
         }
 
         $role_info = $table->find()
-            ->where(['email' => $user['username']]);
+            ->where(['email' => $user['username']])->first();
         
-        if ($role_info) {
-            return $role_info->first();
-        } else {
-            return false;
-        }
+        return $role_info;
     }
 
     public function logout()

@@ -115,7 +115,7 @@ class CompaniesTable extends Table
         $rules->add(
             function ($entity, $options) {
                 $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['email' => $entity['email']]);
+                $user = $usersTable->find()->where(['email' => $entity['email']])->first();
                 if ($user) {
                     return 'cette email n\'est pas disponible.';
                 } else {

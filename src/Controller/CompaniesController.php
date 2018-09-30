@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Companies Controller
@@ -25,6 +27,26 @@ class CompaniesController extends AppController
         $this->set(compact('companies'));
     }
 
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                // j'suis pas sure cest quoi qu'un étudianbt peut faire ici
+                //$this->Auth->allow(['index', 'view']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'view', 'canView', 'add']);
+                break;
+            case 'company':
+                $this->Auth->allow(['index', 'view', 'canView']);
+                break;
+            }
+        }
+    }
+
     /**
      * View method
      *
@@ -34,11 +56,26 @@ class CompaniesController extends AppController
      */
     public function view($id = null)
     {
-        $company = $this->Companies->get($id, [
-            'contain' => ['Internships']
-        ]);
+        if ($this->canView($id)) {
+            $company = $this->Companies->get($id, [
+                'contain' => ['Internships']
+            ]);
 
-        $this->set('company', $company);
+            $this->set('company', $company);
+        }
+    }
+
+    public function canView($id)
+    {
+        $user = $this->Auth->user();
+        if ($user['role'] == "administrator") {
+            return true;
+        } else if ($user['role'] == "company") {
+            if ($user['role_data']['id'] == $id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -49,19 +86,35 @@ class CompaniesController extends AppController
     public function add()
     {
         $company = $this->Companies->newEntity();
+        //use table registry to create a new user entity
+        $usersTable = TableRegistry::get('Users');
+        $user = $usersTable->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
-            if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
+            
+            //Change le numero de tel pour la separation par des points
+            $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone); 
+            $company->set('phone', $formatPhone);
 
-                return $this->redirect(['action' => 'index']);
+            if ($this->Companies->save($company)) {
+                
+                $user->set('username',$company->email);
+                $user->set('password', $this->request->getData('password'));
+                $user->set('created', $company->created);
+                $user->set('modified', $company->modified);
+                $user->set('role', 'company');
+                if($usersTable->save($user)){
+                    
+                    $this->Flash->success(__('The company has been saved.'));
+                    return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+                    
+                }
+
             }
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
 		$establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
         $this->set(compact('company', 'establishments'));
-		
-		
     }
 
     /**

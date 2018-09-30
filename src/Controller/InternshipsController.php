@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Internships Controller
@@ -28,6 +29,25 @@ class InternshipsController extends AppController
         $this->set(compact('internships'/*, 'user'*/));
     }
 
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow(['index', 'view', 'canView']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'view', 'canView',  'edit']);
+                break;
+            case 'company':
+                $this->Auth->allow(['view', 'canView']);
+                break;
+            }
+        }
+    }
+
     /**
      * View method
      *
@@ -41,7 +61,30 @@ class InternshipsController extends AppController
             'contain' => ['Companies', 'Sessions']
         ]);
 
-        $this->set('internship', $internship);
+        
+        if ($this->canView($internship['company_id'])) {
+            
+            $this->set('internship', $internship);
+
+        } else {
+            return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
+        }
+    }
+
+    public function canView($id)
+    {
+        $allowed = false;
+        $user = $this->Auth->user();
+
+        if (in_array($user['role'], ["administrator", "student"])) {
+            $allowed =  true;
+        } else if ($user['role'] == "company") {
+            if ($user['role_data']['id'] == $id) {
+                $allowed =  true;
+            }
+        }
+
+        return $allowed;
     }
 
     /**

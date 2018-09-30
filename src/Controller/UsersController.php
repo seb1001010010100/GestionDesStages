@@ -4,13 +4,35 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 class UsersController extends AppController
 {
 
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['logout', 'add', 'edit']);
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow(['logout', 'viewCurrentUser']);
+                break;
+            case 'company':
+                $this->Auth->allow(['logout', 'viewCurrentUser']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['logout', 'view', 'viewCurrentUser', 'index']);
+                break;
+            }
+        } else {
+            $this->Auth->allow(['login']);
+        }
     }
 
     public function index()
@@ -22,7 +44,7 @@ class UsersController extends AppController
     public function viewCurrentUser()
     {
         $user = $this->Auth->user();
-        $this->redirect(['action' => 'view', $user['id']]);
+        $this->redirect(['controller' => Inflector::pluralize($user['role']), 'action' => 'view', $user['role_data']['id']]);
     }
     
     public function view($id)
@@ -46,24 +68,43 @@ class UsersController extends AppController
         $this->set('user', $user);
     }
 
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        // Allow users to register and logout.
-        // You should not add the "login" action to allow list. Doing so would
-        // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout']);
-    }
-
     public function login()
     {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
+                $user['role_data'] = $this->findRoleData($user);
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Invalid username or password, try again'));
+        }
+    }
+
+    public function findRoleData($user)
+    {
+
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $table = TableRegistry::get('students');
+                break;
+            case 'company':
+                $table = TableRegistry::get('companies');
+                break;
+            case 'administrator':
+                $table = TableRegistry::get('administrators');
+                break;
+            }
+        }
+
+        $role_info = $table->find()
+            ->where(['email' => $user['username']]);
+        
+        if ($role_info) {
+            return $role_info->first();
+        } else {
+            return false;
         }
     }
 

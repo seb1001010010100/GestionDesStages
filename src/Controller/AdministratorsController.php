@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Administrators Controller
@@ -23,6 +24,23 @@ class AdministratorsController extends AppController
         $administrators = $this->paginate($this->Administrators);
 
         $this->set(compact('administrators'));
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'view']);
+                break;
+            case 'company':
+                break;
+            }
+        }
     }
 
     /**

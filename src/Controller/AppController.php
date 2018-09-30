@@ -85,6 +85,22 @@ class AppController extends Controller
 
     public function isAuthorized($user) {
         // By default deny access.
-        return true;
+        return false;
     }
 }
+
+
+/*
+
+manual debug
+
+
+ob_start();
+var_dump($user);
+$output = ob_get_contents();
+ob_end_flush();
+
+file_put_contents('my_debug_1234.html', $output);
+
+
+*/

@@ -57,10 +57,10 @@
                 <th scope="col"><?= __('Company Id') ?></th>
                 <th scope="col"><?= __('Session Id') ?></th>
                 <th scope="col"><?= __('OwnerStatus Id') ?></th>
-                <th scope="col"><?= __('Region Id') ?></th>
-                <th scope="col"><?= __('ClientType Id') ?></th>
+                <!-- <th scope="col"><?= __('Region Id') ?></th>
+                <th scope="col"><?= __('ClientType Id') ?></th> -->
                 <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Task') ?></th>
+                <!-- <th scope="col"><?= __('Task') ?></th>
                 <th scope="col"><?= __('Precision Facility') ?></th>
                 <th scope="col"><?= __('Precision Task') ?></th>
                 <th scope="col"><?= __('Adress') ?></th>
@@ -69,7 +69,7 @@
                 <th scope="col"><?= __('Postal Code') ?></th>
                 <th scope="col"><?= __('Phone') ?></th>
                 <th scope="col"><?= __('Fax') ?></th>
-                <th scope="col"><?= __('Email') ?></th>
+                <th scope="col"><?= __('Email') ?></th> -->
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -80,10 +80,10 @@
                 <td><?= h($internships->company_id) ?></td>
                 <td><?= h($internships->session_id) ?></td>
                 <td><?= h($internships->ownerStatus_id) ?></td>
-                <td><?= h($internships->region_id) ?></td>
-                <td><?= h($internships->clientType_id) ?></td>
+                <!-- <td><?= h($internships->region_id) ?></td>
+                <td><?= h($internships->clientType_id) ?></td> -->
                 <td><?= h($internships->name) ?></td>
-                <td><?= h($internships->task) ?></td>
+                <!-- <td><?= h($internships->task) ?></td>
                 <td><?= h($internships->precision_facility) ?></td>
                 <td><?= h($internships->precision_task) ?></td>
                 <td><?= h($internships->adress) ?></td>
@@ -92,7 +92,7 @@
                 <td><?= h($internships->postal_code) ?></td>
                 <td><?= h($internships->phone) ?></td>
                 <td><?= h($internships->fax) ?></td>
-                <td><?= h($internships->email) ?></td>
+                <td><?= h($internships->email) ?></td> -->
                 <td><?= h($internships->created) ?></td>
                 <td><?= h($internships->modified) ?></td>
                 <td class="actions">

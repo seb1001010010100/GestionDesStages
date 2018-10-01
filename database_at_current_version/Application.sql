@@ -35,7 +35,7 @@ CREATE TABLE users (
     modified DATE NOT NULL DEFAULT NOW
 );
 
-INSERT INTO users (username, password, role) VALUES 
+INSERT INTO users (username, password, role) VALUES
   ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student');
 -- password : 123
 
@@ -430,26 +430,25 @@ ALTER TABLE `internships`
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-INSERT INTO `sessions` (`year`, `season`, `active`, `created`, `modified`) 
+INSERT INTO `sessions` (`year`, `season`, `active`, `created`, `modified`)
   VALUES ('2018', 'Automne', '1', '2018-09-29', '2018-09-29');
 
-INSERT INTO `companies` (`name`, `adress`, `city`, `province`, `establishment_id`, `email`, `phone`, `created`, `modified`) 
+INSERT INTO `companies` (`name`, `adress`, `city`, `province`, `establishment_id`, `email`, `phone`, `created`, `modified`)
   VALUES ('google', 'ca', 'silicone', 'flower', '1', 'c@c.ca', '1231231234', '2018-09-29', '2018-09-29');
 
-INSERT INTO `internships` (`company_id`, `session_id`, `ownerStatus_id`, `region_id`, `clientType_id`, `name`, `task`, `precision_facility`, `precision_task`, `adress`, `city`, `province`, `postal_code`, `phone`, `fax`, `email`, `created`, `modified`) 
+INSERT INTO `internships` (`company_id`, `session_id`, `ownerStatus_id`, `region_id`, `clientType_id`, `name`, `task`, `precision_facility`, `precision_task`, `adress`, `city`, `province`, `postal_code`, `phone`, `fax`, `email`, `created`, `modified`)
   VALUES ('1', '1', '0', '8', '1', 'Dev web', 'écrire dans des fichier .php', 'what?', ':(', '123', 'Laval', 'Quebec', '1h1h1h', '1234567891', '789456123', 'yeah@gmail.com', '2018-09-29', '2018-09-29');
 
-INSERT INTO `administrators` (`gender`, `first_name`, `last_name`, `title`, `place`, `adress`, `city`, `province`, `postal_code`, `email`, `phone`, `position`, `cell`, `fax`, `created`, `modified`) 
+INSERT INTO `administrators` (`gender`, `first_name`, `last_name`, `title`, `place`, `adress`, `city`, `province`, `postal_code`, `email`, `phone`, `position`, `cell`, `fax`, `created`, `modified`)
   VALUES ('what?', 'Susumu', 'Hirasawa', 'Admin in charge', NULL, NULL, NULL, NULL, NULL, 'a@a.ca', NULL, NULL, NULL, NULL, '2018-09-29', '2018-09-29');
 
-INSERT INTO `students` (`first_name`, `last_name`, `email`, `password`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`) 
+INSERT INTO `students` (`first_name`, `last_name`, `email`, `password`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`)
   VALUES ('Archy', 'Marshall', 's@s.ca', 'lol?', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
 
 -- all of the passwords are 123
-INSERT INTO users (username, password, role, created, modified) VALUES 
+INSERT INTO users (username, password, role, created, modified) VALUES
   ('s@s.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student', '2018-09-29', '2018-09-29');
-INSERT INTO users (username, password, role, created, modified) VALUES 
+INSERT INTO users (username, password, role, created, modified) VALUES
   ('a@a.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'administrator', '2018-09-29', '2018-09-29');
-INSERT INTO users (username, password, role, created, modified) VALUES 
+INSERT INTO users (username, password, role, created, modified) VALUES
   ('c@c.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'company', '2018-09-29', '2018-09-29');
-

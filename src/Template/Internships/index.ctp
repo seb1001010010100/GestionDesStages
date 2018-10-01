@@ -33,6 +33,11 @@
                 <td><?= h($internship->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $internship->id]) ?>
+                    <!--Make it so that only the administrator can edit and delete internships-->
+                    <?php if ($this->request->session()->read('Auth.User.role') == 'administrator'){ ?>
+                      <?= $this->Html->link(__('Edit'), ['action' => 'edit', $internship->id]) ?>
+                      <?= $this->Html->link(__('Delete'), ['action' => 'delete', $internship->id]) ?>
+                    <?php } ?>
                 </td>
             </tr>
             <?php endforeach; ?>

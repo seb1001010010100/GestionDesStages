@@ -13,7 +13,13 @@
             echo $this->Form->control('session_id', ['options' => $sessions]);
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
             echo $this->Form->control('region_id', ['options' => $regions]);
-            echo $this->Form->control('clientType_id', ['options' => $clientTypes]);
+			
+			echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
+				=> 'checkbox', 'options' => $clientTypes));
+			
+			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
+				=> 'checkbox', 'options' => $missions));
+
             echo $this->Form->control('name');
             echo $this->Form->control('task');
             echo $this->Form->control('precision_facility');

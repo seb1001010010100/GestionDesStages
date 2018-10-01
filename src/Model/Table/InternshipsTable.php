@@ -65,6 +65,11 @@ class InternshipsTable extends Table
             'foreignKey' => 'clientType_id',
             'joinType' => 'INNER'
         ]);
+		
+		$this->belongsTo('Missions', [
+            'foreignKey' => 'missions_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**

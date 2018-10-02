@@ -109,7 +109,7 @@ class InternshipsController extends AppController
         $ownershipStatuses = $this->Internships->OwnershipStatuses->find('list', ['limit' => 200]);
         $regions = $this->Internships->Regions->find('list', ['limit' => 200]);
         $clientTypes = $this->Internships->ClientTypes->find('list', ['limit' => 200]);
-		$missions = $this->Internships->Misssions->find('list', ['limit' => 200]);
+		$missions = $this->Internships->Missions->find('list', ['limit' => 200]);
         $this->set(compact('internship', 'companies', 'sessions', 'ownershipStatuses', 'regions', 'clientTypes', 'missions'));
     }
 

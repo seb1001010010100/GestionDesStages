@@ -294,7 +294,6 @@ CREATE TABLE IF NOT EXISTS `students` (
   `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone_sms` char(13) COLLATE utf8_unicode_ci DEFAULT NULL,
   `more_info` text COLLATE utf8_unicode_ci,
   `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -442,8 +441,8 @@ INSERT INTO `internships` (`company_id`, `session_id`, `ownerStatus_id`, `region
 INSERT INTO `administrators` (`gender`, `first_name`, `last_name`, `title`, `place`, `adress`, `city`, `province`, `postal_code`, `email`, `phone`, `position`, `cell`, `fax`, `created`, `modified`)
   VALUES ('what?', 'Susumu', 'Hirasawa', 'Admin in charge', NULL, NULL, NULL, NULL, NULL, 'a@a.ca', NULL, NULL, NULL, NULL, '2018-09-29', '2018-09-29');
 
-INSERT INTO `students` (`first_name`, `last_name`, `email`, `password`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`)
-  VALUES ('Archy', 'Marshall', 's@s.ca', 'lol?', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
+INSERT INTO `students` (`first_name`, `last_name`, `email`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`)
+  VALUES ('Archy', 'Marshall', 's@s.ca', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
 
 -- all of the passwords are 123
 INSERT INTO users (username, password, role, created, modified) VALUES

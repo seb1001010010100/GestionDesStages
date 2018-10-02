@@ -92,18 +92,21 @@ class StudentsController extends AppController
 		$user = $usersTable->newEntity();
         if ($this->request->is('post')) {
             $student = $this->Students->patchEntity($student, $this->request->getData());
-			
+
 			//Change la premiere lettre du prenom, nom, et plus information en majuscule
 			$student->set('first_name', ucfirst($student->first_name));
 			$student->set('last_name', ucfirst($student->last_name));
 			$student->set('more_info', ucfirst($student->more_info));
-			
+
+      //change email to lowercase
+      $student->set('email', strtolower($student->email));
+
 			//Change le numero de tel pour la separation par des points
-			$formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$student->phone_sms); 
+			$formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$student->phone_sms);
 			$student->set('phone_sms', $formatPhone);
-			
+
             if ($this->Students->save($student)) {
-				
+
 				//if the student is successfully added to the database, create its user
 				$user->set('username',$student->email);
 				$user->set('password', $this->request->getData('password'));
@@ -111,13 +114,13 @@ class StudentsController extends AppController
                 $user->set('modified', $student->modified);
 				$user->set('role', 'student');
 				if($usersTable->save($user)){
-					
+
 					$this->Flash->success(__('The student has been saved.'));
                     $user['role_data'] = $student;
                     unset($user['password']);
                     $this->Auth->setUser($user);
 					return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
-					
+
 				}
 
             }

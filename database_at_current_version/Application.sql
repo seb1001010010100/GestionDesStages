@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 19 Septembre 2018 à 20:04
+-- Généré le :  Mar 02 Octobre 2018 à 23:15
 -- Version du serveur :  5.6.37
 -- Version de PHP :  5.6.31
 
@@ -19,25 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `Application`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE users (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
-    password VARCHAR(255),
-    role VARCHAR(20),
-    created DATE NOT NULL DEFAULT NOW,
-    modified DATE NOT NULL DEFAULT NOW
-);
-
-INSERT INTO users (username, password, role) VALUES
-  ('test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student');
--- password : 123
 
 -- --------------------------------------------------------
 
@@ -122,7 +103,15 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `phone` int(10) DEFAULT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `adress`, `city`, `province`, `establishment_id`, `email`, `phone`, `created`, `modified`) VALUES
+(5, 'copmganie_test', '1234', NULL, NULL, 1, '1@r.com', NULL, '0000-00-00', '0000-00-00'),
+(7, 'Crayon', '1234', '', '', 1, '1@h.com', NULL, '2018-09-26', '2018-09-26');
 
 -- --------------------------------------------------------
 
@@ -207,7 +196,60 @@ CREATE TABLE IF NOT EXISTS `internships` (
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `internships`
+--
+
+INSERT INTO `internships` (`id`, `company_id`, `session_id`, `ownerStatus_id`, `region_id`, `clientType_id`, `name`, `task`, `precision_facility`, `precision_task`, `adress`, `city`, `province`, `postal_code`, `phone`, `fax`, `email`, `created`, `modified`) VALUES
+(1, 5, 1, 2, 1, 1, 'Nom', 'Task', 'Precision', 'PrecionT', '1234', 'tr', 're', '555555', 2147483647, 2147483647, 'r@s.com', '2018-09-26', '2018-09-26');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `missions`
+--
+
+CREATE TABLE IF NOT EXISTS `missions` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created` int(11) NOT NULL,
+  `modified` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `missions`
+--
+
+INSERT INTO `missions` (`id`, `name`, `created`, `modified`) VALUES
+(3, 'UTRF', 0, 0),
+(4, 'Soins de clientèle hébergée et hôpital de jour', 0, 0),
+(5, 'Soins de clientèle hébergée et externe', 0, 0),
+(6, 'Soins de clientèle externe, hospitalisée et hébergée, rééducation et renforcement au travail', 0, 0),
+(7, 'Soins de clientèle externe', 0, 0),
+(8, 'Soins clientèle hospitalisée', 0, 0),
+(9, 'Soins clientèle hébergée, soins de clientèle en convalescence', 0, 0),
+(10, 'Soins clientèle hébergée et hospitalisée', 0, 0),
+(11, 'Soins clientèle hébergée et externe', 0, 0),
+(12, 'Soins clientèle hébergée', 0, 0),
+(13, 'Soins clientèle hébergé et possibilité de Centre de jour', 0, 0),
+(14, 'Soins clientèle externe, rééducation au travail', 0, 0),
+(15, 'Soins clientèle externe et interne', 0, 0),
+(16, 'Soins clientèle externe et hospitalisée', 0, 0),
+(17, 'Soins clientèle externe et hébergée', 0, 0),
+(18, 'Soins clientèle externe et à domicile', 0, 0),
+(19, 'Soins clientèle externe', 0, 0),
+(20, 'Soins clientèle à domicile et en hébergement, Centre de jour', 0, 0),
+(21, 'Soins clientèle à domicile et clientèle externe', 0, 0),
+(22, 'Soins clientèle à domicile', 0, 0),
+(23, 'Recherche clinique', 0, 0),
+(24, 'Hôpital de jour', 0, 0),
+(25, 'Centre de jour, soins de clientèle hébergée', 0, 0),
+(26, 'Centre de jour et soins à domicile', 0, 0),
+(27, 'Centre de jour et hôpital de jour', 0, 0),
+(28, 'Centre de jour', 0, 0),
+(29, 'CDJ et soins clientèle hébergée', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -281,7 +323,14 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `created` date NOT NULL,
   `modified` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `year`, `season`, `active`, `created`, `modified`) VALUES
+(1, '2018', 'Automne', 1, '2018-09-26', '2018-09-26');
 
 -- --------------------------------------------------------
 
@@ -294,6 +343,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `phone_sms` char(13) COLLATE utf8_unicode_ci DEFAULT NULL,
   `more_info` text COLLATE utf8_unicode_ci,
   `notes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -301,6 +351,30 @@ CREATE TABLE IF NOT EXISTS `students` (
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `created`, `modified`) VALUES
+(1, 'test', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'test2', '1234', 'administrator', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'test2@e.com', '1234', 'administrator', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Index pour les tables exportées
@@ -350,6 +424,12 @@ ALTER TABLE `internships`
   ADD KEY `clientType_id` (`clientType_id`);
 
 --
+-- Index pour la table `missions`
+--
+ALTER TABLE `missions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `ownership_statuses`
 --
 ALTER TABLE `ownership_statuses`
@@ -376,6 +456,12 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -388,22 +474,32 @@ ALTER TABLE `administrators`
 -- AUTO_INCREMENT pour la table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `internships`
 --
 ALTER TABLE `internships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `missions`
+--
+ALTER TABLE `missions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT pour la table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `students`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --
@@ -427,27 +523,3 @@ ALTER TABLE `internships`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-INSERT INTO `sessions` (`year`, `season`, `active`, `created`, `modified`)
-  VALUES ('2018', 'Automne', '1', '2018-09-29', '2018-09-29');
-
-INSERT INTO `companies` (`name`, `adress`, `city`, `province`, `establishment_id`, `email`, `phone`, `created`, `modified`)
-  VALUES ('google', 'ca', 'silicone', 'flower', '1', 'c@c.ca', '1231231234', '2018-09-29', '2018-09-29');
-
-INSERT INTO `internships` (`company_id`, `session_id`, `ownerStatus_id`, `region_id`, `clientType_id`, `name`, `task`, `precision_facility`, `precision_task`, `adress`, `city`, `province`, `postal_code`, `phone`, `fax`, `email`, `created`, `modified`)
-  VALUES ('1', '1', '0', '8', '1', 'Dev web', 'écrire dans des fichier .php', 'what?', ':(', '123', 'Laval', 'Quebec', '1h1h1h', '1234567891', '789456123', 'yeah@gmail.com', '2018-09-29', '2018-09-29');
-
-INSERT INTO `administrators` (`gender`, `first_name`, `last_name`, `title`, `place`, `adress`, `city`, `province`, `postal_code`, `email`, `phone`, `position`, `cell`, `fax`, `created`, `modified`)
-  VALUES ('what?', 'Susumu', 'Hirasawa', 'Admin in charge', NULL, NULL, NULL, NULL, NULL, 'a@a.ca', NULL, NULL, NULL, NULL, '2018-09-29', '2018-09-29');
-
-INSERT INTO `students` (`first_name`, `last_name`, `email`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`)
-  VALUES ('Archy', 'Marshall', 's@s.ca', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
-
--- all of the passwords are 123
-INSERT INTO users (username, password, role, created, modified) VALUES
-  ('s@s.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'student', '2018-09-29', '2018-09-29');
-INSERT INTO users (username, password, role, created, modified) VALUES
-  ('a@a.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'administrator', '2018-09-29', '2018-09-29');
-INSERT INTO users (username, password, role, created, modified) VALUES
-  ('c@c.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'company', '2018-09-29', '2018-09-29');

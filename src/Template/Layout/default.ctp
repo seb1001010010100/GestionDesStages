@@ -52,8 +52,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                    echo '<li>'.$this->Html->link('Inscription Étudiant', array('controller' => 'students', 'action' => 'add')).'</li>';
                 }
                 ?>
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div>
     </nav>
@@ -75,7 +73,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             }
         }
         ?>
-        
+
 
         <?= $this->fetch('content') ?>
     </div>

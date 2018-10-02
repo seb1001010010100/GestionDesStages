@@ -46,7 +46,6 @@ Pour litération un on n'a pas besoin de pouvoir modifer les information de comp
 ---
 
 Liste de chose a fix ou changer (maybe)
-- bouton documentation/api a enlever
 - un etudiant n'est pas restrain a voir la liste des etudiants (/students)
 - en tant etudiant, liste des millieux de stages dans la bar de nav est impossible a acceder (enlever de la bar de nav?)
 - en tant etudiant, voir un stage donne des information incomprehensible (region_id, etc...). Devrais etre le nom, et non l'id.

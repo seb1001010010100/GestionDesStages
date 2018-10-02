@@ -69,13 +69,13 @@ class StudentsTable extends Table
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmpty('email');
-/*
+
         $validator
             ->scalar('password')
             ->maxLength('password', 16)
             ->requirePresence('password', 'create')
             ->notEmpty('password');
-*/
+
         $validator
             ->integer('phone_sms')
 			->minLength('phone_sms',10)

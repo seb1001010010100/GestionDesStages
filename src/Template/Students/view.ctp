@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Student $student
  */
+
 ?>
 
 <div class="students view large-9 medium-8 columns content">
@@ -21,14 +22,6 @@
             <td><?= h($student->email) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Password') ?></th>
-            <td><?= h($student->password) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Notes') ?></th>
-            <td><?= h($student->notes) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($student->id) ?></td>
         </tr>
@@ -36,7 +29,9 @@
             <th scope="row"><?= __('Phone Sms') ?></th>
             <td><?= h($student->phone_sms) ?></td>
         </tr>
-        <tr>
+        <!-- Restrict the view so that only the administrator see the active/notes -->
+        <?php if ($this->request->session()->read('Auth.User.role') == 'administrator'){ ?>
+         <tr>
             <th scope="row"><?= __('Created') ?></th>
             <td><?= h($student->created) ?></td>
         </tr>
@@ -48,6 +43,11 @@
             <th scope="row"><?= __('Active') ?></th>
             <td><?= $student->active ? __('Yes') : __('No'); ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Notes') ?></th>
+            <td><?= h($student->notes) ?></td>
+        </tr>
+       <?php }?>
     </table>
     <div class="row">
         <h4><?= __('More Info') ?></h4>

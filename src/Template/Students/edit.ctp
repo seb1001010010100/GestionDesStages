@@ -24,7 +24,6 @@
             echo $this->Form->control('first_name');
             echo $this->Form->control('last_name');
             echo $this->Form->control('email');
-            echo $this->Form->control('password');
             echo $this->Form->control('phone_sms');
             echo $this->Form->control('more_info');
             echo $this->Form->control('notes');

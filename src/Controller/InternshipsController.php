@@ -40,10 +40,10 @@ class InternshipsController extends AppController
                 $this->Auth->allow(['index', 'view', 'canView']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView',  'edit', 'add']);
+                $this->Auth->allow(['index', 'view', 'canView',  'edit', 'add', 'delete']);
                 break;
             case 'company':
-                $this->Auth->allow(['view', 'canView', 'edit', 'add']);
+                $this->Auth->allow(['view', 'canView', 'edit', 'add', 'delete']);
                 break;
             }
         }
@@ -62,30 +62,29 @@ class InternshipsController extends AppController
             'contain' => ['Companies', 'Sessions', 'OwnershipStatuses', 'Regions', 'InternshipClienttypeXrefs', 'InternshipMissionXrefs']
         ]);
 
-        $clientTypes_table = TableRegistry::get('clientTypes');
-        $missions_table = TableRegistry::get('missions');
-
-        $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
-        $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
-        
-        $clients = array();
-        $missions = array();
-        if($clients_id){
-            $clients = $this->Internships->internshipclienttypexrefs->clienttypes
-                ->find()
-                ->where(['id IN' => $clients_id])
-                ->toList();
-        }
-        if($missions_id){
-            $missions = $this->Internships->internshipmissionxrefs->missions
-                ->find()
-                ->where(['id IN' => $missions_id])
-                ->toList();
-        }
-        $clients = AppController::array_on_key($clients, 'type');
-        $missions = AppController::array_on_key($missions, 'name');
-        
         if ($this->canView($internship['company_id'])) {
+            $clientTypes_table = TableRegistry::get('clientTypes');
+            $missions_table = TableRegistry::get('missions');
+
+            $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
+            $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
+            
+            $clients = array();
+            $missions = array();
+            if($clients_id){
+                $clients = $this->Internships->internshipclienttypexrefs->clienttypes
+                    ->find()
+                    ->where(['id IN' => $clients_id])
+                    ->toList();
+            }
+            if($missions_id){
+                $missions = $this->Internships->internshipmissionxrefs->missions
+                    ->find()
+                    ->where(['id IN' => $missions_id])
+                    ->toList();
+            }
+            $clients = AppController::array_on_key($clients, 'type');
+            $missions = AppController::array_on_key($missions, 'name');
             
             $this->set(compact('internship', 'clients', 'missions'));
 
@@ -263,14 +262,26 @@ class InternshipsController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        //$this->request->allowMethod(['post', 'delete']);
         $internship = $this->Internships->get($id);
-        if ($this->Internships->delete($internship)) {
-            $this->Flash->success(__('The internship has been deleted.'));
-        } else {
-            $this->Flash->error(__('The internship could not be deleted. Please, try again.'));
-        }
 
-        return $this->redirect(['action' => 'index']);
+        if ($this->canView($internship['company_id'])) {
+            
+            $intern_client_xref = TableRegistry::get('internship_clienttype_xrefs');
+            $intern_mission_xref = TableRegistry::get('internship_mission_xrefs');
+            $intern_client_xref->deleteAll(['internship_id' => $internship['id']]);
+            $intern_mission_xref->deleteAll(['internship_id' => $internship['id']]);
+
+            if ($this->Internships->delete($internship)) {
+                $this->Flash->success(__('The internship has been deleted.'));
+            } else {
+                $this->Flash->error(__('The internship could not be deleted. Please, try again.'));
+            }
+
+            return $this->redirect(['action' => 'index']);
+
+        } else {
+            return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
+        }
     }
 }

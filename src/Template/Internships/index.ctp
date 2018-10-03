@@ -9,6 +9,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('company') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('address') ?></th>
@@ -23,6 +24,7 @@
         <tbody>
             <?php foreach ($internships as $internship): ?>
             <tr>
+                <td><?= h($internship->id) ?></td>
                 <td><?= h($internship->company->name) ?></td>
                 <td><?= h($internship->name) ?></td>
                 <td><?= h($internship->adress) ?></td>
@@ -36,7 +38,7 @@
                     <!--Make it so that only the administrator can edit and delete internships-->
                     <?php if ($this->request->session()->read('Auth.User.role') == 'administrator'){ ?>
                       <?= $this->Html->link(__('Edit'), ['action' => 'edit', $internship->id]) ?>
-                      <?= $this->Html->link(__('Delete'), ['action' => 'delete', $internship->id]) ?>
+                      <?= $this->Html->link(__('Delete'), ['action' => 'delete', $internship->id], ['confirm' => __('Are you sure you want to delete # {0}?', $internship->id)]) ?>
                     <?php } ?>
                 </td>
             </tr>

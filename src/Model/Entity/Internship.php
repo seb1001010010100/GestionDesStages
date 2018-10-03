@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property int $session_id
  * @property int $ownerStatus_id
  * @property int $region_id
- * @property int $clientType_id
  * @property string $name
  * @property string $task
  * @property string $precision_facility
@@ -46,7 +45,6 @@ class Internship extends Entity
         'session_id' => true,
         'ownerStatus_id' => true,
         'region_id' => true,
-        'clientType_id' => true,
         'name' => true,
         'task' => true,
         'precision_facility' => true,
@@ -61,6 +59,7 @@ class Internship extends Entity
         'created' => true,
         'modified' => true,
         'company' => true,
-        'session' => true
+        'session' => true,
+        'mission' => true
     ];
 }

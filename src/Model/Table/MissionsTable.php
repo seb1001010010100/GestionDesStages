@@ -38,6 +38,10 @@ class MissionsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('InternshipMissionXrefs', [
+            'foreignKey' => 'mission_id'
+        ]);
     }
 
     /**

@@ -87,6 +87,15 @@ class AppController extends Controller
         // By default deny access.
         return false;
     }
+
+    public static function array_on_key($array, $key)
+    {
+        foreach ($array as $value) {
+            $result[] = $value[$key];
+        }
+        return $result;
+    }
+
 }
 
 

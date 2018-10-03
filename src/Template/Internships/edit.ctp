@@ -12,17 +12,17 @@
              echo $this->Form->control('company_id', ['options' => $companies]);
             echo $this->Form->control('session_id', ['options' => $sessions]);
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
-            echo $this->Form->control('region_id', ['options' => $regions]);
-			
+            echo $this->Form->control('region_id', ['options' => $regions, 'default' => $internship->region->name]);
+            
 			echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $clientTypes));
+				=> 'checkbox', 'options' => $clientTypes, 'default' => $prev_clientTypes));
 			
 			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $missions));
+				=> 'checkbox', 'options' => $missions, 'default' => $prev_missions));
 
             echo $this->Form->control('name');
 			
-            echo $this->Form->control('task'['type' => 'textarea', 'escape' => false]);
+            echo $this->Form->control('task', ['type' => 'textarea', 'escape' => false]);
             echo $this->Form->control('precision_facility', ['type' => 'textarea', 'escape' => false]);
             echo $this->Form->control('precision_task', ['type' => 'textarea', 'escape' => false]);
 			

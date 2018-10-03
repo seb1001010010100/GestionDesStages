@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Establishment Id') ?></th>
-            <td><?= $this->Number->format($company->establishment_id) ?></td>
+            <td><?= h($company->establishment->type) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Phone') ?></th>
@@ -56,8 +56,8 @@
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Company Id') ?></th>
                 <th scope="col"><?= __('Session Id') ?></th>
-                <th scope="col"><?= __('OwnerStatus Id') ?></th>
-                <!-- <th scope="col"><?= __('Region Id') ?></th>
+                <!-- <th scope="col"><?= __('OwnerStatus Id') ?></th>
+                <th scope="col"><?= __('Region Id') ?></th>
                 <th scope="col"><?= __('ClientType Id') ?></th> -->
                 <th scope="col"><?= __('Name') ?></th>
                 <!-- <th scope="col"><?= __('Task') ?></th>
@@ -79,8 +79,8 @@
                 <td><?= h($internships->id) ?></td>
                 <td><?= h($internships->company_id) ?></td>
                 <td><?= h($internships->session_id) ?></td>
-                <td><?= h($internships->ownerStatus_id) ?></td>
-                <!-- <td><?= h($internships->region_id) ?></td>
+                <!-- <td><?= h($internships->ownerStatus_id) ?></td>
+                <td><?= h($internships->region_id) ?></td>
                 <td><?= h($internships->clientType_id) ?></td> -->
                 <td><?= h($internships->name) ?></td>
                 <!-- <td><?= h($internships->task) ?></td>

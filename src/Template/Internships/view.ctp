@@ -13,7 +13,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Session') ?></th>
-            <td><?= $internship->has('session') ? $this->Html->link($internship->session->id, ['controller' => 'Sessions', 'action' => 'view', $internship->session->id]) : '' ?></td>
+            <td><?= $internship->has('session') ? $this->Html->link($internship->session->season.' '.$internship->session->year, ['controller' => 'Sessions', 'action' => 'view', $internship->session->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Name') ?></th>
@@ -56,12 +56,12 @@
             <td><?= $this->Number->format($internship->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('OwnerStatus Id') ?></th>
-            <td><?= $this->Number->format($internship->ownerStatus_id) ?></td>
+            <th scope="row"><?= __('OwnerStatus') ?></th>
+            <td><?= h($internship->ownership_status->type) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Region Id') ?></th>
-            <td><?= $this->Number->format($internship->region_id) ?></td>
+            <th scope="row"><?= __('Region') ?></th>
+            <td><?= h($internship->region->name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('ClientType Id') ?></th>

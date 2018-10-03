@@ -98,8 +98,8 @@ class StudentsController extends AppController
 			$student->set('last_name', ucfirst($student->last_name));
 			$student->set('more_info', ucfirst($student->more_info));
 
-      //change email to lowercase
-      $student->set('email', strtolower($student->email));
+            //change email to lowercase
+            $student->set('email', strtolower($student->email));
 
 			//Change le numero de tel pour la separation par des points
 			$formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$student->phone_sms);

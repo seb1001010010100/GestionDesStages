@@ -61,14 +61,13 @@ class InternshipsTable extends Table
             'foreignKey' => 'region_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('ClientTypes', [
-            'foreignKey' => 'clientType_id',
-            'joinType' => 'INNER'
-        ]);
 		
-		$this->belongsTo('Missions', [
-            'foreignKey' => 'missions_id',
-            'joinType' => 'INNER'
+        $this->hasMany('InternshipClienttypeXrefs', [
+            'foreignKey' => 'internship_id'
+        ]);
+
+        $this->hasMany('InternshipMissionXrefs', [
+            'foreignKey' => 'internship_id'
         ]);
     }
 
@@ -154,12 +153,10 @@ class InternshipsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
         $rules->add($rules->existsIn(['session_id'], 'Sessions'));
         $rules->add($rules->existsIn(['ownerStatus_id'], 'OwnershipStatuses'));
         $rules->add($rules->existsIn(['region_id'], 'Regions'));
-        $rules->add($rules->existsIn(['clientType_id'], 'ClientTypes'));
 
         return $rules;
     }

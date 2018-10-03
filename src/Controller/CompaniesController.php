@@ -58,10 +58,12 @@ class CompaniesController extends AppController
     {
         if ($this->canView($id)) {
             $company = $this->Companies->get($id, [
-                'contain' => ['Internships']
+                'contain' => ['Internships', 'Establishments']
             ]);
 
             $this->set('company', $company);
+        } else {
+            return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
         }
     }
 

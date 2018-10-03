@@ -36,7 +36,7 @@ class SessionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('sessions');
-        $this->setDisplayField(['season','year']);
+        $this->setDisplayField('season');//['season','year']);
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

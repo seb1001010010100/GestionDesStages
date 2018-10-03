@@ -38,6 +38,10 @@ class ClientTypesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('InternshipClienttypeXrefs', [
+            'foreignKey' => 'clienttype_id'
+        ]);
     }
 
     /**

@@ -13985,3 +13985,61 @@ Cake\Http\Server::emit() - CORE\src\Http\Server.php, line 141
 
 
 
+2018-10-03 07:27:46 Error: [RuntimeException] Table "App\Model\Table\InternshipsTable" is not associated with "ClientTypes"
+Request URL: /internships/add
+Referer URL: http://localhost/GestionDesStages/internships
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\src\Controller\InternshipsController.php(151): Cake\ORM\Table->__get('ClientTypes')
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\InternshipsController->add()
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\InternshipsController))
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#19 {main}
+
+
+2018-10-03 07:31:33 Error: [RuntimeException] Cannot insert row in "users" table, it has no primary key.
+Request URL: /companies/add
+Referer URL: http://localhost/GestionDesStages/companies/add
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(2001): Cake\ORM\Table->_insert(Object(App\Model\Entity\User), Array)
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1914): Cake\ORM\Table->_processSave(Object(App\Model\Entity\User), Object(ArrayObject))
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1627): Cake\ORM\Table->Cake\ORM\{closure}()
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(726): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1628): Cake\Database\Connection->transactional(Object(Closure))
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1915): Cake\ORM\Table->_executeTransaction(Object(Closure), true)
+#6 C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php(108): Cake\ORM\Table->save(Object(App\Model\Entity\User))
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\CompaniesController->add()
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\CompaniesController))
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#18 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#19 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#20 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#22 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#25 {main}
+
+

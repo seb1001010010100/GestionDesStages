@@ -405,7 +405,7 @@ ALTER TABLE `internships`
 
 ALTER TABLE `internship_clienttype_xrefs`
   ADD CONSTRAINT `internClient_xref_fk` FOREIGN KEY (`internship_id`) REFERENCES `internships` (`id`),
-  ADD CONSTRAINT `client_xref_fk` FOREIGN KEY (`clienttype_id`) REFERENCES `clienttypes` (`id`);
+  ADD CONSTRAINT `client_xref_fk` FOREIGN KEY (`clienttype_id`) REFERENCES `client_types` (`id`);
 
 ALTER TABLE `internship_mission_xrefs`
   ADD CONSTRAINT `internMission_xref_fk` FOREIGN KEY (`internship_id`) REFERENCES `internships` (`id`),

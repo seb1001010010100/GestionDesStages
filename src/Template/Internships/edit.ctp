@@ -21,9 +21,11 @@
 				=> 'checkbox', 'options' => $missions));
 
             echo $this->Form->control('name');
-            echo $this->Form->control('task');
-            echo $this->Form->control('precision_facility');
-            echo $this->Form->control('precision_task');
+			
+            echo $this->Form->control('task'['type' => 'textarea', 'escape' => false]);
+            echo $this->Form->control('precision_facility', ['type' => 'textarea', 'escape' => false]);
+            echo $this->Form->control('precision_task', ['type' => 'textarea', 'escape' => false]);
+			
             echo $this->Form->control('adress');
             echo $this->Form->control('city');
             echo $this->Form->control('province');

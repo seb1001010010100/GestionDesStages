@@ -39,10 +39,10 @@ class InternshipsController extends AppController
                 $this->Auth->allow(['index', 'view', 'canView']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView',  'edit']);
+                $this->Auth->allow(['index', 'view', 'canView',  'edit', 'add']);
                 break;
             case 'company':
-                $this->Auth->allow(['view', 'canView']);
+                $this->Auth->allow(['view', 'canView', 'edit', 'add']);
                 break;
             }
         }
@@ -123,7 +123,16 @@ class InternshipsController extends AppController
     public function edit($id = null)
     {
         $internship = $this->Internships->get($id, [
-            'contain' => []
+            'contain' => ['Companies', 'Sessions']
+			
+        if ($this->canView($internship['company_id'])) {
+            
+            $this->set('internship', $internship);
+
+        } else {
+            return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
+        }
+			
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());

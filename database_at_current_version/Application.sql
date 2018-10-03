@@ -50,7 +50,6 @@ TABLES:
 CREATE TABLE IF NOT EXISTS users (
     id INT(11) NOT NULL,
     username VARCHAR(50),
-    password VARCHAR(255),
     role VARCHAR(20),
     created DATE NOT NULL,
     modified DATE NOT NULL
@@ -540,8 +539,8 @@ INSERT INTO `internship_mission_xrefs` (`internship_id`, `mission_id`) VALUES
 INSERT INTO `administrators` (`gender`, `first_name`, `last_name`, `title`, `place`, `adress`, `city`, `province`, `postal_code`, `email`, `phone`, `position`, `cell`, `fax`, `created`, `modified`) 
   VALUES ('what?', 'Susumu', 'Hirasawa', 'Admin in charge', NULL, NULL, NULL, NULL, NULL, 'a@a.ca', NULL, NULL, NULL, NULL, '2018-09-29', '2018-09-29');
 
-INSERT INTO `students` (`first_name`, `last_name`, `email`, `password`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`) 
-  VALUES ('Archy', 'Marshall', 's@s.ca', 'lol?', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
+INSERT INTO `students` (`first_name`, `last_name`, `email`, `phone_sms`, `more_info`, `notes`, `active`, `created`, `modified`) 
+  VALUES ('Archy', 'Marshall', 's@s.ca', NULL, NULL, NULL, '1', '2018-09-29', '2018-09-29');
 
 -- all of the passwords are 123
 INSERT INTO users (username, password, role, created, modified) VALUES 

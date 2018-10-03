@@ -92,6 +92,12 @@ class CompaniesTable extends Table
             ->notEmpty('email');
 
         $validator
+            ->scalar('password')
+            ->maxLength('password', 16)
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
             ->integer('phone')
             ->allowEmpty('phone');
 

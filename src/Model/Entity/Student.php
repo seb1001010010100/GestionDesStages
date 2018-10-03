@@ -33,7 +33,6 @@ class Student extends Entity
         'first_name' => true,
         'last_name' => true,
         'email' => true,
-        'password' => true,
         'phone_sms' => true,
         'more_info' => true,
         'notes' => true,

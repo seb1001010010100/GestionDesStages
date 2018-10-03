@@ -9,11 +9,17 @@
     <fieldset>
         <legend><?= __('Edit Internship') ?></legend>
         <?php
-            echo $this->Form->control('company_id', ['options' => $companies]);
+             echo $this->Form->control('company_id', ['options' => $companies]);
             echo $this->Form->control('session_id', ['options' => $sessions]);
-            echo $this->Form->control('ownerStatus_id');
-            echo $this->Form->control('region_id');
-            echo $this->Form->control('clientType_id');
+            echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
+            echo $this->Form->control('region_id', ['options' => $regions]);
+			
+			echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
+				=> 'checkbox', 'options' => $clientTypes));
+			
+			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
+				=> 'checkbox', 'options' => $missions));
+
             echo $this->Form->control('name');
             echo $this->Form->control('task');
             echo $this->Form->control('precision_facility');

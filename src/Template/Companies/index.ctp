@@ -37,8 +37,8 @@
                 <td><?= h($company->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $company->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $company->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $company->id], ['confirm' => __('Are you sure you want to delete # {0}?', $company->id)]) ?>
+                    <!-- <?= $this->Html->link(__('Edit'), ['action' => 'edit', $company->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $company->id], ['confirm' => __('Are you sure you want to delete # {0}?', $company->id)]) ?> -->
                 </td>
             </tr>
             <?php endforeach; ?>

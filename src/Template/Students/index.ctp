@@ -38,8 +38,10 @@
                 <td><?= h($student->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $student->id]) ?>
+                <!--
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $student->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $student->id], ['confirm' => __('Are you sure you want to delete # {0}?', $student->id)]) ?>
+                -->
                 </td>
             </tr>
             <?php endforeach; ?>

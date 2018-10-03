@@ -67,17 +67,21 @@ class InternshipsController extends AppController
 
         $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
         $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
-
-        $clients = $this->Internships->internshipclienttypexrefs->clienttypes
-            ->find()
-            ->where(['id IN' => $clients_id])
-            ->toList();
-
-        $missions = $this->Internships->internshipmissionxrefs->missions
-            ->find()
-            ->where(['id IN' => $missions_id])
-            ->toList();
-
+        
+        $clients = array();
+        $missions = array();
+        if($clients_id){
+            $clients = $this->Internships->internshipclienttypexrefs->clienttypes
+                ->find()
+                ->where(['id IN' => $clients_id])
+                ->toList();
+        }
+        if($missions_id){
+            $missions = $this->Internships->internshipmissionxrefs->missions
+                ->find()
+                ->where(['id IN' => $missions_id])
+                ->toList();
+        }
         $clients = AppController::array_on_key($clients, 'type');
         $missions = AppController::array_on_key($missions, 'name');
         
@@ -120,27 +124,30 @@ class InternshipsController extends AppController
             $missions_id = $this->request->getData()['missions_id'];
             if ($this->Internships->save($internship)) {
 
-                $intern_client_xref = TableRegistry::get('internship_clienttype_xref');
-                foreach ($clientTypes_id as $value) {
-                    $xref = $intern_client_xref->newEntity([
-                        'internship_id' => $internship['id'],
-                        'clienttype_id' => $value
-                    ]);
-                    $intern_client_xref->save($xref);
+                if($clientTypes_id) {
+                    $intern_client_xref = TableRegistry::get('internship_clienttype_xrefs');
+                    foreach ($clientTypes_id as $value) {
+                        $xref = $intern_client_xref->newEntity([
+                            'internship_id' => $internship['id'],
+                            'clienttype_id' => $value
+                        ]);
+                        $intern_client_xref->save($xref);
+                    }
                 }
-
-                $intern_mission_xref = TableRegistry::get('internship_mission_xref');
-                foreach ($missions_id as $value) {
-                    $xref = $intern_mission_xref->newEntity([
-                        'internship_id' => $internship['id'],
-                        'mission_id' => $value
-                    ]);
-                    $intern_mission_xref->save($xref);
+                if($missions_id) {
+                    $intern_mission_xref = TableRegistry::get('internship_mission_xrefs');
+                    foreach ($missions_id as $value) {
+                        $xref = $intern_mission_xref->newEntity([
+                            'internship_id' => $internship['id'],
+                            'mission_id' => $value
+                        ]);
+                        $intern_mission_xref->save($xref);
+                    }
                 }
                 
                 $this->Flash->success(__('The internship has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Redirections', 'action' => 'afterInternshipAdd']);
             }
             $this->Flash->error(__('The internship could not be saved. Please, try again.'));
         }
@@ -168,37 +175,39 @@ class InternshipsController extends AppController
 
         if ($this->canView($internship['company_id'])) {
 
-            $intern_client_xref = TableRegistry::get('internship_clienttype_xref');
-            $intern_mission_xref = TableRegistry::get('internship_mission_xref');
+            $intern_client_xref = TableRegistry::get('internship_clienttype_xrefs');
+            $intern_mission_xref = TableRegistry::get('internship_mission_xrefs');
 
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $internship = $this->Internships->patchEntity($internship, $this->request->getData());
                 $clientTypes_id = $this->request->getData()['clientType_id'];
                 $missions_id = $this->request->getData()['missions_id'];
-                debug($clientTypes_id);
                 if ($this->Internships->save($internship)) {
 
                     $intern_client_xref->deleteAll(['internship_id' => $internship['id']]);
                     $intern_mission_xref->deleteAll(['internship_id' => $internship['id']]);
-
-                    foreach ($clientTypes_id as $value) {
-                        $xref = $intern_client_xref->newEntity([
-                            'internship_id' => $internship['id'],
-                            'clienttype_id' => $value
-                        ]);
-                        $intern_client_xref->save($xref);
+                    if($clientTypes_id) {
+                        foreach ($clientTypes_id as $value) {
+                            $xref = $intern_client_xref->newEntity([
+                                'internship_id' => $internship['id'],
+                                'clienttype_id' => $value
+                            ]);
+                            $intern_client_xref->save($xref);
+                        }
                     }
-                    foreach ($missions_id as $value) {
-                        $xref = $intern_mission_xref->newEntity([
-                            'internship_id' => $internship['id'],
-                            'mission_id' => $value
-                        ]);
-                        $intern_mission_xref->save($xref);
+                    if($missions_id) {
+                        foreach ($missions_id as $value) {
+                            $xref = $intern_mission_xref->newEntity([
+                                'internship_id' => $internship['id'],
+                                'mission_id' => $value
+                            ]);
+                            $intern_mission_xref->save($xref);
+                        }
                     }
 
                     $this->Flash->success(__('The internship has been saved.'));
 
-                    return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['controller' => 'Redirections', 'action' => 'afterInternshipAdd']);
                 }
                 $this->Flash->error(__('The internship could not be saved. Please, try again.'));
             }

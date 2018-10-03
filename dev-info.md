@@ -24,12 +24,12 @@ Pour litération un on n'a pas besoin de pouvoir modifer les information de comp
 - create a company account
 - view interniship list
 - view internship details
-- `add an internship offer`
-- `modify internship offer details (status and what not)`
+- add an internship offer
+- modify internship offer details (status and what not)
 - logout
 
 ### company
-- `not sure what i do`
+- not sure what i do
 - logout
 
 ---

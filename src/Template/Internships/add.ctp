@@ -9,7 +9,14 @@
     <fieldset>
         <legend><?= __('Add Internship') ?></legend>
         <?php
-            echo $this->Form->control('company_id', ['options' => $companies]);
+            switch ($this->Session->read('Auth')['User']['role']) {
+                case 'administrator':
+                    echo $this->Form->control('company_id', ['options' => $companies]);
+                    break;
+                case 'company':
+                    echo $this->Form->control('company_id', ['type' => 'hidden', 'value' => $this->Session->read('Auth')['User']['role_data']['id']]);
+                    break;
+            }
             echo $this->Form->control('session_id', ['options' => $sessions]);
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
             echo $this->Form->control('region_id', ['options' => $regions]);

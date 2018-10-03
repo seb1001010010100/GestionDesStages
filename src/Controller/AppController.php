@@ -90,8 +90,12 @@ class AppController extends Controller
 
     public static function array_on_key($array, $key)
     {
-        foreach ($array as $value) {
-            $result[] = $value[$key];
+        if($array) {
+            foreach ($array as $value) {
+                $result[] = $value[$key];
+            }
+        } else {
+            $result = array();
         }
         return $result;
     }

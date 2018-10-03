@@ -20,17 +20,28 @@ class RedirectionsController extends AppController
     {
         parent::beforeFilter($event);
         
-        $this->Auth->allow(['index']);
+        $user = $this->Auth->user();
+        if ($user) {
+           switch ($user['role']) {
+            case 'student':
+                $this->Auth->allow(['index']);
+                break;
+            case 'administrator':
+                $this->Auth->allow(['index', 'afterInternshipAdd']);
+                break;
+            case 'company':
+                $this->Auth->allow(['index', 'afterInternshipAdd']);
+                break;
+            }
+        } else {
+            $this->Auth->allow(['index']);
+        }
         
     }
 
-    public function index(/*...$path*/)
+    public function index()
     {
         $user = $this->Auth->user();
-        /*ob_start();
-        var_dump($user);
-        $page = ob_get_clean();
-        file_put_contents("filename1234.html", $page);*/
         
         if (!$user){
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
@@ -42,7 +53,7 @@ class RedirectionsController extends AppController
                 break;
             case "company":
                 // To modify later the login must send to the intership propose by the company
-                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+                return $this->redirect(['controller' => 'Users', 'action' => 'viewCurrentUser']);
                 break;
             case "administrator":
                 // To modify later the login must send to the administrator profile page
@@ -50,6 +61,19 @@ class RedirectionsController extends AppController
                 break;
         }
         return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+    }
+
+    public function afterInternshipAdd()
+    {
+        switch($this->Auth->user()['role']){
+            case "company":
+                return $this->redirect(['action' => 'index']);
+                break;
+            case "administrator":
+                return $this->redirect(['controller' => 'internships', 'action' => 'index']);
+                break;
+        }
+        return $this->redirect(['action' => 'index']);
     }
 
 }

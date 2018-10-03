@@ -34,10 +34,10 @@ class StudentsController extends AppController
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                $this->Auth->allow(['index', 'view', 'canView', 'edit']);
+                $this->Auth->allow(['view', 'canView']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView',  'edit']);
+                $this->Auth->allow(['index', 'view', 'canView']);
                 break;
             }
         } else {

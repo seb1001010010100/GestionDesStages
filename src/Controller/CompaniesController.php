@@ -41,7 +41,7 @@ class CompaniesController extends AppController
                 $this->Auth->allow(['index', 'view', 'canView', 'add']);
                 break;
             case 'company':
-                $this->Auth->allow(['index', 'view', 'canView']);
+                $this->Auth->allow(['view', 'canView']);
                 break;
             }
         }

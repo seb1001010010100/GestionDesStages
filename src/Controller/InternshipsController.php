@@ -122,18 +122,9 @@ class InternshipsController extends AppController
      */
     public function edit($id = null)
     {
-        $internship = $this->Internships->get($id, [
-            'contain' => ['Companies', 'Sessions']
-			
-        if ($this->canView($internship['company_id'])) {
-            
-            $this->set('internship', $internship);
-
-        } else {
-            return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
-        }
-			
-        ]);
+         $internship = $this->Internships->get($id, [
+            'contain' => []]);
+ 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
             if ($this->Internships->save($internship)) {

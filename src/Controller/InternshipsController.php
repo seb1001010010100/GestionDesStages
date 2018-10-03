@@ -62,15 +62,28 @@ class InternshipsController extends AppController
             'contain' => ['Companies', 'Sessions', 'OwnershipStatuses', 'Regions', 'InternshipClienttypeXrefs', 'InternshipMissionXrefs']
         ]);
 
-        $clients = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
-        $missions = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
+        $clientTypes_table = TableRegistry::get('clientTypes');
+        $missions_table = TableRegistry::get('missions');
 
-        debug($clients);
-        debug($missions);
+        $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
+        $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
+
+        $clients = $this->Internships->internshipclienttypexrefs->clienttypes
+            ->find()
+            ->where(['id IN' => $clients_id])
+            ->toList();
+
+        $missions = $this->Internships->internshipmissionxrefs->missions
+            ->find()
+            ->where(['id IN' => $missions_id])
+            ->toList();
+
+        $clients = AppController::array_on_key($clients, 'type');
+        $missions = AppController::array_on_key($missions, 'name');
         
         if ($this->canView($internship['company_id'])) {
             
-            $this->set('internship', $internship);
+            $this->set(compact('internship', 'clients', 'missions'));
 
         } else {
             return $this->redirect(['controller' => 'redirections', 'action' => 'index']);

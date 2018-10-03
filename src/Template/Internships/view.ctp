@@ -64,8 +64,12 @@
             <td><?= h($internship->region->name) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('ClientType Id') ?></th>
-            <td><?= $this->Number->format($internship->clientType_id) ?></td>
+            <th scope="row"><?= __('ClientTypes') ?></th>
+            <td><?php foreach ($clients as $client) {echo h($client).'<br>';} ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('missions') ?></th>
+            <td><?php foreach ($missions as $mission) {echo h($mission).'<br>';} ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Phone') ?></th>

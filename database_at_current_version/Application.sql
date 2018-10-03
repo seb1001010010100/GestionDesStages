@@ -36,8 +36,8 @@ TABLES:
  - students
  - users
 
- - internship_clienttype_xref
- - internship_mission_xref
+ - internship_clienttype_xrefs
+ - internship_mission_xrefs
 
 */
 
@@ -98,10 +98,10 @@ CREATE TABLE IF NOT EXISTS `client_types` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `internship_clienttype_xref`
+-- Structure de la table `internship_clienttype_xrefs`
 --
 
-CREATE TABLE IF NOT EXISTS `internship_clienttype_xref` (
+CREATE TABLE IF NOT EXISTS `internship_clienttype_xrefs` (
   `id` int(11) NOT NULL,
   `internship_id` int(11) NOT NULL,
   `clienttype_id` int(11) NOT NULL
@@ -110,10 +110,10 @@ CREATE TABLE IF NOT EXISTS `internship_clienttype_xref` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `internship_mission_xref`
+-- Structure de la table `internship_mission_xrefs`
 --
 
-CREATE TABLE IF NOT EXISTS `internship_mission_xref` (
+CREATE TABLE IF NOT EXISTS `internship_mission_xrefs` (
   `id` int(11) NOT NULL,
   `internship_id` int(11) NOT NULL,
   `mission_id` int(11) NOT NULL
@@ -341,12 +341,12 @@ ALTER TABLE `students`
 ALTER TABLE `missions`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `internship_clienttype_xref`
+ALTER TABLE `internship_clienttype_xrefs`
   ADD PRIMARY KEY (`id`),
   ADD KEY (`internship_id`),
   ADD KEY (`clienttype_id`);
 
-ALTER TABLE `internship_mission_xref`
+ALTER TABLE `internship_mission_xrefs`
   ADD PRIMARY KEY (`id`),
   ADD KEY (`internship_id`),
   ADD KEY (`mission_id`);
@@ -383,10 +383,10 @@ ALTER TABLE `students`
 ALTER TABLE `missions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `internship_clienttype_xref`
+ALTER TABLE `internship_clienttype_xrefs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `internship_mission_xref`
+ALTER TABLE `internship_mission_xrefs`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour la table `companies`
@@ -403,6 +403,13 @@ ALTER TABLE `internships`
   ADD CONSTRAINT `internships_ibfk_2` FOREIGN KEY (`ownerStatus_id`) REFERENCES `ownership_statuses` (`id`),
   ADD CONSTRAINT `internships_sessions_fk` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`);
 
+ALTER TABLE `internship_clienttype_xrefs`
+  ADD CONSTRAINT `internClient_xref_fk` FOREIGN KEY (`internship_id`) REFERENCES `internships` (`id`),
+  ADD CONSTRAINT `client_xref_fk` FOREIGN KEY (`clienttype_id`) REFERENCES `clienttypes` (`id`);
+
+ALTER TABLE `internship_mission_xrefs`
+  ADD CONSTRAINT `internMission_xref_fk` FOREIGN KEY (`internship_id`) REFERENCES `internships` (`id`),
+  ADD CONSTRAINT `mission_xref_fk` FOREIGN KEY (`mission_id`) REFERENCES `missions` (`id`);
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -519,12 +526,12 @@ INSERT INTO `companies` (`name`, `adress`, `city`, `province`, `establishment_id
 INSERT INTO `internships` (`company_id`, `session_id`, `ownerStatus_id`, `region_id`, `name`, `task`, `precision_facility`, `precision_task`, `adress`, `city`, `province`, `postal_code`, `phone`, `fax`, `email`, `created`, `modified`) 
   VALUES ('1', '1', '1', '8', 'Dev web', 'écrire dans des fichier .php', 'what?', ':(', '123', 'Laval', 'Quebec', '1h1h1h', '1234567891', '789456123', 'yeah@gmail.com', '2018-09-29', '2018-09-29');
 
-INSERT INTO `internship_clienttype_xref` (`internship_id`, `clienttype_id`) VALUES 
+INSERT INTO `internship_clienttype_xrefs` (`internship_id`, `clienttype_id`) VALUES 
   ('1', '1'),
   ('1', '3'),
   ('1', '4');
 
-INSERT INTO `internship_mission_xref` (`internship_id`, `mission_id`) VALUES 
+INSERT INTO `internship_mission_xrefs` (`internship_id`, `mission_id`) VALUES 
   ('1', '1'),
   ('1', '2'),
   ('1', '3'),

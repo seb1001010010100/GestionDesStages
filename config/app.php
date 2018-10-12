@@ -209,6 +209,14 @@ return [
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
+          'info' => [
+
+          'host' => 'mail.jcvs.ca',
+          'port' => 465,
+          'username' => 'info@jcvs.ca',
+          'password' => '4HN;nP8Hwna2-5',
+          'className' => 'Smtp'
+        ],
     ],
 
     /**
@@ -222,8 +230,8 @@ return [
      */
     'Email' => [
         'default' => [
-            'transport' => 'default',
-            'from' => 'you@localhost',
+            'transport' => 'info',
+            'from' => 'info@jcvs.ca',
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],

@@ -134,6 +134,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `establishment_id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone` int(10) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

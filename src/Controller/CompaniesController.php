@@ -93,23 +93,23 @@ class CompaniesController extends AppController
         $user = $usersTable->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
-            
+
             //Change le numero de tel pour la separation par des points
-            $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone); 
+            $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone);
             $company->set('phone', $formatPhone);
 
             if ($this->Companies->save($company)) {
-                
+
                 $user->set('username',$company->email);
                 $user->set('password', $this->request->getData('password'));
                 $user->set('created', $company->created);
                 $user->set('modified', $company->modified);
                 $user->set('role', 'company');
                 if($usersTable->save($user)){
-                    
+
                     $this->Flash->success(__('The company has been saved.'));
                     return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
-                    
+
                 }
 
             }
@@ -133,6 +133,7 @@ class CompaniesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
+            $company->active = true;
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));
 

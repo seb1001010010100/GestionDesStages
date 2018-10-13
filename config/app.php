@@ -211,7 +211,7 @@ return [
         ],
           'info' => [
 
-          'host' => 'mail.jcvs.ca',
+          'host' => 'ssl://mail.jcvs.ca',
           'port' => 465,
           'username' => 'info@jcvs.ca',
           'password' => '4HN;nP8Hwna2-5',

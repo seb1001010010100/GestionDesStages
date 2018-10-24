@@ -33,7 +33,7 @@
             <td><?= $this->Number->format($company->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Establishment Id') ?></th>
+            <th scope="row"><?= __('Establishment') ?></th>
             <td><?= h($company->establishment->type) ?></td>
         </tr>
         <tr>

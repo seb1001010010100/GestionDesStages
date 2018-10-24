@@ -31,19 +31,25 @@ class CompaniesController extends AppController
     {
         parent::beforeFilter($event);
         $user = $this->Auth->user();
+        $auths = array();
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                // j'suis pas sure cest quoi qu'un étudianbt peut faire ici
-                //$this->Auth->allow(['index', 'view']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView', 'add']);
+                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit']);
                 break;
             case 'company':
-                $this->Auth->allow(['view', 'canView']);
+                if ($user['role_data']['active']) {
+                    $auths = array_merge($auths, ['view', 'canView', 'edit']);
+                } else {
+                    $auths = array_merge($auths, ['view', 'canView', 'edit']);
+                }
                 break;
             }
+        }
+        if ($auths) {
+            $this->Auth->allow($auths);
         }
     }
 
@@ -63,8 +69,6 @@ class CompaniesController extends AppController
                     'Establishments', 
                     'ClientTypes',
                     'Missions'
-                    // 'CompaniesClienttypes' => ['ClientTypes'], 
-                    // 'CompaniesMissions' => ['Missions']
                 ]
             ]);
 
@@ -74,8 +78,15 @@ class CompaniesController extends AppController
         }
     }
 
-    public function canView($id)
+    public function canView($id=null)
     {
+        if ($id == null or $this->request->params['action'] == 'canView') {
+            $this->Flash->error(__('You are should not mess with the URL!!!!.'));
+            $this->rediret(['controller' => 'Redirections', 'action' => 'index']);
+        }
+
+
+
         $user = $this->Auth->user();
         if ($user['role'] == "administrator") {
             return true;
@@ -104,7 +115,8 @@ class CompaniesController extends AppController
             //Change le numero de tel pour la separation par des points
             $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone);
             $company->set('phone', $formatPhone);
-
+            //debug($company);
+            //die();
             if ($this->Companies->save($company)) {
 
                 $user->set('username',$company->email);
@@ -123,7 +135,9 @@ class CompaniesController extends AppController
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
 		$establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
-        $this->set(compact('company', 'establishments'));
+        $clientTypes = $this->Companies->ClientTypes->find('list', ['limit' => 200]);
+        $missions = $this->Companies->Missions->find('list', ['limit' => 200]);
+        $this->set(compact('company', 'establishments', 'clientTypes', 'missions'));
     }
 
     /**
@@ -136,11 +150,19 @@ class CompaniesController extends AppController
     public function edit($id = null)
     {
         $company = $this->Companies->get($id, [
-            'contain' => []
+            'contain' => [
+                'Internships', 
+                'Establishments', 
+                'ClientTypes',
+                'Missions'
+            ],
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
             $company->active = true;
+            // debug($company);
+            // die();
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));
 
@@ -148,7 +170,12 @@ class CompaniesController extends AppController
             }
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
-        $this->set(compact('company'));
+
+        $establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
+        $clientTypes = $this->Companies->ClientTypes->find('list', ['limit' => 200]);
+        $missions = $this->Companies->Missions->find('list', ['limit' => 200]);
+
+        $this->set(compact('company', 'establishments', 'clientTypes', 'missions'));
     }
 
     /**

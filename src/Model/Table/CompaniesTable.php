@@ -128,24 +128,27 @@ class CompaniesTable extends Table
         //$rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['establishment_id'], 'Establishments'));
 
-        // Add a rule that is applied for create and update operations
+        // Add a rule that is applied for create operations
         // check if email is available
-        $rules->add(
-            function ($entity, $options) {
-                $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
-                if ($user) {
-                    return 'cette email n\'est pas disponible.';
-                } else {
-                    // le test a passé
-                    return true;
-                }
-            }, 'is_email_free',
-            [
-                'errorField' => 'email',
-                'message' => 'cette email n\'est pas disponible.'
-            ]
-        );
+        // https://book.cakephp.org/3.0/en/orm/validation.html#creating-a-rules-checker
+//        $rules->addCreate(
+//            function ($entity, $options) {
+//                debug($options);
+//                die();
+//                $usersTable = TableRegistry::get('Users');
+//                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
+//                if ($user) {
+//                    return 'cette email n\'est pas disponible.';
+//                } else {
+//                    // le test a passé
+//                    return true;
+//                }
+//            }, 'is_email_free',
+//            [
+//                'errorField' => 'email',
+//                'message' => 'cette email n\'est pas disponible.'
+//            ]
+//        );
 
         return $rules;
     }

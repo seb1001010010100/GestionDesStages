@@ -59,32 +59,32 @@ class InternshipsController extends AppController
     public function view($id = null)
     {
         $internship = $this->Internships->get($id, [
-            'contain' => ['Companies', 'Sessions', 'OwnershipStatuses', 'Regions', 'InternshipClienttypeXrefs', 'InternshipMissionXrefs']
+            'contain' => ['Companies', 'Sessions', 'OwnershipStatuses', 'Regions']
         ]);
 
         if ($this->canView($internship['company_id'])) {
-            $clientTypes_table = TableRegistry::get('clientTypes');
-            $missions_table = TableRegistry::get('missions');
+            // $clientTypes_table = TableRegistry::get('clientTypes');
+            // $missions_table = TableRegistry::get('missions');
 
-            $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
-            $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
+            // $clients_id = AppController::array_on_key($internship->internship_clienttype_xrefs, 'clienttype_id');
+            // $missions_id = AppController::array_on_key($internship->internship_mission_xrefs, 'mission_id');
             
-            $clients = array();
-            $missions = array();
-            if($clients_id){
-                $clients = $this->Internships->internshipclienttypexrefs->clienttypes
-                    ->find()
-                    ->where(['id IN' => $clients_id])
-                    ->toList();
-            }
-            if($missions_id){
-                $missions = $this->Internships->internshipmissionxrefs->missions
-                    ->find()
-                    ->where(['id IN' => $missions_id])
-                    ->toList();
-            }
-            $clients = AppController::array_on_key($clients, 'type');
-            $missions = AppController::array_on_key($missions, 'name');
+            // $clients = array();
+            // $missions = array();
+            // if($clients_id){
+            //     $clients = $this->Internships->internshipclienttypexrefs->clienttypes
+            //         ->find()
+            //         ->where(['id IN' => $clients_id])
+            //         ->toList();
+            // }
+            // if($missions_id){
+            //     $missions = $this->Internships->internshipmissionxrefs->missions
+            //         ->find()
+            //         ->where(['id IN' => $missions_id])
+            //         ->toList();
+            // }
+            // $clients = AppController::array_on_key($clients, 'type');
+            // $missions = AppController::array_on_key($missions, 'name');
             
             $this->set(compact('internship', 'clients', 'missions'));
 

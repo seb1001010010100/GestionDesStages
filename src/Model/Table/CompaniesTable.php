@@ -50,6 +50,18 @@ class CompaniesTable extends Table
         $this->hasMany('Internships', [
             'foreignKey' => 'company_id'
         ]);
+
+        $this->belongsToMany('ClientTypes', [
+            'foreignKey' => 'company_id',
+            'targetForeignKey' => 'clienttype_id',
+            'joinTable' => 'companies_clienttypes'
+        ]);
+
+        $this->belongsToMany('Missions', [
+            'foreignKey' => 'company_id',
+            'targetForeignKey' => 'mission_id',
+            'joinTable' => 'companies_missions'
+        ]);
     }
 
     /**

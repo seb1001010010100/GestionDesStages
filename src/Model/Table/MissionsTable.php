@@ -39,8 +39,10 @@ class MissionsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('InternshipMissionXrefs', [
-            'foreignKey' => 'mission_id'
+        $this->belongsToMany('Companies', [
+            'foreignKey' => 'mission_id',
+            'targetForeignKey' => 'company_id',
+            'joinTable' => 'companies_missions'
         ]);
     }
 

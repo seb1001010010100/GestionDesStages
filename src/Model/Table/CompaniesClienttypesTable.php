@@ -6,7 +6,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-class InternshipMissionXrefsTable extends Table
+class CompaniesClienttypesTable extends Table
 {
 
     /**
@@ -19,16 +19,15 @@ class InternshipMissionXrefsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('internship_mission_xrefs');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+        $this->setTable('companies_clienttypes');
+        $this->setPrimaryKey('company_id', 'clienttype_id');
 
-        $this->belongsTo('Internships', [
-            'foreignKey' => 'internship_id',
+        $this->belongsTo('Companies', [
+            'foreignKey' => 'company_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('missions', [
-            'foreignKey' => 'mission_id',
+        $this->belongsTo('ClientTypes', [
+            'foreignKey' => 'clienttype_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -42,12 +41,12 @@ class InternshipMissionXrefsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('internship_id')
-            ->notEmpty('internship_id');
+            ->integer('company_id')
+            ->notEmpty('company_id');
 
         $validator
-            ->integer('mission_id')
-            ->notEmpty('mission_id');
+            ->integer('clienttype_id')
+            ->notEmpty('clienttype_id');
 
         return $validator;
     }

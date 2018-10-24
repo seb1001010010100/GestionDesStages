@@ -39,8 +39,10 @@ class ClientTypesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('InternshipClienttypeXrefs', [
-            'foreignKey' => 'clienttype_id'
+        $this->belongsToMany('Companies', [
+            'foreignKey' => 'clienttype_id',
+            'targetForeignKey' => 'company_id',
+            'joinTable' => 'companies_clienttypes'
         ]);
     }
 

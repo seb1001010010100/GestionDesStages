@@ -5,6 +5,7 @@
  */
 ?>
 <div class="companies view large-9 medium-8 columns content">
+    <!-- <?php debug($company); ?> -->
     <h3><?= h($company->name) ?></h3>
     <table class="vertical-table">
         <tr>
@@ -34,6 +35,18 @@
         <tr>
             <th scope="row"><?= __('Establishment Id') ?></th>
             <td><?= h($company->establishment->type) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('ClientTypes') ?></th>
+            <td><?php 
+                foreach ($company->client_types as $ct) {echo h($ct->type).'<br>';} 
+            ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Missions') ?></th>
+            <td><?php 
+                foreach ($company->missions as $mission) {echo h($mission->name).'<br>';} 
+            ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Phone') ?></th>

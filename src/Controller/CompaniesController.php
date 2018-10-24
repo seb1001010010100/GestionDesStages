@@ -58,7 +58,14 @@ class CompaniesController extends AppController
     {
         if ($this->canView($id)) {
             $company = $this->Companies->get($id, [
-                'contain' => ['Internships', 'Establishments']
+                'contain' => [
+                    'Internships', 
+                    'Establishments', 
+                    'ClientTypes',
+                    'Missions'
+                    // 'CompaniesClienttypes' => ['ClientTypes'], 
+                    // 'CompaniesMissions' => ['Missions']
+                ]
             ]);
 
             $this->set('company', $company);

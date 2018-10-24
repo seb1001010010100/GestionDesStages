@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property int $internship_id
  * @property int $clienttype_id
  */
-class InternshipClienttypeXref extends Entity
+class CompaniesClienttypes extends Entity
 {
 
     /**
@@ -23,9 +23,9 @@ class InternshipClienttypeXref extends Entity
      * @var array
      */
     protected $_accessible = [
-        'internship_id' => true,
+        'company_id' => true,
         'clienttype_id' => true,
-        'internships' => true,
-        'clienttypes' => true
+        'companie' => true,
+        'clienttype' => true
     ];
 }

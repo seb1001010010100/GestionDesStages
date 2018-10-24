@@ -41,6 +41,8 @@ class Company extends Entity
         'phone' => true,
         'created' => true,
         'modified' => true,
-        'internships' => true
+        'internships' => true,
+        'client_types' => true,
+        'missions' => true
     ];
 }

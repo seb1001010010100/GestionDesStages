@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `client_types` (
 --
 
 CREATE TABLE IF NOT EXISTS `companies_clienttypes` (
-  -- `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `clienttype_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `companies_clienttypes` (
 --
 
 CREATE TABLE IF NOT EXISTS `companies_missions` (
-  -- `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `mission_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -347,14 +347,14 @@ ALTER TABLE `missions`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `companies_clienttypes`
-  ADD PRIMARY KEY (`company_id`, `clienttype_id`);
-  -- ADD KEY (`company_id`),
-  -- ADD KEY (`clienttype_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY (`company_id`),
+  ADD KEY (`clienttype_id`);
 
 ALTER TABLE `companies_missions`
-  ADD PRIMARY KEY (`company_id`, `mission_id`);
-  -- ADD KEY (`company_id`),
-  -- ADD KEY (`mission_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY (`company_id`),
+  ADD KEY (`mission_id`);
 --
 -- AUTO_INCREMENT pour la table `administrators`
 --
@@ -388,11 +388,11 @@ ALTER TABLE `students`
 ALTER TABLE `missions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
--- ALTER TABLE `companies_clienttypes`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `companies_clienttypes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
--- ALTER TABLE `companies_missions`
--- MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `companies_missions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour la table `companies`
 --

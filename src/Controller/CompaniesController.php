@@ -115,8 +115,9 @@ class CompaniesController extends AppController
             //Change le numero de tel pour la separation par des points
             $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone);
             $company->set('phone', $formatPhone);
-            //debug($company);
-            //die();
+            // debug($this->request->getData());
+            // debug($company);
+            // die();
             if ($this->Companies->save($company)) {
 
                 $user->set('username',$company->email);
@@ -151,6 +152,7 @@ class CompaniesController extends AppController
     {
         $company = $this->Companies->get($id, [
             'contain' => [
+                'User',
                 'Internships', 
                 'Establishments', 
                 'ClientTypes',
@@ -159,8 +161,15 @@ class CompaniesController extends AppController
         ]);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            // we should check the data the server receives from the user in order to prevent him changing values he should not
+            // ex. he sends an item named user with a certain value, this would allow him to change the user associated with 
+            // this company.
+
             $company = $this->Companies->patchEntity($company, $this->request->getData());
             $company->active = true;
+            // $company->client_types = $this->request->getData('client_types._ids');
+            // debug($this->request->getData());
             // debug($company);
             // die();
             if ($this->Companies->save($company)) {

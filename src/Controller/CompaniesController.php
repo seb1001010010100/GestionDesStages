@@ -107,8 +107,7 @@ class CompaniesController extends AppController
     {
         $company = $this->Companies->newEntity();
         //use table registry to create a new user entity
-        $usersTable = TableRegistry::get('Users');
-        $user = $usersTable->newEntity();
+        $user = $this->Companies->Users->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
 
@@ -125,7 +124,7 @@ class CompaniesController extends AppController
                 $user->set('created', $company->created);
                 $user->set('modified', $company->modified);
                 $user->set('role', 'company');
-                if($usersTable->save($user)){
+                if($this->Companies->Users->save($user)){
 
                     $this->Flash->success(__('The company has been saved.'));
                     return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
@@ -152,7 +151,7 @@ class CompaniesController extends AppController
     {
         $company = $this->Companies->get($id, [
             'contain' => [
-                'User',
+                'Users',
                 'Internships', 
                 'Establishments', 
                 'ClientTypes',
@@ -163,17 +162,24 @@ class CompaniesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             // we should check the data the server receives from the user in order to prevent him changing values he should not
-            // ex. he sends an item named user with a certain value, this would allow him to change the user associated with 
-            // this company.
+            // ex. he sends an item named user with a certain value, this would allow him to change the user associated with this company.
 
             $company = $this->Companies->patchEntity($company, $this->request->getData());
             $company->active = true;
-            // $company->client_types = $this->request->getData('client_types._ids');
-            // debug($this->request->getData());
-            // debug($company);
-            // die();
+
             if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
+
+                $company->user->set('username',$company->email);
+
+                // TODO: on ne permet pas actuellement de changer de mot de passe
+                // $company->user->set('password', $this->request->getData('password'));
+
+                if($this->Companies->Users->save($company->user)){
+
+                    $this->Flash->success(__('The company has been saved.'));
+                    return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+
+                }
 
                 return $this->redirect(['action' => 'index']);
             }

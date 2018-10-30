@@ -17450,3 +17450,257 @@ Stack Trace:
 
 2018-10-29 14:50:25 Warning: The connection is going to be closed but there is an active transaction.
 2018-10-29 14:50:42 Warning: The connection is going to be closed but there is an active transaction.
+2018-10-30 06:58:25 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'application.companies_clienttypes' doesn't exist
+Request URL: /companies/view/1
+Referer URL: http://localhost/GestionDesStages/companies
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'companies_clien...', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('companies_clien...', Array)
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(548): Cake\Database\Schema\CachedCollection->describe('companies_clien...')
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(271): Cake\ORM\Table->getSchema()
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\BelongsToMany.php(1144): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\BelongsToMany.php(581): Cake\ORM\Association\BelongsToMany->_appendJunctionJoin(Object(Cake\ORM\Query), Array)
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\Loader\SelectLoader.php(167): Cake\ORM\Association\BelongsToMany->Cake\ORM\Association\{closure}()
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\Loader\SelectWithPivotLoader.php(90): Cake\ORM\Association\Loader\SelectLoader->_buildQuery(Array)
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\Loader\SelectLoader.php(124): Cake\ORM\Association\Loader\SelectWithPivotLoader->_buildQuery(Array)
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association\BelongsToMany.php(585): Cake\ORM\Association\Loader\SelectLoader->buildEagerLoader(Array)
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\EagerLoader.php(702): Cake\ORM\Association\BelongsToMany->eagerLoader(Array)
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1127): Cake\ORM\EagerLoader->loadExternal(Object(Cake\ORM\Query), Object(Cake\Database\Statement\CallbackStatement))
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(309): Cake\ORM\Query->_execute()
+#13 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Query.php(1074): Cake\ORM\Query->_all()
+#14 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(471): Cake\ORM\Query->all()
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(482): Cake\ORM\Query->first()
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1613): Cake\ORM\Query->firstOrFail()
+#17 C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php(73): Cake\ORM\Table->get('1', Array)
+#18 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\CompaniesController->view('1')
+#19 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#20 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\CompaniesController))
+#21 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#22 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#23 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#24 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#25 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#26 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#27 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#28 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#29 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#30 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#31 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#32 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#33 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#34 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#35 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#36 {main}
+
+
+2018-10-30 07:18:06 Warning: The connection is going to be closed but there is an active transaction.
+2018-10-30 07:18:49 Error: Fatal Error (1): Call to a member function set() on null in [C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php, line 173]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:18:49 Warning: Warning (512): Unable to emit headers. Headers sent in file=C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php line=853 in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 48]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 48
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:18:49 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php:853) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 149]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE\src\Http\ResponseEmitter.php, line 149
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 54
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:18:49 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php:853) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 181]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE\src\Http\ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 55
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:18:49 Error: [Cake\Error\FatalErrorException] Call to a member function set() on null in C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php on line 173
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp64\\www\\G...', 173)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2018-10-30 07:19:38 Error: Fatal Error (1): Call to a member function newEntity() on null in [C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php, line 173]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 229
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:19:38 Warning: Warning (512): Unable to emit headers. Headers sent in file=C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php line=853 in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 48]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 48
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:19:38 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php:853) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 149]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitStatusLine() - CORE\src\Http\ResponseEmitter.php, line 149
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 54
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:19:38 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Debugger.php:853) in [C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 181]
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+Cake\Core\BasePlugin::{closure}() - ROOT\vendor\cakephp\debug_kit\config\bootstrap.php, line 41
+header - [internal], line ??
+Cake\Http\ResponseEmitter::emitHeaders() - CORE\src\Http\ResponseEmitter.php, line 181
+Cake\Http\ResponseEmitter::emit() - CORE\src\Http\ResponseEmitter.php, line 55
+Cake\Error\ErrorHandler::_sendResponse() - CORE\src\Error\ErrorHandler.php, line 198
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 139
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 193
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 231
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 110
+[main] - [internal], line ??
+
+
+
+2018-10-30 07:19:38 Error: [Cake\Error\FatalErrorException] Call to a member function newEntity() on null in C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php on line 173
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(110): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', 'C:\\wamp64\\www\\G...', 173)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2018-10-30 07:19:55 Error: [RuntimeException] Table "App\Model\Table\CompaniesTable" is not associated with "Users"
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php(173): Cake\ORM\Table->__get('Users')
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\CompaniesController->edit('1')
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\CompaniesController))
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#13 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#14 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#19 {main}
+
+
+2018-10-30 07:22:04 Error: [PDOException] SQLSTATE[HY000]: General error: 1364 Field 'created' doesn't have a default value
+Request URL: /companies/edit/1
+Referer URL: http://localhost/GestionDesStages/companies/edit/1
+Stack Trace:
+#0 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(39): PDOStatement->execute(NULL)
+#1 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(195): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(334): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Core\Retry\CommandRetry.php(68): Cake\Database\Connection->Cake\Database\{closure}()
+#5 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(337): Cake\Core\Retry\CommandRetry->run(Object(Closure))
+#6 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Query.php(219): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#7 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(2107): Cake\Database\Query->execute()
+#8 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(2001): Cake\ORM\Table->_insert(Object(App\Model\Entity\User), Array)
+#9 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1914): Cake\ORM\Table->_processSave(Object(App\Model\Entity\User), Object(ArrayObject))
+#10 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1627): Cake\ORM\Table->Cake\ORM\{closure}()
+#11 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Database\Connection.php(726): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#12 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1628): Cake\Database\Connection->transactional(Object(Closure))
+#13 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Table.php(1915): Cake\ORM\Table->_executeTransaction(Object(Closure), true)
+#14 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\ORM\Association.php(1416): Cake\ORM\Table->save(Object(App\Model\Entity\User))
+#15 C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php(178): Cake\ORM\Association->__call('save', Array)
+#16 C:\wamp64\www\GestionDesStages\src\Controller\CompaniesController.php(178): Cake\ORM\Association\HasOne->save(Object(App\Model\Entity\User))
+#17 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Controller\Controller.php(596): App\Controller\CompaniesController->edit('1')
+#18 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(120): Cake\Controller\Controller->invokeAction()
+#19 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(94): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\CompaniesController))
+#20 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\BaseApplication.php(235): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#21 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#22 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php(107): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#23 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\Middleware\CsrfProtectionMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#24 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(156): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#25 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#26 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#27 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#28 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(98): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#29 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#30 C:\wamp64\www\GestionDesStages\vendor\cakephp\debug_kit\src\Middleware\DebugKitMiddleware.php(53): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#31 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#32 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#33 C:\wamp64\www\GestionDesStages\vendor\cakephp\cakephp\src\Http\Server.php(98): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#34 C:\wamp64\www\GestionDesStages\webroot\index.php(40): Cake\Http\Server->run()
+#35 {main}
+
+

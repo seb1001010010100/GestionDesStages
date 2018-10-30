@@ -63,8 +63,8 @@ class CompaniesTable extends Table
             'joinTable' => 'companies_clienttypes'
         ]);
 
-        $this->hasOne('User', [
-                'className' => 'Users',
+        $this->hasOne('Users', [
+                //'className' => 'Users',
                 'foreignKey' => 'username',
                 'bindingKey' => 'email'
             ])
@@ -134,13 +134,10 @@ class CompaniesTable extends Table
 
         $rules->addCreate(
             function ($entity, $options) {
-                $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
-                if ($user) {
-                    return 'cette email n\'est pas disponible.';
-                } else {
-                    // le test a passé
+                if ($this->is_email_free($entity['email'])) {
                     return true;
+                } else {
+                    return 'cette email n\'est pas disponible.';
                 }
             }, 'is_email_free',
             [
@@ -152,14 +149,32 @@ class CompaniesTable extends Table
         $rules->addUpdate(
             function ($entity, $options)
             {
-                $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->get($entity->user->id);
-                debug($user);
-                debug($entity);
-                die();
-            }
+                if ($entity->user['username'] == $entity['email'] OR $this->is_email_free($entity['email'])) {
+                    return true;
+                } else {
+                    return 'cette email n\'est pas disponible.';
+                }
+                
+            }, 'is_email_free_OR_is_email_mine',
+            [
+                'errorField' => 'email',
+                'message' => 'cette email n\'est pas disponible.'
+            ]
         );
 
         return $rules;
+    }
+
+    private function is_email_free($email=null)
+    {
+
+        $usersTable = TableRegistry::get('Users');
+        $user = $usersTable->find()->where(['username' => $email])->first();
+        if ($user) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 }

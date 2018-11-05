@@ -31,19 +31,25 @@ class CompaniesController extends AppController
     {
         parent::beforeFilter($event);
         $user = $this->Auth->user();
+        $auths = array();
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                // j'suis pas sure cest quoi qu'un étudianbt peut faire ici
-                //$this->Auth->allow(['index', 'view']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView', 'add']);
+                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit']);
                 break;
             case 'company':
-                $this->Auth->allow(['view', 'canView']);
+                if ($user['role_data']['active']) {
+                    $auths = array_merge($auths, ['view', 'canView', 'edit']);
+                } else {
+                    $auths = array_merge($auths, ['view', 'canView', 'edit']);
+                }
                 break;
             }
+        }
+        if ($auths) {
+            $this->Auth->allow($auths);
         }
     }
 
@@ -63,8 +69,6 @@ class CompaniesController extends AppController
                     'Establishments', 
                     'ClientTypes',
                     'Missions'
-                    // 'CompaniesClienttypes' => ['ClientTypes'], 
-                    // 'CompaniesMissions' => ['Missions']
                 ]
             ]);
 
@@ -74,8 +78,15 @@ class CompaniesController extends AppController
         }
     }
 
-    public function canView($id)
+    public function canView($id=null)
     {
+        if ($id == null or $this->request->params['action'] == 'canView') {
+            $this->Flash->error(__('You are should not mess with the URL!!!!.'));
+            $this->rediret(['controller' => 'Redirections', 'action' => 'index']);
+        }
+
+
+
         $user = $this->Auth->user();
         if ($user['role'] == "administrator") {
             return true;
@@ -96,15 +107,16 @@ class CompaniesController extends AppController
     {
         $company = $this->Companies->newEntity();
         //use table registry to create a new user entity
-        $usersTable = TableRegistry::get('Users');
-        $user = $usersTable->newEntity();
+        $user = $this->Companies->Users->newEntity();
         if ($this->request->is('post')) {
             $company = $this->Companies->patchEntity($company, $this->request->getData());
 
             //Change le numero de tel pour la separation par des points
             $formatPhone = preg_replace('/^(\d{3})(\d{3})(\d{4})$/i', '$1.$2.$3.', (string)$company->phone);
             $company->set('phone', $formatPhone);
-
+            // debug($this->request->getData());
+            // debug($company);
+            // die();
             if ($this->Companies->save($company)) {
 
                 $user->set('username',$company->email);
@@ -112,7 +124,7 @@ class CompaniesController extends AppController
                 $user->set('created', $company->created);
                 $user->set('modified', $company->modified);
                 $user->set('role', 'company');
-                if($usersTable->save($user)){
+                if($this->Companies->Users->save($user)){
 
                     $this->Flash->success(__('The company has been saved.'));
                     return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
@@ -123,7 +135,9 @@ class CompaniesController extends AppController
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
 		$establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
-        $this->set(compact('company', 'establishments'));
+        $clientTypes = $this->Companies->ClientTypes->find('list', ['limit' => 200]);
+        $missions = $this->Companies->Missions->find('list', ['limit' => 200]);
+        $this->set(compact('company', 'establishments', 'clientTypes', 'missions'));
     }
 
     /**
@@ -136,19 +150,47 @@ class CompaniesController extends AppController
     public function edit($id = null)
     {
         $company = $this->Companies->get($id, [
-            'contain' => []
+            'contain' => [
+                'Users',
+                'Internships', 
+                'Establishments', 
+                'ClientTypes',
+                'Missions'
+            ],
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            // we should check the data the server receives from the user in order to prevent him changing values he should not
+            // ex. he sends an item named user with a certain value, this would allow him to change the user associated with this company.
+
             $company = $this->Companies->patchEntity($company, $this->request->getData());
             $company->active = true;
+
             if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
+
+                $company->user->set('username',$company->email);
+
+                // TODO: on ne permet pas actuellement de changer de mot de passe
+                // $company->user->set('password', $this->request->getData('password'));
+
+                if($this->Companies->Users->save($company->user)){
+
+                    $this->Flash->success(__('The company has been saved.'));
+                    return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
+
+                }
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The company could not be saved. Please, try again.'));
         }
-        $this->set(compact('company'));
+
+        $establishments = $this->Companies->Establishments->find('list', ['limit' => 200]);
+        $clientTypes = $this->Companies->ClientTypes->find('list', ['limit' => 200]);
+        $missions = $this->Companies->Missions->find('list', ['limit' => 200]);
+
+        $this->set(compact('company', 'establishments', 'clientTypes', 'missions'));
     }
 
     /**

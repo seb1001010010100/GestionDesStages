@@ -14,10 +14,14 @@ use Cake\ORM\Entity;
  * @property int $establishment_id
  * @property string $email
  * @property int $phone
+ * @property bool $active
  * @property \Cake\I18n\FrozenDate $created
  * @property \Cake\I18n\FrozenDate $modified
  *
+ * @property \App\Model\Entity\Establishment $establishment
+ * @property \App\Model\Entity\CompaniesClienttype[] $companies_clienttypes
  * @property \App\Model\Entity\Internship[] $internships
+ * @property \App\Model\Entity\Mission[] $missions
  */
 class Company extends Entity
 {
@@ -39,10 +43,13 @@ class Company extends Entity
         'establishment_id' => true,
         'email' => true,
         'phone' => true,
+        'active' => true,
         'created' => true,
         'modified' => true,
+        'establishment' => true,
         'internships' => true,
         'client_types' => true,
-        'missions' => true
+        'missions' => true,
+        'user' => true
     ];
 }

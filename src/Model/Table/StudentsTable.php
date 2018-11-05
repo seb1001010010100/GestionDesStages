@@ -110,7 +110,7 @@ class StudentsTable extends Table
     {
         //$rules->add($rules->isUnique(['email']));
 
-        $rules->add(
+        $rules->addCreate(
             function ($entity, $options) {
                 $usersTable = TableRegistry::get('Users');
                 $user = $usersTable->find()->where(['username' => $entity['email']])->first();
@@ -125,6 +125,17 @@ class StudentsTable extends Table
                 'errorField' => 'email',
                 'message' => 'cette email n\'est pas disponible.'
             ]
+        );
+
+        $rule->addUpdate(
+            function ($entity, $options)
+            {
+                debug($entity);
+                debug($options);
+                die();
+                $usersTable = TableRegistry::get('Users');
+                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
+            }
         );
 
         return $rules;

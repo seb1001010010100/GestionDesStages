@@ -17,6 +17,9 @@
             echo $this->Form->control('email');
             echo $this->Form->control('password');
             echo $this->Form->control('phone');
+
+            echo $this->Form->control('client_types._ids', array('type' => 'select', 'multiple' => 'checkbox')); // , 'options' => $clientTypes
+            echo $this->Form->control('missions._ids', array('type' => 'select', 'multiple' => 'checkbox')); // , 'options' => $missions
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

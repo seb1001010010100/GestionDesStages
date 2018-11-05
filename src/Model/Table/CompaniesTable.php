@@ -10,8 +10,10 @@ use Cake\ORM\TableRegistry;
 /**
  * Companies Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Establishments
+ * @property \App\Model\Table\EstablishmentsTable|\Cake\ORM\Association\BelongsTo $Establishments
+ * @property \App\Model\Table\CompaniesClienttypesTable|\Cake\ORM\Association\HasMany $CompaniesClienttypes
  * @property \App\Model\Table\InternshipsTable|\Cake\ORM\Association\HasMany $Internships
+ * @property \App\Model\Table\MissionsTable|\Cake\ORM\Association\BelongsToMany $Missions
  *
  * @method \App\Model\Entity\Company get($primaryKey, $options = [])
  * @method \App\Model\Entity\Company newEntity($data = null, array $options = [])
@@ -50,18 +52,23 @@ class CompaniesTable extends Table
         $this->hasMany('Internships', [
             'foreignKey' => 'company_id'
         ]);
-
+        $this->belongsToMany('Missions', [
+            'foreignKey' => 'company_id',
+            'targetForeignKey' => 'mission_id',
+            'joinTable' => 'companies_missions'
+        ]);
         $this->belongsToMany('ClientTypes', [
             'foreignKey' => 'company_id',
             'targetForeignKey' => 'clienttype_id',
             'joinTable' => 'companies_clienttypes'
         ]);
 
-        $this->belongsToMany('Missions', [
-            'foreignKey' => 'company_id',
-            'targetForeignKey' => 'mission_id',
-            'joinTable' => 'companies_missions'
-        ]);
+        $this->hasOne('Users', [
+                //'className' => 'Users',
+                'foreignKey' => 'username',
+                'bindingKey' => 'email'
+            ])
+            ->setProperty('user');
     }
 
     /**
@@ -104,14 +111,12 @@ class CompaniesTable extends Table
             ->notEmpty('email');
 
         $validator
-            ->scalar('password')
-            ->maxLength('password', 16)
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        $validator
             ->integer('phone')
             ->allowEmpty('phone');
+
+        $validator
+            ->boolean('active')
+            ->allowEmpty('active', 'create');
 
         return $validator;
     }
@@ -125,20 +130,14 @@ class CompaniesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        //$rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['establishment_id'], 'Establishments'));
 
-        // Add a rule that is applied for create and update operations
-        // check if email is available
-        $rules->add(
+        $rules->addCreate(
             function ($entity, $options) {
-                $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
-                if ($user) {
-                    return 'cette email n\'est pas disponible.';
-                } else {
-                    // le test a passé
+                if ($this->is_email_free($entity['email'])) {
                     return true;
+                } else {
+                    return 'cette email n\'est pas disponible.';
                 }
             }, 'is_email_free',
             [
@@ -147,6 +146,35 @@ class CompaniesTable extends Table
             ]
         );
 
+        $rules->addUpdate(
+            function ($entity, $options)
+            {
+                if ($entity->user['username'] == $entity['email'] OR $this->is_email_free($entity['email'])) {
+                    return true;
+                } else {
+                    return 'cette email n\'est pas disponible.';
+                }
+                
+            }, 'is_email_free_OR_is_email_mine',
+            [
+                'errorField' => 'email',
+                'message' => 'cette email n\'est pas disponible.'
+            ]
+        );
+
         return $rules;
+    }
+
+    private function is_email_free($email=null)
+    {
+
+        $usersTable = TableRegistry::get('Users');
+        $user = $usersTable->find()->where(['username' => $email])->first();
+        if ($user) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 }

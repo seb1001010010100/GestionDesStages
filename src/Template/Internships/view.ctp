@@ -6,6 +6,15 @@
 ?>
 <div class="internships view large-9 medium-8 columns content">
     <h3><?= h($internship->name) ?></h3>
+    
+    <?php
+        $user = $this->Session->read('Auth')['User'];
+        if($user['role'] === 'student'){
+            // TODO Need to be translate
+            echo $this->Html->link('Apply to the internship', ['controller' => 'Internships', 'action' => 'apply', $internship->id], array('class' => 'button'));
+        }
+    ?>
+    
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Company') ?></th>
@@ -62,23 +71,6 @@
         <tr>
             <th scope="row"><?= __('Region') ?></th>
             <td><?= h($internship->region->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('ClientTypes') ?></th>
-            <td><?php 
-                if($clients) {
-                    foreach ($clients as $client) {echo h($client).'<br>';} 
-                }
-            ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('missions') ?></th>
-            <td><?php 
-
-                if ($missions) {
-                    foreach ($missions as $mission) {echo h($mission).'<br>';} 
-                }
-                ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Phone') ?></th>

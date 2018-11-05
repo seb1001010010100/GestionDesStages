@@ -37,7 +37,7 @@ class InternshipsController extends AppController
         if ($user) {
            switch ($user['role']) {
             case 'student':
-                $this->Auth->allow(['index', 'view', 'canView']);
+                $this->Auth->allow(['index', 'view', 'canView', 'apply']);
                 break;
             case 'administrator':
                 $this->Auth->allow(['index', 'view', 'canView',  'edit', 'add', 'delete']);
@@ -119,8 +119,6 @@ class InternshipsController extends AppController
         $internship = $this->Internships->newEntity();
         if ($this->request->is('post')) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
-            $clientTypes_id = $this->request->getData()['clientType_id'];
-            $missions_id = $this->request->getData()['missions_id'];
             if ($this->Internships->save($internship)) {
                 
                 $this->Flash->success(__('The internship has been saved.'));
@@ -133,8 +131,6 @@ class InternshipsController extends AppController
         $sessions = $this->Internships->Sessions->find('list', ['limit' => 200]);
         $ownershipStatuses = $this->Internships->OwnershipStatuses->find('list', ['limit' => 200]);
         $regions = $this->Internships->Regions->find('list', ['limit' => 200]);
-        $clientTypes = $this->Internships->internshipclienttypexrefs->clienttypes->find('list', ['limit' => 200]);
-		$missions = $this->Internships->internshipmissionxrefs->Missions->find('list', ['limit' => 200]);
         $this->set(compact('internship', 'companies', 'sessions', 'ownershipStatuses', 'regions'));
     }
 
@@ -212,12 +208,20 @@ class InternshipsController extends AppController
         $internship = $this->Internships
             ->find()
             ->contain(['Companies'])
-            ->where(['Internships.id' => $internshipId] ).first();
-        $email = new Email('default');
-    
-        $email->to($internship->company->email)
-              ->subject('A new student applied to one of your stage!')
-              ->send($user['role_date']['first_name'] + ' ' + $user['role_date']['last_name'] 
-                      + ' as applied to your intership named ' + $internship['name'] + '\nPlease do not reply to this message');
+            ->where(['Internships.id' => $internshipId] )->first();
+        $email = new Email();
+;
+        
+        
+        
+        $email
+                ->emailFormat('html')
+                ->setTo($internship->company->email)
+                ->setSubject('A new student applied to one of your stage!')
+                ->send($user['role_data']['first_name'].' '.$user['role_data']['last_name'] 
+                .' as applied to your intership named '.$internship['name'].'<br>Please do not reply to this message');
+        
+        $this->Flash->success(__('The email has been send succesfully.'));
+        return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
     }
 }

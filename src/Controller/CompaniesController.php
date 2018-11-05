@@ -82,11 +82,9 @@ class CompaniesController extends AppController
     {
         if ($id == null or $this->request->params['action'] == 'canView') {
             $this->Flash->error(__('You are should not mess with the URL!!!!.'));
-            $this->rediret(['controller' => 'Redirections', 'action' => 'index']);
+            $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
         }
-
-
-
+        
         $user = $this->Auth->user();
         if ($user['role'] == "administrator") {
             return true;

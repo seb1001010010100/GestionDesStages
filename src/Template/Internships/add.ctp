@@ -21,11 +21,11 @@
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
             echo $this->Form->control('region_id', ['options' => $regions]);
 			
-			echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
+			/*echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
 				=> 'checkbox', 'options' => $clientTypes));
 			
 			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $missions));
+				=> 'checkbox', 'options' => $missions));*/
 
             echo $this->Form->control('name');
 			

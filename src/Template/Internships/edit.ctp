@@ -14,12 +14,6 @@
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
             echo $this->Form->control('region_id', ['options' => $regions, 'default' => $internship->region->name]);
             
-			echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $clientTypes, 'default' => $prev_clientTypes));
-			
-			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $missions, 'default' => $prev_missions));
-
             echo $this->Form->control('name');
 			
             echo $this->Form->control('task', ['type' => 'textarea', 'escape' => false]);

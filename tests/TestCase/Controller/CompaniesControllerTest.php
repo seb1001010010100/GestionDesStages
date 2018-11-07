@@ -27,7 +27,18 @@ class CompaniesControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'administrator',
+                ]
+            ]
+        ]);
+        $this->get('/companies');
+
+        $this->assertResponseOk();
     }
 
     /**
@@ -35,9 +46,80 @@ class CompaniesControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testView()
+    public function testViewUnauthenticatedFails()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+
+        $this->get('/companies/view/1');
+
+        $this->assertRedirectContains('login');
+
+    }
+
+    public function testViewAsMe()
+    {
+
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'company',
+                    'role_data' => [
+                        'id' => 1,
+                        'active' => 1
+                    ],
+                ]
+            ]
+        ]);
+        $this->get('/companies/view/1');
+
+        $this->assertResponseOk();
+    }
+
+    public function testViewAsOther()
+    {
+
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'company',
+                    'role_data' => [
+                        'id' => 1,
+                        'active' => 1
+                    ],
+                ]
+            ]
+        ]);
+        $this->get('/companies/view/2');
+
+        $controller = $this->request['controller'];
+        $action = $this->request['action'];
+        $params = $this->request['pass'];
+
+        $this->assertEquals('Companies', $controller);
+        $this->assertEquals('view', $action);
+        $this->assertEquals(1, $params[0]);
+
+        $this->assertRedirect(['controller' => 'companies', 'action' => 'view', 1]);
+    }
+
+    public function testViewAsAdmin()
+    {
+        
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'administrator',
+                ]
+            ]
+        ]);
+        $this->get('/companies/view/1');
+
+        $this->assertRedirect(['controller' => 'companies', 'action' => 'view', 1]);
     }
 
     /**

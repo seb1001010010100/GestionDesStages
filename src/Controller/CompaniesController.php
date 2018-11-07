@@ -163,7 +163,15 @@ class CompaniesController extends AppController
             // ex. he sends an item named user with a certain value, this would allow him to change the user associated with this company.
 
             $company = $this->Companies->patchEntity($company, $this->request->getData());
-            $company->active = true;
+
+            $current_user_is_company = $this->Auth->user()['role'] == 'company';
+
+            if ($current_user_is_company) {
+                
+                $company->active = true;
+
+            }
+
 
             if ($this->Companies->save($company)) {
 
@@ -173,6 +181,12 @@ class CompaniesController extends AppController
                 // $company->user->set('password', $this->request->getData('password'));
 
                 if($this->Companies->Users->save($company->user)){
+
+                    if ($current_user_is_company) {
+                        
+                        $this->Auth->user()['role_data']['active'] = 1;
+
+                    }   
 
                     $this->Flash->success(__('The company has been saved.'));
                     return $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
@@ -210,4 +224,5 @@ class CompaniesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }

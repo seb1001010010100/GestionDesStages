@@ -210,18 +210,15 @@ class InternshipsController extends AppController
             ->contain(['Companies'])
             ->where(['Internships.id' => $internshipId] )->first();
         $email = new Email();
-;
-        
-        
-        
+   
         $email
                 ->emailFormat('html')
                 ->setTo($internship->company->email)
-                ->setSubject('A new student applied to one of your stage!')
+                ->setSubject('A new student applied to one of your internship!')
                 ->send($user['role_data']['first_name'].' '.$user['role_data']['last_name'] 
                 .' as applied to your intership named '.$internship['name'].'<br>Please do not reply to this message');
         
-        $this->Flash->success(__('The email has been send succesfully.'));
+        $this->Flash->success(__('The email has been sent succesfully.'));
         return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
     }
 }

@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Mailer\Email;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -39,6 +40,11 @@ class StudentsController extends AppController
             case 'administrator':
                 $this->Auth->allow(['index', 'view', 'canView']);
                 break;
+            case 'company':
+                if($user['role_data']['active'] == 1) {
+                    $this->Auth->allow(['index', 'view', 'canView', 'notify']);
+                }
+                break;
             }
         } else {
             $this->Auth->allow(['add']);
@@ -69,7 +75,7 @@ class StudentsController extends AppController
     public function canView($id)
     {
         $user = $this->Auth->user();
-        if ($user['role'] == "administrator") {
+        if (in_array($user['role'], ["administrator", "company"])) {
             return true;
         } else if ($user['role'] == "student") {
             if ($user['role_data']['id'] == $id) {
@@ -171,6 +177,36 @@ class StudentsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function notify($studentId = null)
+    {
+        $user = $this->Auth->user();
+        $student = $this->Students
+            ->find()
+            ->where(['Students.id' => $studentId] )->first();
+
+
+        $subject = __('Un employeur voudrait vous rencontrer!');
+
+        $webroot = $this->request->webroot;
+
+        $href = __('localhost{0}companies/view/{1}', $webroot, $user['role_data']['id']);
+
+        $link = __('<a href="{0}">{1}</a>', $href, $user['role_data']['name']);
+
+        $msg = __('L\'entreprise {0} s\'interesse à vous et voudrait céduler une rencontre.<br>Envoyer leur une liste de temps de disponibilité pour faire le suivis.<br>Address email : {1}', $user['role_data']['name'], $user['username']);
+
+        $email = new Email();
+   
+        $email
+                ->emailFormat('html')
+                ->setTo($student->email)
+                ->setSubject($subject)
+                ->send($msg);
+        
+        $this->Flash->success(__('The email has been sent succesfully.'));
+        return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
     }
 
 }

@@ -68,7 +68,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     echo $this->element('sidebar/administrator');
                     break;
                 case 'company':
-                    echo $this->element('sidebar/company');
+
+                    if ($this->Session->read('Auth.User.role_data.active')) {
+                        
+                        echo $this->element('sidebar/company');
+
+                    } else {
+                        
+                        echo $this->element('sidebar/company_inactive');
+
+                    }
                     break;
             }
         }

@@ -8,6 +8,15 @@
 
 <div class="students view large-9 medium-8 columns content">
     <h3><?= h($student->id) ?></h3>
+
+    <?php
+        $role = $this->Session->read('Auth.User.role');
+        if($role === 'company'){
+            // TODO Need to be translate
+            echo $this->Html->link('Notifier l\'étudiant pour céduler une rencontre', ['controller' => 'Students', 'action' => 'notify', $student->id], array('class' => 'button'));
+        }
+    ?>
+
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('First Name') ?></th>

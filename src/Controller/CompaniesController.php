@@ -37,7 +37,7 @@ class CompaniesController extends AppController
             case 'student':
                 break;
             case 'administrator':
-                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit']);
+                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit', 'delete']);
                 break;
             case 'company':
                 if ($user['role_data']['active']) {
@@ -82,7 +82,7 @@ class CompaniesController extends AppController
     {
         if ($id == null or $this->request->params['action'] == 'canView') {
             $this->Flash->error(__('You are should not mess with the URL!!!!.'));
-            $this->rediret(['controller' => 'Redirections', 'action' => 'index']);
+            $this->redirect(['controller' => 'Redirections', 'action' => 'index']);
         }
 
 

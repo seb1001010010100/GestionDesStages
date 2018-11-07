@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 
 /*
-
 TABLES:
  - administrators
  - client_types
@@ -35,15 +34,12 @@ TABLES:
  - sessions
  - students
  - users
-
  prev
  - internship_clienttype_xrefs
  - internship_mission_xrefs
-
  new
  - companies_clienttypes
  - companies_missions
-
 */
 
 -- --------------------------------------------------------
@@ -555,4 +551,3 @@ INSERT INTO users (username, password, role, created, modified) VALUES
   ('a@a.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'administrator', '2018-09-29', '2018-09-29');
 INSERT INTO users (username, password, role, created, modified) VALUES 
   ('c@c.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'company', '2018-09-29', '2018-09-29');
-

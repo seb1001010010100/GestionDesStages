@@ -119,30 +119,7 @@ class InternshipsController extends AppController
         $internship = $this->Internships->newEntity();
         if ($this->request->is('post')) {
             $internship = $this->Internships->patchEntity($internship, $this->request->getData());
-            $clientTypes_id = $this->request->getData()['clientType_id'];
-            $missions_id = $this->request->getData()['missions_id'];
             if ($this->Internships->save($internship)) {
-
-                if($clientTypes_id) {
-                    $intern_client_xref = TableRegistry::get('internship_clienttype_xrefs');
-                    foreach ($clientTypes_id as $value) {
-                        $xref = $intern_client_xref->newEntity([
-                            'internship_id' => $internship['id'],
-                            'clienttype_id' => $value
-                        ]);
-                        $intern_client_xref->save($xref);
-                    }
-                }
-                if($missions_id) {
-                    $intern_mission_xref = TableRegistry::get('internship_mission_xrefs');
-                    foreach ($missions_id as $value) {
-                        $xref = $intern_mission_xref->newEntity([
-                            'internship_id' => $internship['id'],
-                            'mission_id' => $value
-                        ]);
-                        $intern_mission_xref->save($xref);
-                    }
-                }
                 
                 $this->Flash->success(__('The internship has been saved.'));
 
@@ -154,9 +131,7 @@ class InternshipsController extends AppController
         $sessions = $this->Internships->Sessions->find('list', ['limit' => 200]);
         $ownershipStatuses = $this->Internships->OwnershipStatuses->find('list', ['limit' => 200]);
         $regions = $this->Internships->Regions->find('list', ['limit' => 200]);
-        $clientTypes = $this->Internships->internshipclienttypexrefs->clienttypes->find('list', ['limit' => 200]);
-		$missions = $this->Internships->internshipmissionxrefs->Missions->find('list', ['limit' => 200]);
-        $this->set(compact('internship', 'companies', 'sessions', 'ownershipStatuses', 'regions', 'clientTypes', 'missions'));
+        $this->set(compact('internship', 'companies', 'sessions', 'ownershipStatuses', 'regions'));
     }
 
     /**

@@ -117,6 +117,11 @@ class CompaniesTable extends Table
         $validator
             ->boolean('active')
             ->allowEmpty('active', 'create');
+			
+		$validator
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->notEmpty('password');	
 
         return $validator;
     }

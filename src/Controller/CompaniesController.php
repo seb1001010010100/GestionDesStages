@@ -37,7 +37,7 @@ class CompaniesController extends AppController
             case 'student':
                 break;
             case 'administrator':
-                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit']);
+                $auths = array_merge(['index', 'view', 'canView', 'add', 'edit', 'delete']);
                 break;
             case 'company':
                 if ($user['role_data']['active']) {

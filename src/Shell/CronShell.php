@@ -34,15 +34,16 @@ class CronShell extends Shell
     {
       $companies = TableRegistry::get('Companies');
       $query = $companies
-        ->find()
-        ->select(['email'])
-        ->where(['created <= NOW() - INTERVAL 15 day' , 'active' => false] );
+        ->find('all')
+        ->where(['created <= NOW() - INTERVAL 15 day' , 'active' => false, 'notified' => false] );
       $email = new Email('default');
       foreach($query as $row){
 
         $email->to($row->email)
               ->subject('Votre attention est requise!')
               ->send('Les information de votre compte de companie sur le site jcvs.ca n\'a pas ete modifier depuis les 15 derniers jours. Veuillez les mettres a jours le plus tot possible. Merci.');
+        $row->notified = true;
+        $companies->save($row);
 
       }
     }

@@ -24,6 +24,34 @@ class AdministratorsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
+    public function testIndexUnauthenticatedFails()
+    {
+      $this->get('/administrators');
+
+      $this->assertRedirectContains('login');
+    }
+    
+     public function testAddUnauthenticatedFails()
+    {
+      $this->get('/administrators/add');
+
+      $this->assertRedirectContains('login');
+    }
+    
+    public function testEditUnauthenticatedFails()
+    {
+      $this->get('/administrators/edit/1');
+
+      $this->assertRedirectContains('login');
+    }
+    
+    public function testDeleteUnauthenticatedFails()
+    {
+      $this->get('/administrators/delete/1');
+
+      $this->assertRedirectContains('login');
+    }
+    
     public function testIndex()
     {
         $this->markTestIncomplete('Not implemented yet.');

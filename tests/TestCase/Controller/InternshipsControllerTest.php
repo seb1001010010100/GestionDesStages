@@ -28,7 +28,16 @@ class InternshipsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'role' => 'administrator',
+                ]
+            ]
+        ]);
+        $this->get('/Internships/index');
+        $this->assertResponseOk();
     }
 
     /**
@@ -38,7 +47,20 @@ class InternshipsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        
         $this->markTestIncomplete('Not implemented yet.');
+       /* $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'role' => 'companies',
+                ]
+            ]
+        ]);
+        $this->get('/Internships/view');
+        $this->assertResponseError();*/
+
+
     }
 
     /**
@@ -48,7 +70,21 @@ class InternshipsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'company',
+                    'role_data' => [
+                        'id' => 1,
+                        'active' => 1
+                    ],
+                ]
+            ]
+        ]);
+        $this->get('/Internships/add');
+        $this->assertResponseOk();
     }
 
     /**
@@ -56,9 +92,25 @@ class InternshipsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEdit()
+    public function testEdit()      
     {
         $this->markTestIncomplete('Not implemented yet.');
+            /*$this->session([
+            'Auth' => [
+                'User' => [
+                    'id' => 1,
+                    'username' => 'testing',
+                    'role' => 'company',
+                    'role_data' => [
+                        'id' => 1,
+                        'active' => 1
+                    ],
+                ]
+            ]
+        ]);
+        $this->get('/Internships/edit/1');
+        $this->assertResponseOk();*/
+      
     }
 
     /**
@@ -67,7 +119,21 @@ class InternshipsControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testDelete()
-    {
+    { 
+         
+      
         $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    public function testApply(){
+        
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+    
+    public function testHeader(){
+        $this->markTestIncomplete('Not implemented yet.');
+        /*
+        $this->get('/users/login');  
+        $this->assertHeader('Controller', 'application/json');*/
     }
 }

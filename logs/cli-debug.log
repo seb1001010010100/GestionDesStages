@@ -844,3 +844,387 @@ PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.
 
 
 
+2018-11-07 17:28:42 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:28:42 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:28:42 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:28:58 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:28:58 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:28:58 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:29:50 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:29:50 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 17:29:50 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:39:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:39:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:39:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:40:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:40:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:40:17 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:48:54 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 97]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 97
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:48:54 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 18:48:54 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 19:35:16 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 98]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 98
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 19:35:16 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 99]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 99
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+
+2018-11-07 19:35:16 Notice: Notice (8): Undefined property: App\Test\TestCase\Controller\CompaniesControllerTest::$request in [C:\Program Files (x86)\Ampps\www\Appli_Session_5\Application\tests\TestCase\Controller\CompaniesControllerTest.php, line 100]
+Request URL: /companies/view/2
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 159
+App\Test\TestCase\Controller\CompaniesControllerTest::testViewAsOther() - ROOT\tests\TestCase\Controller\CompaniesControllerTest.php, line 100
+ReflectionMethod::invokeArgs() - [internal], line ??
+PHPUnit_Framework_TestCase::runTest() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 1062
+PHPUnit_Framework_TestCase::runBare() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 913
+PHPUnit_Framework_TestResult::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestResult.php, line 686
+PHPUnit_Framework_TestCase::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestCase.php, line 868
+PHPUnit_Framework_TestSuite::run() - ROOT\vendor\phpunit\phpunit\src\Framework\TestSuite.php, line 733
+PHPUnit_TextUI_TestRunner::doRun() - ROOT\vendor\phpunit\phpunit\src\TextUI\TestRunner.php, line 517
+PHPUnit_TextUI_Command::run() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 186
+PHPUnit_TextUI_Command::main() - ROOT\vendor\phpunit\phpunit\src\TextUI\Command.php, line 116
+[main] - ROOT\vendor\phpunit\phpunit\phpunit, line 52
+
+
+

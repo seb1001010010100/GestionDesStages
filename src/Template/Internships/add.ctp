@@ -20,20 +20,6 @@
             echo $this->Form->control('session_id', ['options' => $sessions]);
             echo $this->Form->control('ownerStatus_id', ['options' => $ownershipStatuses]);
             echo $this->Form->control('region_id', ['options' => $regions]);
-			
-<<<<<<< HEAD
-			/*echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $clientTypes));
-			
-			echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
-				=> 'checkbox', 'options' => $missions));*/
-=======
-			// echo $this->Form->control('clientType_id', array('type' => 'select', 'multiple'
-				//=> 'checkbox', 'options' => $clientTypes));
-			
-			//echo $this->Form->control('missions_id', array('type' => 'select', 'multiple'
-				//=> 'checkbox', 'options' => $missions));
->>>>>>> 9fa0f97d57cfea8d7f283e335ed1b197247e0d97
 
             echo $this->Form->control('name');
 			

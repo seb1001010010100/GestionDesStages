@@ -21,5 +21,10 @@ echo $this->Html->link(
     'Créer un compte',
     ['controller' => 'Students', 'action' => 'add', '_full' => true]
 );
+echo '<br>';
+echo $this->Html->link(
+    __('Mot de passe oublié.'),
+    ['controller' => 'Users', 'action' => 'resetPasswordEmail', '_full' => true]
+);
 ?>
 </div>

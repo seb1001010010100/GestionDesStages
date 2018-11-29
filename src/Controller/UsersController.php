@@ -31,7 +31,7 @@ class UsersController extends AppController
                 break;
             }
         } else {
-            $this->Auth->allow(['login']);
+            $this->Auth->allow(['login', 'resetPasswordEmail', '']);
         }
     }
 
@@ -124,6 +124,45 @@ class UsersController extends AppController
                 return $this->redirect(['controller' => '', 'action' => '']);
                 break;
         }
+    }
+
+    public function resetPasswordEmail()
+    {
+        if ($this->request->is('post')) {
+            
+            $email = $this->request->getData('email');
+
+            $user = $this->Users->find('first', [
+
+                'conditions' => ['Users.username' => $email]
+
+            ]);
+
+            if ($user) {
+                
+                sendResetPwdEmail($email);
+
+            }
+
+            $this->Flash->success(__('L\'email a été envoyé.'));
+            return $this->redirect(['controller' => '', 'action' => '']);
+        }
+    }
+
+    public function sendResetPwdEmail($email=null)
+    {
+        if ($email) {
+            
+            $time = time();
+
+            $hash = 1;
+
+        }
+    }
+
+    public function resetPassword($hash)
+    {
+        
     }
 
 }

@@ -9,7 +9,7 @@
 <?= $this->Flash->render() ?>
 <?= $this->Form->create() ?>
     <fieldset>
-    	<h2>Login</h2>
+    	<h2>Changer mot de passe</h2>
         <legend><?= __('Veuillez entrez votre email') ?></legend>
         <?= $this->Form->input('email') ?>
     </fieldset>

@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Routing\Router;
 
 /**
  * Application Controller
@@ -98,6 +99,24 @@ class AppController extends Controller
             $result = array();
         }
         return $result;
+    }
+
+    public static function encrypt_url($email='')
+    {
+        $time = time();
+
+        $url = Router::Url(['controller' => 'users', 'action' => 'resetPassword'], true) . '/' . $email;
+
+        return $url;
+    }
+
+    public static function decrypt_url($hash='')
+    {
+        $data = array('email' => $hash);
+
+        $data['valid'] = true;
+
+        return $data;
     }
 
 }

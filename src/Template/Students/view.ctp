@@ -5,7 +5,7 @@
  */
 
 ?>
-
+<?= $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js") ?>
 <div class="students view large-9 medium-8 columns content">
     <h3><?= h($student->id) ?></h3>
 
@@ -59,7 +59,30 @@
        <?php }?>
     </table>
     <div class="row">
+        <h4><?= __('Files') ?></h4>
+        <tr>
+          <span class="filename">Nothing selected</span>
+          <?php
+            echo $this->Form->create($file, ['type' => 'file']);
+            echo $this->Form->input('ad_photos[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Add Some Photos']);
+            echo $this->Form->button('Add another', array('type' => 'button', 'title' => 'Add another file upload'));
+            echo $this->Form->button(__('Submit'));
+            echo $this->Form->end();
+          ?>
+        </tr>
+    </div>
+    <div class="row">
         <h4><?= __('More Info') ?></h4>
         <?= $this->Text->autoParagraph(h($student->more_info)); ?>
     </div>
 </div>
+
+
+<script type="text/javascript">
+  $(function() {
+     $("input:file").change(function (){
+       var fileName = $(this).val();
+       $(".filename").html("fileName");
+     });
+  });
+</script>

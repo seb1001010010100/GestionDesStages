@@ -65,6 +65,8 @@ class StudentsController extends AppController
             $student = $this->Students->get($id, [
                 'contain' => []
             ]);
+            $file = TableRegistry::get('files');
+            $this->set('file', $file);
             $this->set('student', $student);
         } else {
             $this->Flash->error(__('Vous ne pouvez pas voir cet utilisateur.'));
@@ -198,13 +200,13 @@ class StudentsController extends AppController
         $msg = __('L\'entreprise {0} s\'interesse à vous et voudrait céduler une rencontre.<br>Envoyer leur une liste de temps de disponibilité pour faire le suivis.<br>Address email : {1}', $user['role_data']['name'], $user['username']);
 
         $email = new Email();
-   
+
         $email
                 ->emailFormat('html')
                 ->setTo($student->email)
                 ->setSubject($subject)
                 ->send($msg);
-        
+
         $this->Flash->success(__('The email has been sent succesfully.'));
         return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
     }

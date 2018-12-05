@@ -43,6 +43,9 @@ class StudentsController extends AppController
             case 'company':
                 if($user['role_data']['active'] == 1) {
                     $this->Auth->allow(['index', 'view', 'canView', 'notify']);
+                }else{
+
+                  $this->Auth->allow(['index', 'view', 'canView', 'notify']);
                 }
                 break;
             }
@@ -65,7 +68,10 @@ class StudentsController extends AppController
             $student = $this->Students->get($id, [
                 'contain' => []
             ]);
-            $file = TableRegistry::get('files');
+            $files = TableRegistry::get('files');
+            $file = $files
+                  ->find()
+                  ->where(['student_id' => $id]);
             $this->set('file', $file);
             $this->set('student', $student);
         } else {

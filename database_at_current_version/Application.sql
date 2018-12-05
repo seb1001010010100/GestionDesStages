@@ -268,6 +268,21 @@ CREATE TABLE IF NOT EXISTS `students` (
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `files`
+--
+
+
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `path` text NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 --
 -- Index pour la table `administrators`
 --
@@ -352,6 +367,14 @@ ALTER TABLE `companies_missions`
   ADD PRIMARY KEY (`id`),
   ADD KEY (`company_id`),
   ADD KEY (`mission_id`);
+
+  --
+  -- Index pour la table `files`
+  --
+  ALTER TABLE `files`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `student_id` (`student_id`);
+
 --
 -- AUTO_INCREMENT pour la table `administrators`
 --
@@ -379,6 +402,12 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `students`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Contraintes pour les tables exportées
 --
@@ -390,6 +419,13 @@ ALTER TABLE `companies_clienttypes`
 
 ALTER TABLE `companies_missions`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour la table `files`
+--
+ALTER TABLE `files`
+  ADD CONSTRAINT `files_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`);
+
 --
 -- Contraintes pour la table `companies`
 --
@@ -552,3 +588,6 @@ INSERT INTO users (username, password, role, created, modified) VALUES
   ('a@a.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'administrator', '2018-09-29', '2018-09-29');
 INSERT INTO users (username, password, role, created, modified) VALUES
   ('c@c.ca', '$2y$10$ONneUhzLKfpWoiKMeFi0au7/wxcqV/6CyTsAzCAWDF.XkdWqGMkRm', 'company', '2018-09-29', '2018-09-29');
+
+INSERT INTO `files` (`id`, `student_id`, `titre`, `path`, `created`, `modified`) VALUES
+  (12, 1, 'CV', 'CV.pdf', '2018-12-05', '2018-12-05');

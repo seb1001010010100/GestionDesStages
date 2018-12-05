@@ -60,29 +60,30 @@
     </table>
     <div class="row">
         <h4><?= __('Files') ?></h4>
+        <table>
+          <?php foreach($file as $f): ?>
+            <tr>
+              <td ><?= h($f->titre) ?></td>
+              <td><?= $this->Html->link(__('Download'), ['controller' => 'files', 'action' => 'download', $f->id]) ?></td>
+              <?php if($role === 'student'){ ?>
+              <td><?= $this->Html->link(__('Delete'), ['controller' => 'files', 'action' => 'delete', $f->id], ['confirm' => __('Are you sure you want to delete # {0}?', $f->id)]) ?></td>
+            <?php }?>
+            </tr>
+          <?php endforeach; ?>
         <tr>
-          <span class="filename">Nothing selected</span>
           <?php
-            echo $this->Form->create($file, ['type' => 'file']);
-            echo $this->Form->input('ad_photos[]', ['type' => 'file', 'multiple' => 'true', 'label' => 'Add Some Photos']);
-            echo $this->Form->button('Add another', array('type' => 'button', 'title' => 'Add another file upload'));
-            echo $this->Form->button(__('Submit'));
+          if($role === 'student'){
+            echo $this->Form->create('File', array('url' => array('controller' => 'Files', 'action' => 'add', $student->id), 'enctype' => 'multipart/form-data'));
+            echo $this->Form->file('file.', array('type'=>'file','multiple'=>'true','label' => 'Pdf', 'docx'));
+            echo $this->Form->submit('Upload', ['type'=>'submit', 'class' => 'form-controlbtn btn-default']);
             echo $this->Form->end();
+          }
           ?>
         </tr>
+      </table>
     </div>
     <div class="row">
         <h4><?= __('More Info') ?></h4>
         <?= $this->Text->autoParagraph(h($student->more_info)); ?>
     </div>
 </div>
-
-
-<script type="text/javascript">
-  $(function() {
-     $("input:file").change(function (){
-       var fileName = $(this).val();
-       $(".filename").html("fileName");
-     });
-  });
-</script>

@@ -41,6 +41,8 @@ class FilesTable extends Table
             'foreignKey' => 'student_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->addBehavior('Timestamp');
     }
 
     /**

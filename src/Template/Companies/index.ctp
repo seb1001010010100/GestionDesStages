@@ -5,7 +5,15 @@
  */
 ?>
 <div class="companies index large-9 medium-8 columns content">
-    <h3><?= __('Companies') ?></h3>
+    <h3><?= __('Companies') ?></h3>	
+	<?php 
+         if($user['role'] === 'administrator') {
+             
+            echo $this->Html->link($this->Form->button('Inactifs'), array('action' => 'index', 'pasActif'), array('escape'=>false));            
+            echo $this->Html->link($this->Form->button('Actifs'), array('action' => 'index', 'active'), array('escape'=>false));            
+            echo $this->Html->link($this->Form->button('Tous'), array('action' => 'index'), array('escape'=>false));
+        }
+    ?>		
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

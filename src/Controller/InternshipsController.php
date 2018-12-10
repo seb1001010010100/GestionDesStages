@@ -20,7 +20,8 @@ class InternshipsController extends AppController
      * Index method
      *
      * @return \Cake\Http\Response|void
-     */
+     */	  
+	 
     public function index()
     {
         $this->paginate = [

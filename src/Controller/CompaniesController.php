@@ -14,18 +14,34 @@ use Cake\ORM\TableRegistry;
  */
 class CompaniesController extends AppController
 {
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
-    public function index()
+	 
+	 public function index($status = null){
+		 		 
+		$companies = $this->Companies
+				->find('all');		 
+				 
+		 if($status === 'pasActif') {
+           $companies = $this->Companies
+						->find()
+						->where(['companies.active' => 0]);
+  
+        } else if ($status === 'active') {
+         $companies = $this->Companies
+						->find() 
+						->where(['companies.active' => 1]);              
+        }
+		
+		$companies = $this->paginate($companies);
+		$user = $this->Auth->user();
+		$this->set(compact('companies', 'user'));
+	 }
+	 
+    /*public function index()
     {
         $companies = $this->paginate($this->Companies);
 
         $this->set(compact('companies'));
-    }
+    }*/
 
     public function beforeFilter(Event $event)
     {

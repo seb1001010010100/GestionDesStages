@@ -6,6 +6,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
+use Cake\Mailer\Email;
 
 class UsersController extends AppController
 {
@@ -31,7 +32,7 @@ class UsersController extends AppController
                 break;
             }
         } else {
-            $this->Auth->allow(['login']);
+            $this->Auth->allow(['login', 'resetPasswordEmail', 'sendResetPwdEmail', 'resetPassword']);
         }
     }
 
@@ -123,6 +124,90 @@ class UsersController extends AppController
             default:
                 return $this->redirect(['controller' => '', 'action' => '']);
                 break;
+        }
+    }
+
+    public function resetPasswordEmail()
+    {
+        if ($this->request->is('post')) {
+            
+            $email = $this->request->getData('email');
+
+            $user = $this->Users->find('all', [
+                'conditions' => ['Users.username' => $email]
+            ])->first();
+
+            if ($user) {
+
+                $this->sendResetPwdEmail($user);
+
+            }
+
+            $this->Flash->success(__('L\'email a été envoyé.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'login']);
+        }
+    }
+
+    public function sendResetPwdEmail($user=null)
+    {
+        if ($user) {
+            
+            $url = parent::encrypt_url($user['username']);
+
+            // http://www.naidim.org/cakephp-3-tutorial-9-reset-password
+            $email = new Email();
+            $email->template('resetpw');
+            $email->emailFormat('both');
+            $email->setTo($user['username']);
+            $email->setSubject('Reset your password');
+            $email->viewVars(['url' => $url, 'username' => $user['username']]);
+
+            if ($email->send()) {
+            } else {
+                $this->Flash->error(__('Erreur pour l\'envoie de l\'email: ') . $email->smtpError);
+            }
+
+        }
+    }
+
+    public function resetPassword($hash='')
+    {
+
+        $data =  parent::decrypt_url($hash);
+
+        if (!$data['valid']) {
+            $this->Flash->error(__('Ce lien n\'est plus valide.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'login']);
+        }
+
+
+        if ($this->request->is('post')) {
+
+            $pw1 = $this->request->getData('pw1');
+            $pw2 = $this->request->getData('pw2');
+
+            if ($pw1 && $pw1 == $pw2) {
+
+                $user = $this->Users->find('all', [
+                    'conditions' => ['Users.username' => $data['email']]
+                ])->first();
+
+                if ($user) {
+                    $user['password'] = $pw1;
+
+                    if ($this->Users->save($user)) {
+                        $this->Flash->set(__('votre mot de passe a été modifié.'));
+                        return $this->redirect(array('action' => 'login'));
+                    } else {
+                        $this->Flash->error(__('Le mot de passe n\'a pas pu être modifier.'));
+                    }
+                } else {
+                    $this->Flash->error(__('Le mot de passe n\'a pas pu être modifier.'));
+                }
+            } else {
+                $this->Flash->error(__('Entrer correctement le mot de passe.'));
+            }
+
         }
     }
 

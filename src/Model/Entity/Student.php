@@ -38,7 +38,8 @@ class Student extends Entity
         'notes' => true,
         'active' => true,
         'created' => true,
-        'modified' => true
+        'modified' => true,
+        'internship' => true
     ];
 
     

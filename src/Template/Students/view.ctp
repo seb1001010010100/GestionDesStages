@@ -3,17 +3,27 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Student $student
  */
-
+$urlSaveChk = $this->Url->build('/students/save-chk-internship', true);
+echo $this->Html->scriptBlock('var urlSaveChk = "' . $urlSaveChk . '";', ['block' => true]);
+echo $this->Html->scriptBlock('var csrfToken = '.json_encode($this->request->getParam('_csrfToken')).';', ['block' => true]);
 ?>
 <?= $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js") ?>
+<?= $this->Html->script('Students/view'); ?>
+
 <div class="students view large-9 medium-8 columns content">
     <h3><?= h($student->id) ?></h3>
 
     <?php
         $role = $this->Session->read('Auth.User.role');
         if($role === 'company'){
-            // TODO Need to be translate
             echo $this->Html->link('Notifier l\'étudiant pour céduler une rencontre', ['controller' => 'Students', 'action' => 'notify', $student->id], array('class' => 'button'));
+            ?>
+            <p>
+                <?= __('Internship') ?>
+                <input type="checkbox" name="chkInternship" <?= $student->internship ? 'checked' : ""?> onclick="hello()">
+                <input type="hidden" id="student-id" name="student_id" value="<?=$student->id?>" >
+            </p>
+            <?php
         }
     ?>
 
@@ -21,6 +31,7 @@
         <tr>
             <th scope="row"><?= __('First Name') ?></th>
             <td><?= h($student->first_name) ?></td>
+            <td><?= h($student->internship) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Last Name') ?></th>

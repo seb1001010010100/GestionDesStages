@@ -38,11 +38,11 @@ class StudentsController extends AppController
                 $this->Auth->allow(['view', 'canView']);
                 break;
             case 'administrator':
-                $this->Auth->allow(['index', 'view', 'canView']);
+                $this->Auth->allow(['index', 'view', 'canView', 'viewStudentNoInternship']);
                 break;
             case 'company':
                 if($user['role_data']['active'] == 1) {
-                    $this->Auth->allow(['index', 'view', 'canView', 'notify']);
+                    $this->Auth->allow(['index', 'view', 'canView', 'notify', 'saveChkInternship']);
                 }else{
 
                   $this->Auth->allow(['index', 'view', 'canView', 'notify']);
@@ -187,12 +187,12 @@ class StudentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function notify($studentId = null)
+    public function notify($id = null)
     {
         $user = $this->Auth->user();
         $student = $this->Students
             ->find()
-            ->where(['Students.id' => $studentId] )->first();
+            ->where(['Students.id' => $id])->first();
 
 
         $subject = __('Un employeur voudrait vous rencontrer!');
@@ -215,6 +215,29 @@ class StudentsController extends AppController
 
         $this->Flash->success(__('The email has been sent succesfully.'));
         return $this->redirect(['controller' => 'redirections', 'action' => 'index']);
+    }
+
+    public function saveChkInternship(){
+        $this->autoRender = false; // avoid to render view
+
+        $id = $this->request->query('id');
+        $chkStatus = $this->request->query('status');
+
+        $student = $this->Students->get($id);
+        $student->internship = $chkStatus;
+
+        $this->Students->save($student);
+    }
+
+    public function viewStudentNoInternship()
+    {
+        $students = $this->Students
+                    ->find()
+                    ->where(['Students.internship' => 0]);
+
+        $students = $this->paginate($students);
+
+        $this->set(compact('students'));
     }
 
 }

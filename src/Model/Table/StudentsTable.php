@@ -127,16 +127,13 @@ class StudentsTable extends Table
             ]
         );
 
-        $rule->addUpdate(
-            function ($entity, $options)
-            {
-                debug($entity);
-                debug($options);
-                die();
-                $usersTable = TableRegistry::get('Users');
-                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
-            }
-        );
+//        $rules->addUpdate(
+//            function ($entity, $options)
+//            {
+//                $usersTable = TableRegistry::get('Users');
+//                $user = $usersTable->find()->where(['username' => $entity['email']])->first();
+//            }
+//        );
 
         return $rules;
     }

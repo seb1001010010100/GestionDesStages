@@ -75,7 +75,7 @@ class FilesController extends AppController
               $uploadFile = $uploadPath.$fileName;
               $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
               if($fichier['size'] < 1048576){
-                if($extension == 'pdf' || $extension == 'docx'){
+                if($extension == 'pdf' || $extension == 'docx' || $extension == 'mp3'){
                   if(move_uploaded_file($fichier['tmp_name'],$uploadFile)){
                     $file->student_id = $id;
                     $file->titre = $withoutExt;
@@ -108,7 +108,7 @@ class FilesController extends AppController
 
               }else{
 
-                $this->Flash->error(__('The file could not be saved. Please use an accepted format (.pdf, .docx).' . $fichier['size']));
+                $this->Flash->error(__('The file could not be saved. Please use an accepted format (.pdf, .docx, .mp3).' . $fichier['size']));
                 return $this->redirect(['controller' => 'students', 'action' => 'view',$id]);
 
               }
